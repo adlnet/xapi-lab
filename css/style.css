@@ -1,0 +1,22 @@
+:focus {outline:none !important;} /* remove dotted outlines in FF */
+#editor { 
+    /*width:530px;*/
+    height:320px;
+    border:1px solid #ccc;
+    margin-bottom:10px;
+}
+.panel-heading.collapser a:after {
+    font-family:'Glyphicons Halflings';
+    content:"\e114";
+    float: right;
+}
+.panel-heading.collapser a.collapsed:after {
+    content:"\e080";
+}
+.tab-pane {
+    padding-top:20px;
+}
+pre.prettyprint {
+    font-size:10px;
+    max-height:500px;
+}

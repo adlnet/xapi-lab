@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!--<link rel="icon" href="favicon.ico">-->
+
+    <title>xAPI Lab</title>
+
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <section class="container">
+
+
+      <div class="page-header">
+        <h1 class="text-primary">xAPI Lab <i class="glyphicon glyphicon-wrench"></i></h1>
+        <h3 class="text-muted">Assisting in developing statements and communicating with a Learning Record Store (LRS)</h3>
+      </div>
+
+
+      <div class="panel panel-primary">
+        <div class="panel-heading collapser">
+          <h4 class="panel-title"><a data-toggle="collapse" data-target="#auth" href="#auth" class="collapsed">LRS Basic Auth Setup</a></h4>
+        </div>
+        <div id="auth" class="panel-collapse collapse">
+          <div class="panel-body">
+
+            <div class="row">
+
+              <div class="form-group col-md-4">
+                <label for="endpoint">Endpoint</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+                  <input type="text" class="form-control" value="https://lrs.adlnet.gov/xapi/" aria-describedby="LRS Endpoint" id="endpoint" />
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="username">Username</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                  <input type="text" class="form-control" value="xapi-tools" aria-describedby="Username" id="username" />
+                </div>
+              </div>
+              <div class="form-group col-md-4">
+                <label for="password">Password</label>
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                  <input type="password" class="form-control" value="xapi-tools" aria-describedby="Password" id="password" />
+                </div>
+              </div>
+
+            </div><!-- .row -->
+
+          </div><!-- .panel-body -->
+        </div><!-- .panel-collapse -->
+      </div><!-- .panel -->
+
+
+      <div class="panel panel-primary">
+        <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#smar" href="#smar">Statement Manipulation and Response</a></h3></div>
+        <div id="smar" class="panel-collapse collapse in">
+          <div class="panel-body">
+
+            <div role="tabpanel">
+
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#tab-sending" aria-controls="tab-sending" role="tab" data-toggle="tab">Sending</a></li>
+                <li role="presentation"><a href="#tab-receiving" aria-controls="tab-receiving" role="tab" data-toggle="tab">Receiving</a></li>
+              </ul>
+              
+              <div class="row">
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+
+                  <div role="tabpanel" class="tab-pane active" id="tab-sending">
+
+                    <div class="col-md-12">
+
+                      <div class="panel panel-info">
+                        <div class="panel-heading collapser">
+                          <h4 class="panel-title"><a data-toggle="collapse" data-target="#avo" href="#avo">Statement Builder (Actor, Verb, Object)</a></h4>
+                        </div>
+                        <div id="avo" class="panel-collapse collapse in">
+                          <div class="panel-body">
+
+                            <form id="statement-values">
+
+                              <div class="row">
+
+                                <div class="form-group col-md-4">
+                                  <label for="actor-email">Actor Email</label>
+                                  <input type="text" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Actor Email" id="actor-email" />
+                                </div><!-- .form-group -->
+                                <div class="form-group col-md-4">
+                                  <label for="actor-name">Actor Name</label>
+                                  <input type="text" class="form-control" value="Tyler" aria-describedby="Actor Name" id="actor-name" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="predefined-verb">Predefined Verbs</label>
+                                  <select class="form-control" name="predefined-verb" id="predefined-verb"></select>
+                                </div>
+
+                              </div><!-- .row -->
+
+                              <div class="row">
+
+                                <div class="form-group col-md-8">
+                                  <label for="verb-id">Verb ID</label>
+                                  <input type="text" class="form-control" value="http://adlnet.gov/expapi/verbs/answered" aria-describedby="Verb" id="verb-id" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="verb-display">Verb Display Name</label>
+                                  <input type="text" class="form-control" value="answered" aria-describedby="Display" id="verb-display" />
+                                </div>
+
+                              </div><!-- .row -->
+
+                              <div class="row">
+
+                                <div class="form-group col-md-12">
+                                  <label for="activity-id">Activity ID</label>
+                                  <input type="text" class="form-control" value="http://adlnet.gov/expapi/activities/example" aria-describedby="Activity ID" id="activity-id" />
+                                </div>
+
+                              </div><!-- .row -->
+
+                              <div class="row">
+
+                                <div class="form-group col-md-4">
+                                  <label for="language">Language</label>
+                                  <input type="text" class="form-control" value="en-US" aria-describedby="Language" id="language" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="activity-name">Activity Name</label>
+                                  <input type="text" class="form-control" value="Example Activity" aria-describedby="Acitivity Name" id="activity-name" />
+                                </div>
+                                <div class="form-group col-md-4">
+                                  <label for="activity-description">Activity Description</label>
+                                  <input type="text" class="form-control" value="Example activity description" aria-describedby="Activity Description" id="activity-description" />
+                                </div>
+
+                              </div><!-- .row -->
+
+                              <div class="form-group">
+                                <a class="btn btn-primary" href="#" role="button" id="generate-statement">Generate JSON Statement <i class="glyphicon glyphicon-fire"></i></a>
+                                <label>
+                                  <input type="checkbox" id="automatically-build" value="yes" checked>
+                                  Automatically generate statements when I edit the form
+                                </label>
+                              </div>
+
+                            </form>
+
+                          </div><!-- .panel-body -->
+                        </div><!-- .panel-collapse -->
+                      </div><!-- .panel -->
+
+                    </div><!-- .col-md-12 -->
+
+                    <div class="col-md-6">
+
+                      <div class="panel panel-default">
+                        <div class="panel-heading"><h3 class="panel-title">Statement Editor</h3></div>
+                        <div class="panel-body">
+
+                          <div class="form-control" id="editor"></div>
+                          <p>
+                            <a class="btn btn-success" href="#" role="button" id="validate-json">Validate JSON <i class="glyphicon glyphicon-ok"></i></a>
+                            <a class="btn btn-primary" href="#" role="button" id="queue-statement">Add Statement to Queue <i class="glyphicon glyphicon-plus"></i></a>
+                            <a class="btn btn-primary" href="#" role="button" id="send-statement">Send Statement <i class="glyphicon glyphicon-send"></i></a>
+                          </p>
+
+                        </div><!-- .panel-body -->
+                      </div><!-- .panel -->
+
+                    </div><!-- .col-md-6 -->
+                    <div class="col-md-6">
+
+                      <div class="panel panel-default">
+                        <div class="panel-heading"><h3 class="panel-title">Statements Sent to the LRS <small><a href="https://lrs.adlnet.gov/prototypes/StatementViewer/index.html" target="_blank" class="pull-right">View Public LRS <i class="glyphicon glyphicon-new-window"></i></a></small></h3></div>
+                        <div class="panel-body">
+
+                          <div>
+                            <div id="sent-statements"></div>
+                          </div>
+
+                          <div class="pull-right">
+                            <a class="btn btn-default" href="#" role="button" id="clear-sent-statements">Clear Sent Statements <i class="glyphicon glyphicon-remove-sign"></i></a>
+                          </div>
+                      
+                        </div><!-- .panel-body -->
+                      </div><!-- .panel -->
+
+                      <div class="panel panel-default">
+                        <div class="panel-heading"><h3 class="panel-title">Statement Queue</h3></div>
+                        <div class="panel-body">
+                          <div id="statement-queue"></div>
+                          <div class="pull-right">
+                            <a class="btn btn-default" href="#" role="button" id="clear-statement-queue">Clear Statement Queue <i class="glyphicon glyphicon-remove-sign"></i></a>
+                            <a class="btn btn-primary" href="#" role="button" id="send-statement-queue">Send Statement Queue <i class="glyphicon glyphicon-send"></i></a>
+                          </div>
+                        </div><!-- .panel-body -->
+                      </div><!-- .panel -->
+
+                    </div><!-- .col-md-6 -->
+
+                  </div><!-- #tab-sending -->
+
+                  <div role="tabpanel" class="tab-pane" id="tab-receiving">
+
+                    <div class="col-md-6">
+
+                      <div class="panel panel-info">
+                        <div class="panel-heading"><h3 class="panel-title">Query Options</h3></div>
+                        <div class="panel-body">
+
+                          <div class="row">
+
+                            <div class="form-group col-md-6">
+                              <label for="search-predefined-verb">Predefined Verb</label>
+                              <select class="form-control" name="search-predefined-verb" id="search-predefined-verb">
+                                <option></option>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="search-verb-sort">Verb Sort</label>
+                              <select class="form-control" name="search-verb-sort" id="search-verb-sort">
+                                <option value="">Descending</option>
+                                <option value="true">Ascending</option>
+                              </select>
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <div class="row">
+
+                            <div class="form-group col-md-12">
+                              <label for="search-user-verb-id">Verb ID</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Verb ID" placeholder="http://adlnet.gov/verbs/answered" id="search-user-verb-id" />
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <div class="row">
+
+                            <div class="form-group col-md-12">
+                              <label for="search-actor-email">Actor Email</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Agent" placeholder="tyler.mulligan.ctr@adlnet.gov" id="search-actor-email" />
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <div class="row">
+
+                            <div class="form-group col-md-12">
+                              <label for="search-activity-id">Activity ID</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Activity ID" placeholder="http://adlnet.gov/activities/question" id="search-activity-id" />
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <div class="row">
+
+                            <div class="form-group col-md-12">
+                              <label for="search-statement-id">Statement ID</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Activity ID" placeholder="ef8a3c05-7c88-4d46-a821-c6f2f061ef23" id="search-statement-id" />
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <div class="row">
+
+                            <div class="form-group col-md-6">
+                              <label for="search-statements-since-date">Since Date</label>
+                              <div class="input-group date" id="search-statements-since-date">
+                                <input type="text" class="form-control" />
+                                <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                              </div>
+                            </div>
+
+                            <div class="form-group col-md-6">
+                              <label for="search-statements-until-date">Until Date</label>
+                              <div class="input-group date" id="search-statements-until-date">
+                                <input type="text" class="form-control" />
+                                <span class="input-group-addon">
+                                  <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                              </div>
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <div class="row">
+
+                            <div class="form-group col-md-12">
+                              <label for="search-limit">Limit</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Limit" placeholder="25" id="search-limit" />
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <p>
+                            <a class="btn btn-primary" href="#" role="button" id="get-statements-with-search">Get Statements</a>
+                          </p>
+
+                        </div><!-- .panel-body -->
+                      </div><!-- .panel -->
+
+                    </div><!-- .col-md-6 -->
+                    <div class="col-md-6">
+
+                      <div class="panel panel-default">
+                        <div class="panel-heading"><h3 class="panel-title">Statements Recieved From the LRS <small><a href="https://lrs.adlnet.gov/prototypes/StatementViewer/index.html" target="_blank" class="pull-right">View Public LRS <i class="glyphicon glyphicon-new-window"></i></a></small></h3></div>
+                        <div class="panel-body">
+
+                          <div>
+                            <div id="received-statements"></div>
+                          </div>
+
+                          <div class="pull-right">
+                            <a class="btn btn-default" href="#" role="button" id="clear-received-statements">Clear Received Statements <i class="glyphicon glyphicon-remove-sign"></i></a>
+                          </div>
+
+                        </div><!-- .panel-body -->
+                      </div><!-- .panel -->
+
+                    </div><!-- .col-md-6 -->
+
+                  </div><!-- #tab-receiving -->
+
+                </div><!-- .tab-content -->
+
+              </div><!-- tabpanel -->
+
+            </div><!-- .row -->
+
+            <div class="panel panel-default">
+              <div class="panel-heading"><h3 class="panel-title">LRS Status</h3></div>
+              <div class="panel-body">
+                <p id="lrs-response"></p>
+              </div><!-- .panel-body -->
+            </div><!-- .panel -->
+
+          </div><!-- .panel-body -->
+        </div><!-- #smar -->
+      </div><!-- .panel -->
+
+
+      <h3 class="text-info">About</h3>
+
+      <div class="alert alert-info">
+        <p>This tool helps generate valid statements and demonstrates interaction with an LRS. More experiments to come!</p>
+        <p><span class="label label-info">Tip: Open your browser's developer tools (F12) to see more info in the console.</span></p>
+      </div>
+
+
+    </section><!-- /.container -->
+
+
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <!-- xapi scripts -->
+    <script type="text/javascript" src="js/cryptojs_v3.1.2.min.js"></script>
+    <script type="text/javascript" src="js/xapiwrapper.min.js"></script>
+
+    <!-- editor -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.1.3/ace.js" charset="utf-8"></script>
+
+    <!-- pretty print -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/prettify/r298/prettify.min.js"></script>
+
+    <!-- date picker -->
+    <script type="text/javascript" src="js/moment.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap-datetimepicker.min.js"></script>
+
+    <!-- custom functions -->
+    <script type="text/javascript" src="js/scripts.js"></script>
+
+  </body>
+</html>
