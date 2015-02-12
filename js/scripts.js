@@ -422,7 +422,7 @@ function sendState() {
     setupConfig();
 
     // clean out the LRS response status
-    var $lrsr = $('#damar-lrs-response');
+    var $lrsr = $('#dmar-lrs-response');
     $lrsr.html('').attr('class', '');
 
     var activityId = $("#set-document-activity-id").val();
@@ -446,7 +446,7 @@ function sendActivityProfile() {
     setupConfig();
 
     // clean out the LRS response status
-    var $lrsr = $('#damar-lrs-response');
+    var $lrsr = $('#dmar-lrs-response');
     $lrsr.html('').attr('class', '');
 
     var activityId = $("#set-document-activity-id").val();
@@ -468,7 +468,7 @@ function sendAgentProfile() {
     setupConfig();
 
     // clean out the LRS response status
-    var $lrsr = $('#damar-lrs-response');
+    var $lrsr = $('#dmar-lrs-response');
     $lrsr.html('').attr('class', '');
 
     var actorEmail = $("#set-document-actor-email").val(); // TODO: Agent
@@ -478,7 +478,7 @@ function sendAgentProfile() {
     // noneMatchHash
     // callback
 
-    ADL.XAPIWrapper.sendAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, profileValue, null, null, function(r) {
+    ADL.XAPIWrapper.sendAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, profileValue, null, "*", function(r) {
       $lrsr.html("Status " + r.status + ": " + r.statusText).attr("class", "alert bg-success text-success");
       $("#sent-documents").append("<p><b>" + profileId + "</b>: " + profileValue + "</p>");
       console.log(r);
@@ -498,7 +498,7 @@ function getState() {
     setupConfig();
     
     // clean out the LRS response status
-    var $lrsr = $('#damar-lrs-response');
+    var $lrsr = $('#dmar-lrs-response');
     $lrsr.html('').attr('class', '');
 
     var activityId = $("#get-document-activity-id").val();
@@ -520,7 +520,7 @@ function getActivityProfile() {
     setupConfig();
     
     // clean out the LRS response status
-    var $lrsr = $('#damar-lrs-response');
+    var $lrsr = $('#dmar-lrs-response');
     $lrsr.html('').attr('class', '');
 
     var activityId = $("#get-document-activity-id").val();
@@ -540,15 +540,17 @@ function getAgentProfile() {
     setupConfig();
     
     // clean out the LRS response status
-    var $lrsr = $('#damar-lrs-response');
+    var $lrsr = $('#dmar-lrs-response');
     $lrsr.html('').attr('class', '');
 
     var actorEmail = $("#get-document-actor-email").val(); // TODO: Agent
-    var profileId = $("#get-document-agent-profile-id").val(); // TODO: Agent
+    var profileId = $("#get-document-agent-profile-id").val();
+    console.log(actorEmail);
+    console.log(profileId);
     // since
     // callback
 
-    ADL.XAPIWrapper.getActivityProfile( {"mbox":"mailto:" + actorEmail}, profileId, null, function(r) {
+    ADL.XAPIWrapper.getAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, null, function(r) {
       $lrsr.html("Status " + r.status + ": " + r.statusText).attr("class", "alert bg-success text-success");
       $("#received-documents").append("<p>" + r.response + "</p>");
       console.log(r);
