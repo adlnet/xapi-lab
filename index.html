@@ -355,7 +355,7 @@
             <div class="panel panel-default">
               <div class="panel-heading"><h3 class="panel-title">LRS Response</h3></div>
               <div class="panel-body">
-                <p id="lrs-response"></p>
+                <p id="smar-lrs-response"></p>
               </div><!-- .panel-body -->
             </div><!-- .panel -->
 
@@ -395,6 +395,8 @@
                         <div class="panel-heading"><h3 class="panel-title">Send Documents</h3></div>
                         <div class="panel-body">
 
+                          <h4>Global</h4>
+
                           <div class="row">
 
                             <div class="form-group col-md-12">
@@ -415,8 +417,6 @@
 
                           <h4>State</h4>
 
-                          <p>Both Activity ID and Actor Email are required to set the state.</p>
-
                           <div class="row">
 
                             <div class="form-group col-md-6">
@@ -436,7 +436,44 @@
                           </p>
 
                           <h4>Activity Profile</h4>
+                          
+                          <div class="row">
+
+                            <div class="form-group col-md-6">
+                              <label for="set-document-activity-profile-id">Profile ID</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Agent Profile ID" placeholder="" id="set-document-activity-profile-id" />
+                            </div>
+
+                            <div class="form-group col-md-6">
+                              <label for="set-document-activity-profile-string">Profile Value</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Activity Profile Value" placeholder="" id="set-document-activity-profile-string" />
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <p>
+                            <a class="btn btn-primary" href="#" role="button" id="send-activity-profile">Send Activity Profile <i class="glyphicon glyphicon-send"></i></a>
+                          </p>
+
                           <h4>Agent Profile</h4>
+                          
+                          <div class="row">
+
+                            <div class="form-group col-md-6">
+                              <label for="set-document-agent-profile-id">Profile ID</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Agent Profile ID" placeholder="" id="set-document-agent-profile-id" />
+                            </div>
+
+                            <div class="form-group col-md-6">
+                              <label for="set-document-agent-profile-string">Profile Value</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Agent Profile Value" placeholder="" id="set-document-agent-profile-string" />
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <p>
+                            <a class="btn btn-primary" href="#" role="button" id="send-agent-profile">Send Agent Profile <i class="glyphicon glyphicon-send"></i></a>
+                          </p>
 
                         </div><!-- .panel-body -->
                       </div><!-- .panel -->
@@ -514,14 +551,41 @@
                               <input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="get-document-state-id" />
                             </div>
                             
-                          </div>
+                          </div><!-- .row -->
 
                           <p>
                             <a class="btn btn-primary" href="#" role="button" id="get-state">Get State <i class="glyphicon glyphicon-cloud-download"></i></a>
                           </p>
 
                           <h4>Activity Profile</h4>
+
+                          <div class="row">
+
+                            <div class="form-group col-md-6">
+                              <label for="get-document-activity-profile-id">Profile ID</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="get-document-activity-profile-id" />
+                            </div>
+                            
+                          </div><!-- .row -->
+
+                          <p>
+                            <a class="btn btn-primary" href="#" role="button" id="get-activity-profile">Get Activity Profile <i class="glyphicon glyphicon-cloud-download"></i></a>
+                          </p>
+
                           <h4>Agent Profile</h4>
+
+                          <div class="row">
+
+                            <div class="form-group col-md-6">
+                              <label for="get-document-agent-profile-id">Profile ID</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="get-document-agent-profile-id" />
+                            </div>
+                            
+                          </div><!-- .row -->
+
+                          <p>
+                            <a class="btn btn-primary" href="#" role="button" id="get-agent-profile">Get Agent Profile <i class="glyphicon glyphicon-cloud-download"></i></a>
+                          </p>
 
                         </div><!-- .panel-body -->
                       </div><!-- .panel -->
@@ -557,7 +621,7 @@
             <div class="panel panel-default">
               <div class="panel-heading"><h3 class="panel-title">LRS Response</h3></div>
               <div class="panel-body">
-                <p id="lrs-state-response"></p>
+                <p id="damar-lrs-response"></p>
               </div><!-- .panel-body -->
             </div><!-- .panel -->
 

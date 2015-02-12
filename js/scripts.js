@@ -7,7 +7,7 @@ editor.getSession().setMode('ace/mode/javascript');
 // Handle XAPIWrapper XHR Errors
 ADL.xhrRequestOnError = function(xhr, method, url, callback, callbackargs) {
     console.log(xhr);
-    var $lrsr = $('#lrs-response');
+    var $lrsr = $('#smar-lrs-response'); // TODO: combine or route lrs-responses
     $lrsr.html('').attr('class', '').html(xhr.statusText + " (Status " + xhr.status + "): " + xhr.response).attr("class", "alert bg-danger text-danger");
 };
 
@@ -134,6 +134,16 @@ $("#send-state").click(function(e) {
     e.preventDefault();
 });
 
+$("#send-activity-profile").click(function(e) {
+    sendActivityProfile();
+    e.preventDefault();
+});
+
+$("#send-agent-profile").click(function(e) {
+    sendAgentProfile();
+    e.preventDefault();
+});
+
 $("#clear-sent-documents").click(function(e) {
     clearSentDocuments();
     e.preventDefault();
@@ -144,6 +154,16 @@ $("#clear-sent-documents").click(function(e) {
 
 $("#get-state").click(function(e) {
     getState();
+    e.preventDefault();
+});
+
+$("#get-activity-profile").click(function(e) {
+    getActivityProfile();
+    e.preventDefault();
+});
+
+$("#get-agent-profile").click(function(e) {
+    getAgentProfile();
     e.preventDefault();
 });
 
@@ -236,7 +256,7 @@ function sendStatement() {
     }
 
     // clean out the LRS response status
-    var $lrsr = $('#lrs-response');
+    var $lrsr = $('#smar-lrs-response');
     $lrsr.html('').attr('class', '');
 
     var xstmt = $.parseJSON(stmt);
@@ -279,7 +299,7 @@ function sendStatementQueue() {
     setupConfig();
 
     // clean out the LRS response status
-    var $lrsr = $('#lrs-response');
+    var $lrsr = $('#smar-lrs-response');
     $lrsr.html('').attr('class', '');
 
     //var xstmts = $.parseJSON(stmts);
@@ -333,7 +353,7 @@ function getStatementsWithSearch() {
     setupConfig();
 
     // clean out the LRS response status
-    var $lrsr = $('#lrs-response');
+    var $lrsr = $('#smar-lrs-response');
     $lrsr.html('').attr('class', '');
 
     var verbSort = $("#search-verb-sort").val();
@@ -396,11 +416,13 @@ function clearReceivedStatements() {
 
 
 /*  Document Manipulation and Response -- Sending */
+
+// Send State to the LRS
 function sendState() {
     setupConfig();
 
     // clean out the LRS response status
-    var $lrsr = $('#lrs-state-response');
+    var $lrsr = $('#damar-lrs-response');
     $lrsr.html('').attr('class', '');
 
     var activityId = $("#set-document-activity-id").val();
@@ -419,6 +441,50 @@ function sendState() {
     });
 }
 
+// Sent Activity Profile to the LRS
+function sendActivityProfile() {
+    setupConfig();
+
+    // clean out the LRS response status
+    var $lrsr = $('#damar-lrs-response');
+    $lrsr.html('').attr('class', '');
+
+    var activityId = $("#set-document-activity-id").val();
+    var profileId = $("#set-document-activity-profile-id").val();
+    var profileValue = $("#set-document-activity-profile-string").val();
+    // matchHash
+    // noneMatchHash
+    // callback
+
+    ADL.XAPIWrapper.sendActivityProfile(activityId, profileId, profileValue, null, null, function(r) {
+      $lrsr.html("Status " + r.status + ": " + r.statusText).attr("class", "alert bg-success text-success");
+      $("#sent-documents").append("<p><b>" + profileId + "</b>: " + profileValue + "</p>");
+      console.log(r);
+    });
+}
+
+// Sent Activity Profile to the LRS
+function sendAgentProfile() {
+    setupConfig();
+
+    // clean out the LRS response status
+    var $lrsr = $('#damar-lrs-response');
+    $lrsr.html('').attr('class', '');
+
+    var actorEmail = $("#set-document-actor-email").val(); // TODO: Agent
+    var profileId = $("#set-document-agent-profile-id").val();
+    var profileValue = $("#set-document-agent-profile-string").val();
+    // matchHash
+    // noneMatchHash
+    // callback
+
+    ADL.XAPIWrapper.sendAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, profileValue, null, null, function(r) {
+      $lrsr.html("Status " + r.status + ": " + r.statusText).attr("class", "alert bg-success text-success");
+      $("#sent-documents").append("<p><b>" + profileId + "</b>: " + profileValue + "</p>");
+      console.log(r);
+    });
+}
+
 function clearSentDocuments() {
     $("#sent-documents").html("");
 }
@@ -426,11 +492,13 @@ function clearSentDocuments() {
 
 
 /*  Document Manipulation and Response -- Receiving */
+
+// Get State from the LRS
 function getState() {
     setupConfig();
     
     // clean out the LRS response status
-    var $lrsr = $('#lrs-state-response');
+    var $lrsr = $('#damar-lrs-response');
     $lrsr.html('').attr('class', '');
 
     var activityId = $("#get-document-activity-id").val();
@@ -441,6 +509,46 @@ function getState() {
     // callback
 
     ADL.XAPIWrapper.getState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, null, function(r) {
+      $lrsr.html("Status " + r.status + ": " + r.statusText).attr("class", "alert bg-success text-success");
+      $("#received-documents").append("<p>" + r.response + "</p>");
+      console.log(r);
+    });
+}
+
+// Get Activity Profile from the LRS
+function getActivityProfile() {
+    setupConfig();
+    
+    // clean out the LRS response status
+    var $lrsr = $('#damar-lrs-response');
+    $lrsr.html('').attr('class', '');
+
+    var activityId = $("#get-document-activity-id").val();
+    var profileId = $("#get-document-activity-profile-id").val();
+    // since
+    // callback
+
+    ADL.XAPIWrapper.getActivityProfile(activityId, profileId, null, function(r) {
+      $lrsr.html("Status " + r.status + ": " + r.statusText).attr("class", "alert bg-success text-success");
+      $("#received-documents").append("<p>" + r.response + "</p>");
+      console.log(r);
+    });
+}
+
+// Get Agent Profile from the LRS
+function getAgentProfile() {
+    setupConfig();
+    
+    // clean out the LRS response status
+    var $lrsr = $('#damar-lrs-response');
+    $lrsr.html('').attr('class', '');
+
+    var actorEmail = $("#get-document-actor-email").val(); // TODO: Agent
+    var profileId = $("#get-document-agent-profile-id").val(); // TODO: Agent
+    // since
+    // callback
+
+    ADL.XAPIWrapper.getActivityProfile( {"mbox":"mailto:" + actorEmail}, profileId, null, function(r) {
       $lrsr.html("Status " + r.status + ": " + r.statusText).attr("class", "alert bg-success text-success");
       $("#received-documents").append("<p>" + r.response + "</p>");
       console.log(r);
