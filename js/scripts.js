@@ -127,6 +127,31 @@ $("#clear-received-statements").click(function(e) {
 });
 
 
+/*  Document Manipulation and Response -- Sending */
+
+$("#send-state").click(function(e) {
+    sendState();
+    e.preventDefault();
+});
+
+$("#clear-sent-documents").click(function(e) {
+    clearSentDocuments();
+    e.preventDefault();
+});
+
+
+/*  Document Manipulation and Response -- Receiving */
+
+$("#get-state").click(function(e) {
+    getState();
+    e.preventDefault();
+});
+
+$("#clear-received-documents").click(function(e) {
+    clearReceivedDocuments();
+    e.preventDefault();
+});
+
 /*
  * Functions
  */
@@ -189,7 +214,7 @@ function validateJSON(json) {
 }
 
 
-/* Sending Statements */
+/*  Statement Manipulation and Response -- Sending */
 
 // Generate statement and preview in the editor
 function previewStatement() {
@@ -301,7 +326,7 @@ function styleStatementsView(id, stmts) {
 }
 
 
-/* Receiving Statements */
+/*  Statement Manipulation and Response -- Receiving */
 
 // Retreive statements from the LRS
 function getStatementsWithSearch() {
@@ -367,4 +392,61 @@ function getStatementsWithSearch() {
 // Clear Statements received from the LRS
 function clearReceivedStatements() {
     $("#received-statements").html("");
+}
+
+
+/*  Document Manipulation and Response -- Sending */
+function sendState() {
+    setupConfig();
+
+    // clean out the LRS response status
+    var $lrsr = $('#lrs-state-response');
+    $lrsr.html('').attr('class', '');
+
+    var activityId = $("#set-document-activity-id").val();
+    var actorEmail = $("#set-document-actor-email").val(); // TODO: Agent
+    var stateId = $("#set-document-state-id").val();
+    // registration    
+    var stateValue = $("#set-document-state-string").val();
+    // matchHash
+    // noneMatchHash
+    // callback
+
+    ADL.XAPIWrapper.sendState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, stateValue, null, null, function(r) {
+      $lrsr.html("Status " + r.status + ": " + r.statusText).attr("class", "alert bg-success text-success");
+      $("#sent-documents").append("<p><b>" + stateId + "</b>: " + stateValue + "</p>");
+      console.log(r);
+    });
+}
+
+function clearSentDocuments() {
+    $("#sent-documents").html("");
+}
+
+
+
+/*  Document Manipulation and Response -- Receiving */
+function getState() {
+    setupConfig();
+    
+    // clean out the LRS response status
+    var $lrsr = $('#lrs-state-response');
+    $lrsr.html('').attr('class', '');
+
+    var activityId = $("#get-document-activity-id").val();
+    var actorEmail = $("#get-document-actor-email").val(); // TODO: Agent
+    var stateId = $("#get-document-state-id").val();
+    // registration
+    // since
+    // callback
+
+    ADL.XAPIWrapper.getState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, null, function(r) {
+      $lrsr.html("Status " + r.status + ": " + r.statusText).attr("class", "alert bg-success text-success");
+      $("#received-documents").append("<p>" + r.response + "</p>");
+      console.log(r);
+    });
+}
+
+function clearReceivedDocuments() {
+    $("#received-documents").html("");
 }

@@ -79,8 +79,8 @@
 
               <!-- Nav tabs -->
               <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#tab-sending" aria-controls="tab-sending" role="tab" data-toggle="tab">Sending</a></li>
-                <li role="presentation"><a href="#tab-receiving" aria-controls="tab-receiving" role="tab" data-toggle="tab">Receiving</a></li>
+                <li role="presentation" class="active"><a href="#tab-smar-sending" aria-controls="tab-smar-sending" role="tab" data-toggle="tab">Sending</a></li>
+                <li role="presentation"><a href="#tab-smar-receiving" aria-controls="tab-smar-receiving" role="tab" data-toggle="tab">Receiving</a></li>
               </ul>
               
               <div class="row">
@@ -88,7 +88,7 @@
                 <!-- Tab panes -->
                 <div class="tab-content">
 
-                  <div role="tabpanel" class="tab-pane active" id="tab-sending">
+                  <div role="tabpanel" class="tab-pane active" id="tab-smar-sending">
 
                     <div class="col-md-12">
 
@@ -220,9 +220,9 @@
 
                     </div><!-- .col-md-6 -->
 
-                  </div><!-- #tab-sending -->
+                  </div><!-- #tab-smar-sending -->
 
-                  <div role="tabpanel" class="tab-pane" id="tab-receiving">
+                  <div role="tabpanel" class="tab-pane" id="tab-smar-receiving">
 
                     <div class="col-md-6">
 
@@ -261,7 +261,7 @@
 
                             <div class="form-group col-md-12">
                               <label for="search-actor-email">Actor Email</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Agent" placeholder="tyler.mulligan.ctr@adlnet.gov" id="search-actor-email" />
+                              <input type="text" class="form-control" value="" aria-describedby="Actor Email" placeholder="tyler.mulligan.ctr@adlnet.gov" id="search-actor-email" />
                             </div>
 
                           </div><!-- .row -->
@@ -344,6 +344,208 @@
 
                     </div><!-- .col-md-6 -->
 
+                  </div><!-- #tab-smar-receiving -->
+
+                </div><!-- .tab-smar-content -->
+
+              </div><!-- tabpanel -->
+
+            </div><!-- .row -->
+
+            <div class="panel panel-default">
+              <div class="panel-heading"><h3 class="panel-title">LRS Response</h3></div>
+              <div class="panel-body">
+                <p id="lrs-response"></p>
+              </div><!-- .panel-body -->
+            </div><!-- .panel -->
+
+          </div><!-- .panel-body -->
+        </div><!-- #smar -->
+      </div><!-- .panel -->
+
+
+      <div class="panel panel-primary">
+        <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#damar" href="#damar" class="collapsed">Document Manipulation and Response</a></h3></div>
+        <div id="damar" class="panel-collapse collapse">
+          <div class="panel-body">
+
+            <div class="alert alert-warning">
+              <h4>In Progress</h4>
+              <p>This section of the tool is very much in progress. Do not expect everything or even anything to work properly here.</p>
+            </div>
+
+            <div role="tabpanel">
+
+              <!-- Nav tabs -->
+              <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#tab-damar-sending" aria-controls="tab-damar-sending" role="tab" data-toggle="tab">Sending</a></li>
+                <li role="presentation"><a href="#tab-damar-receiving" aria-controls="tab-damar-receiving" role="tab" data-toggle="tab">Receiving</a></li>
+              </ul>
+              
+              <div class="row">
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+
+                  <div role="tabpanel" class="tab-pane active" id="tab-damar-sending">
+
+                    <div class="col-md-6">
+
+                      <div class="panel panel-info">
+                        <div class="panel-heading"><h3 class="panel-title">Send Documents</h3></div>
+                        <div class="panel-body">
+
+                          <div class="row">
+
+                            <div class="form-group col-md-12">
+                              <label for="set-document-activity-id">Activity ID</label>
+                              <input type="text" class="form-control" value="http://adlnet.gov/expapi/activities/example" aria-describedby="Activity ID" id="set-document-activity-id" />
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <div class="row">
+
+                            <div class="form-group col-md-12">
+                              <label for="set-document-actor-email">Actor Email</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Actor Email" placeholder="tyler.mulligan.ctr@adlnet.gov" id="set-document-actor-email" />
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <h4>State</h4>
+
+                          <p>Both Activity ID and Actor Email are required to set the state.</p>
+
+                          <div class="row">
+
+                            <div class="form-group col-md-6">
+                              <label for="set-document-state-id">State ID</label>
+                              <input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="set-document-state-id" />
+                            </div>
+
+                            <div class="form-group col-md-6">
+                              <label for="set-document-state-string">State Value</label>
+                              <input type="text" class="form-control" value="" aria-describedby="State Value" placeholder="" id="set-document-state-string" />
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <p>
+                            <a class="btn btn-primary" href="#" role="button" id="send-state">Send State <i class="glyphicon glyphicon-send"></i></a>
+                          </p>
+
+                          <h4>Activity Profile</h4>
+                          <h4>Agent Profile</h4>
+
+                        </div><!-- .panel-body -->
+                      </div><!-- .panel -->
+
+                    </div><!-- .col-md-6 -->
+                    <div class="col-md-6">
+
+                      <div class="panel panel-default">
+                        <div class="panel-heading"><h3 class="panel-title">Documents Sent to the LRS</h3></div>
+                        <div class="panel-body">
+
+                          <div>
+                            <div id="sent-documents"></div>
+                          </div>
+
+                          <div class="pull-right">
+                            <a class="btn btn-default" href="#" role="button" id="clear-sent-documents">Clear Documents <i class="glyphicon glyphicon-remove-sign"></i></a>
+                          </div>
+                      
+                        </div><!-- .panel-body -->
+                      </div><!-- .panel -->
+
+<!--
+                      <div class="panel panel-default">
+                        <div class="panel-heading"><h3 class="panel-title">Documents Updated in the LRS</h3></div>
+                        <div class="panel-body">
+
+                          <div>
+                            <div id="updated-documents"></div>
+                          </div>
+
+                          <div class="pull-right">
+                            <a class="btn btn-default" href="#" role="button" id="clear-updated-documents">Clear Documents <i class="glyphicon glyphicon-remove-sign"></i></a>
+                          </div>
+                      
+                        </div><!-- .panel-body -->
+<!--                      </div><!-- .panel -->
+
+                    </div><!-- .col-md-6 -->
+
+                  </div><!-- #tab-sending -->
+
+                  <div role="tabpanel" class="tab-pane" id="tab-damar-receiving">
+
+                    <div class="col-md-6">
+
+                      <div class="panel panel-info">
+                        <div class="panel-heading"><h3 class="panel-title">Receive Documents</h3></div>
+                        <div class="panel-body">
+
+                          <div class="row">
+
+                            <div class="form-group col-md-12">
+                              <label for="get-document-activity-id">Activity ID</label>
+                              <input type="text" class="form-control" value="http://adlnet.gov/expapi/activities/example" aria-describedby="Activity ID" id="get-document-activity-id" />
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <div class="row">
+
+                            <div class="form-group col-md-12">
+                              <label for="get-document-actor-email">Actor Email</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Actor Email" placeholder="tyler.mulligan.ctr@adlnet.gov" id="get-document-actor-email" />
+                            </div>
+
+                          </div><!-- .row -->
+
+                          <h4>State</h4>
+                          
+                          <div class="row">
+
+                            <div class="form-group col-md-6">
+                              <label for="get-document-state-id">State ID</label>
+                              <input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="get-document-state-id" />
+                            </div>
+                            
+                          </div>
+
+                          <p>
+                            <a class="btn btn-primary" href="#" role="button" id="get-state">Get State <i class="glyphicon glyphicon-cloud-download"></i></a>
+                          </p>
+
+                          <h4>Activity Profile</h4>
+                          <h4>Agent Profile</h4>
+
+                        </div><!-- .panel-body -->
+                      </div><!-- .panel -->
+
+                    </div><!-- .col-md-6 -->
+                    <div class="col-md-6">
+
+                      <div class="panel panel-default">
+                        <div class="panel-heading"><h3 class="panel-title">Documents Received from the LRS</h3></div>
+                        <div class="panel-body">
+
+                          <div>
+                            <div id="received-documents"></div>
+                          </div>
+
+                          <div class="pull-right">
+                            <a class="btn btn-default" href="#" role="button" id="clear-received-documents">Clear Documents <i class="glyphicon glyphicon-remove-sign"></i></a>
+                          </div>
+                      
+                        </div><!-- .panel-body -->
+                      </div><!-- .panel -->
+
+                    </div><!-- .col-md-6 -->
+
                   </div><!-- #tab-receiving -->
 
                 </div><!-- .tab-content -->
@@ -353,14 +555,14 @@
             </div><!-- .row -->
 
             <div class="panel panel-default">
-              <div class="panel-heading"><h3 class="panel-title">LRS Status</h3></div>
+              <div class="panel-heading"><h3 class="panel-title">LRS Response</h3></div>
               <div class="panel-body">
-                <p id="lrs-response"></p>
+                <p id="lrs-state-response"></p>
               </div><!-- .panel-body -->
             </div><!-- .panel -->
 
           </div><!-- .panel-body -->
-        </div><!-- #smar -->
+        </div><!-- #damar -->
       </div><!-- .panel -->
 
 
