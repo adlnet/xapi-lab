@@ -454,8 +454,8 @@ function clearReceivedStatements() {
 function sendState() {
     setupConfig();
 
-    var activityId = $("#set-document-activity-id").val();
-    var actorEmail = $("#set-document-actor-email").val(); // TODO: Agent
+    var activityId = $("#document-activity-id").val();
+    var actorEmail = $("#document-actor-email").val(); // TODO: Agent
     var stateId = $("#set-document-state-id").val();
     // registration    
     var stateValue = $("#set-document-state-string").val();
@@ -474,7 +474,7 @@ function sendState() {
 function sendActivityProfile() {
     setupConfig();
 
-    var activityId = $("#set-document-activity-id").val();
+    var activityId = $("#document-activity-id").val();
     var profileId = $("#set-document-activity-profile-id").val();
     var profileValue = $("#set-document-activity-profile-string").val();
     // matchHash
@@ -492,7 +492,7 @@ function sendActivityProfile() {
 function sendAgentProfile() {
     setupConfig();
 
-    var actorEmail = $("#set-document-actor-email").val(); // TODO: Agent
+    var actorEmail = $("#document-actor-email").val(); // TODO: Agent
     var profileId = $("#set-document-agent-profile-id").val();
     var profileValue = $("#set-document-agent-profile-string").val();
     // matchHash
@@ -518,8 +518,8 @@ function clearSentDocuments() {
 function getState() {
     setupConfig();
 
-    var activityId = $("#get-document-activity-id").val();
-    var actorEmail = $("#get-document-actor-email").val(); // TODO: Agent
+    var activityId = $("#document-activity-id").val();
+    var actorEmail = $("#document-actor-email").val(); // TODO: Agent
     var stateId = $("#get-document-state-id").val();
     // registration
     var since = $("#get-document-since-date input").val();
@@ -537,7 +537,7 @@ function getState() {
 function getActivityProfile() {
     setupConfig();
 
-    var activityId = $("#get-document-activity-id").val();
+    var activityId = $("#document-activity-id").val();
     var profileId = $("#get-document-activity-profile-id").val();
     var since = $("#get-document-since-date input").val();
     var sinceDate = (since == "") ? null : new Date(since);
@@ -554,7 +554,7 @@ function getActivityProfile() {
 function getAgentProfile() {
     setupConfig();
 
-    var actorEmail = $("#get-document-actor-email").val(); // TODO: Agent
+    var actorEmail = $("#document-actor-email").val(); // TODO: Agent
     var profileId = $("#get-document-agent-profile-id").val();
     var since = $("#get-document-since-date input").val();
     var sinceDate = (since == "") ? null : new Date(since);
@@ -578,8 +578,8 @@ function clearReceivedDocuments() {
 function deleteState() {
     setupConfig();
 
-    var activityId = $("#delete-document-activity-id").val();
-    var actorEmail = $("#delete-document-actor-email").val(); // TODO: Agent
+    var activityId = $("#document-activity-id").val();
+    var actorEmail = $("#document-actor-email").val(); // TODO: Agent
     var stateId = $("#delete-document-state-id").val();
     // registration
     // matchHash
@@ -599,7 +599,7 @@ function deleteState() {
 function deleteActivityProfile() {
     setupConfig();
 
-    var activityId = $("#delete-document-activity-id").val();
+    var activityId = $("#document-activity-id").val();
     var profileId = $("#delete-document-activity-profile-id").val();
     // matchHash
     // noneMatchHash
@@ -618,7 +618,7 @@ function deleteActivityProfile() {
 function deleteAgentProfile() {
     setupConfig();
 
-    var actorEmail = $("#delete-document-actor-email").val(); // TODO: Agent
+    var actorEmail = $("#document-actor-email").val(); // TODO: Agent
     var profileId = $("#delete-document-agent-profile-id").val();
     // matchHash
     // noneMatchHash
