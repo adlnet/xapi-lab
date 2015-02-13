@@ -409,69 +409,87 @@
 
                           </div><!-- .row -->
 
-                          <h4>State</h4>
+                          <div role="tabpanel">
 
-                          <div class="row">
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                              <li role="presentation" class="active"><a href="#tab-1a" aria-controls="tab-1a" role="tab" data-toggle="tab">State</a></li>
+                              <li role="presentation"><a href="#tab-2a" aria-controls="tab-2a" role="tab" data-toggle="tab">Activity Profile</a></li>
+                              <li role="presentation"><a href="#tab-3a" aria-controls="tab-3a" role="tab" data-toggle="tab">Agent Profile</a></li>
+                            </ul>
 
-                            <div class="form-group col-md-6">
-                              <label for="set-document-state-id">State ID</label>
-                              <input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="set-document-state-id" />
-                            </div>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
 
-                            <div class="form-group col-md-6">
-                              <label for="set-document-state-string">State Value</label>
-                              <input type="text" class="form-control" value="" aria-describedby="State Value" placeholder="" id="set-document-state-string" />
-                            </div>
+                              <div role="tabpanel" class="tab-pane active" id="tab-1a">
 
-                          </div><!-- .row -->
+                                <div class="row">
 
-                          <p>
-                            <a class="btn btn-primary" href="#" role="button" id="send-state">Send State <i class="glyphicon glyphicon-send"></i></a>
-                          </p>
-                          
-                          <hr />
+                                  <div class="form-group col-md-6">
+                                    <label for="set-document-state-id">State ID</label>
+                                    <input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="set-document-state-id" />
+                                  </div>
 
-                          <h4>Activity Profile</h4>
-                          
-                          <div class="row">
+                                  <div class="form-group col-md-6">
+                                    <label for="set-document-state-string">State Value</label>
+                                    <input type="text" class="form-control" value="" aria-describedby="State Value" placeholder="" id="set-document-state-string" />
+                                  </div>
 
-                            <div class="form-group col-md-6">
-                              <label for="set-document-activity-profile-id">Profile ID</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Agent Profile ID" placeholder="" id="set-document-activity-profile-id" />
-                            </div>
+                                </div><!-- .row -->
 
-                            <div class="form-group col-md-6">
-                              <label for="set-document-activity-profile-string">Profile Value</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Activity Profile Value" placeholder="" id="set-document-activity-profile-string" />
-                            </div>
+                                <p>
+                                  <a class="btn btn-primary" href="#" role="button" id="send-state">Send State <i class="glyphicon glyphicon-send"></i></a>
+                                </p>
+                        
+                              </div><!-- tab-1a -->
 
-                          </div><!-- .row -->
+                              <div role="tabpanel" class="tab-pane" id="tab-2a">
+                        
+                                <div class="row">
 
-                          <p>
-                            <a class="btn btn-primary" href="#" role="button" id="send-activity-profile">Send Activity Profile <i class="glyphicon glyphicon-send"></i></a>
-                          </p>
-                          
-                          <hr />
+                                  <div class="form-group col-md-6">
+                                    <label for="set-document-activity-profile-id">Profile ID</label>
+                                    <input type="text" class="form-control" value="" aria-describedby="Agent Profile ID" placeholder="" id="set-document-activity-profile-id" />
+                                  </div>
 
-                          <h4>Agent Profile</h4>
-                          
-                          <div class="row">
+                                  <div class="form-group col-md-6">
+                                    <label for="set-document-activity-profile-string">Profile Value</label>
+                                    <input type="text" class="form-control" value="" aria-describedby="Activity Profile Value" placeholder="" id="set-document-activity-profile-string" />
+                                  </div>
 
-                            <div class="form-group col-md-6">
-                              <label for="set-document-agent-profile-id">Profile ID</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Agent Profile ID" placeholder="" id="set-document-agent-profile-id" />
-                            </div>
+                                </div><!-- .row -->
 
-                            <div class="form-group col-md-6">
-                              <label for="set-document-agent-profile-string">Profile Value</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Agent Profile Value" placeholder="" id="set-document-agent-profile-string" />
-                            </div>
+                                <p>
+                                  <a class="btn btn-primary" href="#" role="button" id="send-activity-profile">Send Activity Profile <i class="glyphicon glyphicon-send"></i></a>
+                                </p>
+                        
+                              </div><!-- tab-2a -->
 
-                          </div><!-- .row -->
+                              <div role="tabpanel" class="tab-pane" id="tab-3a">
+                        
+                                <div class="row">
 
-                          <p>
-                            <a class="btn btn-primary" href="#" role="button" id="send-agent-profile">Send Agent Profile <i class="glyphicon glyphicon-send"></i></a>
-                          </p>
+                                  <div class="form-group col-md-6">
+                                    <label for="set-document-agent-profile-id">Profile ID</label>
+                                    <input type="text" class="form-control" value="" aria-describedby="Agent Profile ID" placeholder="" id="set-document-agent-profile-id" />
+                                  </div>
+
+                                  <div class="form-group col-md-6">
+                                    <label for="set-document-agent-profile-string">Profile Value</label>
+                                    <input type="text" class="form-control" value="" aria-describedby="Agent Profile Value" placeholder="" id="set-document-agent-profile-string" />
+                                  </div>
+
+                                </div><!-- .row -->
+
+                                <p>
+                                  <a class="btn btn-primary" href="#" role="button" id="send-agent-profile">Send Agent Profile <i class="glyphicon glyphicon-send"></i></a>
+                                </p>
+
+                              </div><!-- tab-3a -->
+                            
+                            </div><!-- .tab-content -->
+                            
+                          </div><!-- tab-panel -->
 
                         </div><!-- .panel-body -->
                       </div><!-- .panel -->
@@ -542,54 +560,72 @@
 
                           </div><!-- .row -->
 
-                          <h4>State</h4>
+                          <div role="tabpanel">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+                              <li role="presentation" class="active"><a href="#tab-1b" aria-controls="tab-1b" role="tab" data-toggle="tab">State</a></li>
+                              <li role="presentation"><a href="#tab-2b" aria-controls="tab-2b" role="tab" data-toggle="tab">Activity Profile</a></li>
+                              <li role="presentation"><a href="#tab-3b" aria-controls="tab-3b" role="tab" data-toggle="tab">Agent Profile</a></li>
+                            </ul>
+
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+
+                              <div role="tabpanel" class="tab-pane active" id="tab-1b">
+
+                                <div class="row">
+
+                                  <div class="form-group col-md-6">
+                                    <label for="get-document-state-id">State ID</label>
+                                    <input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="get-document-state-id" />
+                                  </div>
+                                  
+                                </div><!-- .row -->
+
+                                <p>
+                                  <a class="btn btn-primary" href="#" role="button" id="get-state">Get State <i class="glyphicon glyphicon-cloud-download"></i></a>
+                                </p>
+
+                              </div><!-- tab-1b -->
+
+                              <div role="tabpanel" class="tab-pane" id="tab-2b">
+					  
+                                <div class="row">
+
+                                  <div class="form-group col-md-6">
+                                    <label for="get-document-activity-profile-id">Profile ID</label>
+                                    <input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="get-document-activity-profile-id" />
+                                  </div>
+                                  
+                                </div><!-- .row -->
+
+                                <p>
+                                  <a class="btn btn-primary" href="#" role="button" id="get-activity-profile">Get Activity Profile <i class="glyphicon glyphicon-cloud-download"></i></a>
+                                </p>
+
+                              </div><!-- tab-2b -->
+
+                              <div role="tabpanel" class="tab-pane" id="tab-3b">
                           
-                          <div class="row">
+                              <div class="row">
 
-                            <div class="form-group col-md-6">
-                              <label for="get-document-state-id">State ID</label>
-                              <input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="get-document-state-id" />
-                            </div>
+                                <div class="form-group col-md-6">
+                                  <label for="get-document-agent-profile-id">Profile ID</label>
+                                  <input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="get-document-agent-profile-id" />
+                                </div>
+                                
+                              </div><!-- .row -->
+
+                              <p>
+                                <a class="btn btn-primary" href="#" role="button" id="get-agent-profile">Get Agent Profile <i class="glyphicon glyphicon-cloud-download"></i></a>
+                              </p>
+
+                              </div><!-- tab-3b -->
                             
-                          </div><!-- .row -->
-
-                          <p>
-                            <a class="btn btn-primary" href="#" role="button" id="get-state">Get State <i class="glyphicon glyphicon-cloud-download"></i></a>
-                          </p>
-                          
-                          <hr />
-
-                          <h4>Activity Profile</h4>
-
-                          <div class="row">
-
-                            <div class="form-group col-md-6">
-                              <label for="get-document-activity-profile-id">Profile ID</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="get-document-activity-profile-id" />
-                            </div>
+                            </div><!-- .tab-content -->
                             
-                          </div><!-- .row -->
-
-                          <p>
-                            <a class="btn btn-primary" href="#" role="button" id="get-activity-profile">Get Activity Profile <i class="glyphicon glyphicon-cloud-download"></i></a>
-                          </p>
-                          
-                          <hr />
-
-                          <h4>Agent Profile</h4>
-
-                          <div class="row">
-
-                            <div class="form-group col-md-6">
-                              <label for="get-document-agent-profile-id">Profile ID</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="get-document-agent-profile-id" />
-                            </div>
-                            
-                          </div><!-- .row -->
-
-                          <p>
-                            <a class="btn btn-primary" href="#" role="button" id="get-agent-profile">Get Agent Profile <i class="glyphicon glyphicon-cloud-download"></i></a>
-                          </p>
+                          </div><!-- tab-panel -->
 
                         </div><!-- .panel-body -->
                       </div><!-- .panel -->
