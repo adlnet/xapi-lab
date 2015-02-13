@@ -193,6 +193,30 @@ $("#clear-received-documents").click(function(e) {
     e.preventDefault();
 });
 
+
+/*  Document Manipulation and Response -- Deleting */
+
+$("#delete-state").click(function(e) {
+    deleteState();
+    e.preventDefault();
+});
+
+$("#delete-activity-profile").click(function(e) {
+    deleteActivityProfile();
+    e.preventDefault();
+});
+
+$("#delete-agent-profile").click(function(e) {
+    deleteAgentProfile();
+    e.preventDefault();
+});
+
+$("#clear-deleted-documents").click(function(e) {
+    clearDeletedDocuments();
+    e.preventDefault();
+});
+
+
 /*
  * Functions
  */
@@ -441,7 +465,7 @@ function sendState() {
 
     ADL.XAPIWrapper.sendState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, stateValue, null, null, function(r) {
       $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#sent-documents").append("<p><b>" + stateId + "</b>: " + stateValue + "</p>");
+      $("#sent-documents").append("<p>Sent State <b>" + stateId + "</b>: " + stateValue + "</p>");
       console.log(r);
     });
 }
@@ -459,7 +483,7 @@ function sendActivityProfile() {
 
     ADL.XAPIWrapper.sendActivityProfile(activityId, profileId, profileValue, null, null, function(r) {
       $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#sent-documents").append("<p><b>" + profileId + "</b>: " + profileValue + "</p>");
+      $("#sent-documents").append("<p>Sent Activity Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
       console.log(r);
     });
 }
@@ -477,7 +501,7 @@ function sendAgentProfile() {
 
     ADL.XAPIWrapper.sendAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, profileValue, null, "*", function(r) {
       $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#sent-documents").append("<p><b>" + profileId + "</b>: " + profileValue + "</p>");
+      $("#sent-documents").append("<p>Sent Agent Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
       console.log(r);
     });
 }
@@ -504,7 +528,7 @@ function getState() {
 
     ADL.XAPIWrapper.getState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, sinceDate, function(r) {
       $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#received-documents").append("<p>" + r.response + "</p>");
+      $("#received-documents").append("<p>Received State <b>" + stateId + "</b>: " + r.response + "</p>");
       console.log(r);
     });
 }
@@ -521,7 +545,7 @@ function getActivityProfile() {
 
     ADL.XAPIWrapper.getActivityProfile(activityId, profileId, sinceDate, function(r) {
       $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#received-documents").append("<p>" + r.response + "</p>");
+      $("#received-documents").append("<p>Received Activity Profile <b>" + profileId + "</b>: " + r.response + "</p>");
       console.log(r);
     });
 }
@@ -538,11 +562,77 @@ function getAgentProfile() {
 
     ADL.XAPIWrapper.getAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, sinceDate, function(r) {
       $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#received-documents").append("<p>" + r.response + "</p>");
+      $("#received-documents").append("<p>Received Agent Profile <b>" + profileId + "</b>: " + r.response + "</p>");
       console.log(r);
     });
 }
 
 function clearReceivedDocuments() {
     $("#received-documents").html("");
+}
+
+
+/*  Document Manipulation and Response -- Deleting */
+
+// Delete State from the LRS
+function deleteState() {
+    setupConfig();
+
+    var activityId = $("#delete-document-activity-id").val();
+    var actorEmail = $("#delete-document-actor-email").val(); // TODO: Agent
+    var stateId = $("#delete-document-state-id").val();
+    // registration
+    // matchHash
+    // noneMatchHash
+    // callback
+
+    ADL.XAPIWrapper.deleteState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, null, null, function(r) {
+      $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+      if (r.status == 204) {
+        $("#deleted-documents").append("<p>Deleted State: <b>" + stateId + "</b></p>");
+      }
+      console.log(r);
+    });
+}
+
+// Delete Activity Profile from the LRS
+function deleteActivityProfile() {
+    setupConfig();
+
+    var activityId = $("#delete-document-activity-id").val();
+    var profileId = $("#delete-document-activity-profile-id").val();
+    // matchHash
+    // noneMatchHash
+    // callback
+
+    ADL.XAPIWrapper.deleteActivityProfile(activityId, profileId, null, null, function(r) {
+      $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+      if (r.status == 204) {
+        $("#deleted-documents").append("<p>Deleted Activity Profile: <b>" + profileId + "</b></p>");
+      }
+      console.log(r);
+    });
+}
+
+// Delete Agent Profile from the LRS
+function deleteAgentProfile() {
+    setupConfig();
+
+    var actorEmail = $("#delete-document-actor-email").val(); // TODO: Agent
+    var profileId = $("#delete-document-agent-profile-id").val();
+    // matchHash
+    // noneMatchHash
+    // callback
+
+    ADL.XAPIWrapper.deleteAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, null, null, function(r) {
+      $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+      $("#deleted-documents").append("<p>" + r.response + "</p>");
+      if (r.status == 204) {
+        $("#deleted-documents").append("<p>Deleted Agent Profile: <b>" + profileId + "</b></p>");
+      }
+    });
+}
+
+function clearDeletedDocuments() {
+    $("#deleted-documents").html("");
 }
