@@ -18,6 +18,11 @@ var notificationSettings = {
 var notificationErrorSettings = jQuery.extend(true, {}, notificationSettings);
 notificationErrorSettings.type = "danger";
 
+var dateTimeSettings = {
+  showTodayButton: true,
+  showClear: true
+};
+
 // Handle XAPIWrapper XHR Errors
 ADL.xhrRequestOnError = function(xhr, method, url, callback, callbackargs) {
     console.log(xhr);
@@ -42,8 +47,9 @@ $(function(){
         }
     }
 
-    $('#search-statements-since-date').datetimepicker();
-    $('#search-statements-until-date').datetimepicker();
+    $('#search-statements-since-date').datetimepicker(dateTimeSettings);
+    $('#search-statements-until-date').datetimepicker(dateTimeSettings);
+    $('#get-document-since-date').datetimepicker(dateTimeSettings);
 
     var hash = window.location.hash;
     hash && $('ul.nav a[href="' + hash + '"]').tab('show');
@@ -490,10 +496,11 @@ function getState() {
     var actorEmail = $("#get-document-actor-email").val(); // TODO: Agent
     var stateId = $("#get-document-state-id").val();
     // registration
-    // since
+    var since = $("#get-document-since-date input").val();
+    var sinceDate = (since == "") ? null : new Date(since);
     // callback
 
-    ADL.XAPIWrapper.getState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, null, function(r) {
+    ADL.XAPIWrapper.getState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, sinceDate, function(r) {
       $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
       $("#received-documents").append("<p>" + r.response + "</p>");
       console.log(r);
@@ -506,10 +513,11 @@ function getActivityProfile() {
 
     var activityId = $("#get-document-activity-id").val();
     var profileId = $("#get-document-activity-profile-id").val();
-    // since
+    var since = $("#get-document-since-date input").val();
+    var sinceDate = (since == "") ? null : new Date(since);
     // callback
 
-    ADL.XAPIWrapper.getActivityProfile(activityId, profileId, null, function(r) {
+    ADL.XAPIWrapper.getActivityProfile(activityId, profileId, sinceDate, function(r) {
       $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
       $("#received-documents").append("<p>" + r.response + "</p>");
       console.log(r);
@@ -522,12 +530,11 @@ function getAgentProfile() {
 
     var actorEmail = $("#get-document-actor-email").val(); // TODO: Agent
     var profileId = $("#get-document-agent-profile-id").val();
-    console.log(actorEmail);
-    console.log(profileId);
-    // since
+    var since = $("#get-document-since-date input").val();
+    var sinceDate = (since == "") ? null : new Date(since);
     // callback
 
-    ADL.XAPIWrapper.getAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, null, function(r) {
+    ADL.XAPIWrapper.getAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, sinceDate, function(r) {
       $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
       $("#received-documents").append("<p>" + r.response + "</p>");
       console.log(r);
