@@ -98,7 +98,9 @@ $("#generate-statement").click(function(e) {
 // Try parsing JSON to validate it
 $("#validate-json").click(function(e) {
     var r = validateJSON(editor.getValue());
-    alert(r);
+    var whichNotificationSettings = (r == true) ? notificationSettings : notificationErrorSettings;
+    var notificationStatus = (r == true) ? "JSON is valid" : "JSON is <em>NOT</em> valid";
+    $.growl({ title: notificationStatus }, whichNotificationSettings);
     e.preventDefault();
 });
 
@@ -270,7 +272,7 @@ function sendStatement() {
     var stmt = editor.getValue(); // or session.getValue
 
     if (validateJSON(stmt) != true) { // JSON is invalid
-        alert("invalid JSON");
+        $.growl({ title: "invalid JSON, cannot send" }, notificationErrorSettings);
         return false;
     }
 
@@ -294,7 +296,7 @@ function queueStatement(stmt) {
     var stmt = editor.getValue(); // or session.getValue
 
     if (validateJSON(stmt) != true) { // JSON is invalid
-        alert("invalid JSON, cannot add to queue");
+        $.growl({ title: "invalid JSON, cannot add to queue" }, notificationErrorSettings);
         return false;
     }
     
