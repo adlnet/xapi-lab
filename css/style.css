@@ -1,4 +1,8 @@
 :focus {outline:none !important;} /* remove dotted outlines in FF */
+.page-header i {
+  color: #94D5F5;
+  text-shadow: 1px 1px 1px #ccc;
+}
 #editor { 
     /*width:530px;*/
     height:320px;
