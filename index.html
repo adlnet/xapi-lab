@@ -96,7 +96,7 @@
 
                       <div class="panel panel-info">
                         <div class="panel-heading collapser">
-                          <h4 class="panel-title"><a data-toggle="collapse" data-target="#avo" href="#avo">Statement Builder (Actor, Verb, Object)</a></h4>
+                          <h4 class="panel-title"><a data-toggle="collapse" data-target="#avo" href="#avo">Statement Builder</a></h4>
                         </div>
                         <div id="avo" class="panel-collapse collapse in">
                           <div class="panel-body">
@@ -105,59 +105,102 @@
 
                               <div class="row">
 
-                                <div class="form-group col-md-4">
-                                  <label for="actor-email">Actor Email</label>
-                                  <input type="text" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Actor Email" id="actor-email" />
-                                </div><!-- .form-group -->
-                                <div class="form-group col-md-4">
-                                  <label for="actor-name">Actor Name</label>
-                                  <input type="text" class="form-control" value="Tyler" aria-describedby="Actor Name" id="actor-name" />
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="predefined-verb">Predefined Verbs</label>
-                                  <select class="form-control" name="predefined-verb" id="predefined-verb"></select>
-                                </div>
+																<div class="col-md-12">
 
-                              </div><!-- .row -->
+																	<div class="panel panel-default">
+																		<div class="panel-heading"><h3 class="panel-title">Actor</h3></div>
+																		<div class="panel-body">
 
-                              <div class="row">
+																			<div class="row">
 
-                                <div class="form-group col-md-8">
-                                  <label for="verb-id">Verb ID</label>
-                                  <input type="text" class="form-control" value="http://adlnet.gov/expapi/verbs/answered" aria-describedby="Verb" id="verb-id" />
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="verb-display">Verb Display Name</label>
-                                  <input type="text" class="form-control" value="answered" aria-describedby="Display" id="verb-display" />
-                                </div>
+																				<div class="form-group col-md-6">
+																					<label for="actor-email">Email</label>
+																					<input type="text" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Actor Email" id="actor-email" />
+																				</div>
 
-                              </div><!-- .row -->
+																				<div class="form-group col-md-6">
+																					<label for="actor-name">Name</label>
+																					<input type="text" class="form-control" value="Tyler" aria-describedby="Actor Name" id="actor-name" />
+																				</div>
 
-                              <div class="row">
+																			</div><!-- .row -->
 
-                                <div class="form-group col-md-12">
-                                  <label for="activity-id">Activity ID</label>
-                                  <input type="text" class="form-control" value="http://adlnet.gov/expapi/activities/example" aria-describedby="Activity ID" id="activity-id" />
-                                </div>
+																		</div><!-- .panel-body -->
+																	</div><!-- .panel -->
 
-                              </div><!-- .row -->
+																	<div class="panel panel-default">
+																		<div class="panel-heading"><h3 class="panel-title">Verb</h3></div>
+																		<div class="panel-body">
 
-                              <div class="row">
+																			<div class="row">
 
-                                <div class="form-group col-md-4">
-                                  <label for="language">Language</label>
-                                  <input type="text" class="form-control" value="en-US" aria-describedby="Language" id="language" />
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="activity-name">Activity Name</label>
-                                  <input type="text" class="form-control" value="Example Activity" aria-describedby="Acitivity Name" id="activity-name" />
-                                </div>
-                                <div class="form-group col-md-4">
-                                  <label for="activity-description">Activity Description</label>
-                                  <input type="text" class="form-control" value="Example activity description" aria-describedby="Activity Description" id="activity-description" />
-                                </div>
+																				<div class="form-group col-md-5">
+																					<label for="predefined-verb">Predefined Verbs</label>
+																					<select class="form-control" name="predefined-verb" id="predefined-verb"></select>
+																				</div>
 
-                              </div><!-- .row -->
+																				<div class="form-group col-md-5">
+																					<label for="verb-display">Display Name</label>
+																					<input type="text" class="form-control" value="answered" aria-describedby="Display" id="verb-display" />
+																				</div>
+
+																				<div class="form-group col-md-2">
+																					<label for="verb-language">Language</label>
+																					<input type="text" class="form-control" value="en-US" aria-describedby="Verb Language" id="verb-language" />
+																				</div>
+
+																			</div><!-- .row -->
+
+																			<div class="row">
+
+																				<div class="form-group col-md-12">
+																					<label for="verb-id">Verb ID</label>
+																					<input type="text" class="form-control" value="http://adlnet.gov/expapi/verbs/answered" aria-describedby="Verb ID" id="verb-id" />
+																				</div>
+
+																			</div><!-- .row -->
+
+																		</div><!-- .panel-body -->
+																	</div><!-- .panel -->
+
+																	<div class="panel panel-default">
+																		<div class="panel-heading"><h3 class="panel-title">Object</h3></div>
+																		<div class="panel-body">
+															
+																			<div class="row">
+
+																				<div class="form-group col-md-12">
+																					<label for="activity-id">Activity ID</label>
+																					<input type="text" class="form-control" value="http://adlnet.gov/expapi/activities/example" aria-describedby="Activity ID" id="activity-id" />
+																				</div>
+
+																			</div><!-- .row -->
+
+																			<div class="row">
+
+																				<div class="form-group col-md-5">
+																					<label for="activity-name">Name</label>
+																					<input type="text" class="form-control" value="Example Activity" aria-describedby="Acitivity Name" id="activity-name" />
+																				</div>
+
+																				<div class="form-group col-md-5">
+																					<label for="activity-description">Description</label>
+																					<input type="text" class="form-control" value="Example activity description" aria-describedby="Activity Description" id="activity-description" />
+																				</div>
+
+																				<div class="form-group col-md-2">
+																					<label for="activity-language">Language</label>
+																					<input type="text" class="form-control" value="en-US" aria-describedby="Activity Language" id="activity-language" />
+																				</div>
+
+																			</div><!-- .row -->
+
+																		</div><!-- .panel-body -->
+																	</div><!-- .panel -->
+
+																</div><!-- .col-md-12 -->
+
+															</div><!-- .row -->
 
                               <div class="form-group">
                                 <a class="btn btn-primary" href="#" role="button" id="generate-statement">Generate JSON Statement <i class="glyphicon glyphicon-fire"></i></a>

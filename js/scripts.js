@@ -241,10 +241,11 @@ function buildStatement() {
     var actorName = $("#actor-name").val();
     var verbID = $("#verb-id").val();
     var verbDisplay = $("#verb-display").val();
-    var language = $("#language").val();
+    var verbLanguage = $("#verb-language").val();
     var activityID = $("#activity-id").val();
     var activityName = $("#activity-name").val();
     var activityDescription = $("#activity-description").val();
+    var activityLanguage = $("#activity-language").val();
 
     var stmt = {};
     stmt['actor'] = {};
@@ -254,15 +255,15 @@ function buildStatement() {
     stmt['verb'] = {};
     stmt['verb']['id'] = verbID;
     stmt['verb']['display'] = {};
-    stmt['verb']['display'][language] = verbDisplay;
+    stmt['verb']['display'][verbLanguage] = verbDisplay;
     stmt['object'] = {};
     stmt['object']['id'] = activityID;
     stmt['object']['objectType'] = "Activity";
     stmt['object']['definition'] = {};
     stmt['object']['definition']['name'] = {};
-    stmt['object']['definition']['name'][language] = activityName;
+    stmt['object']['definition']['name'][activityLanguage] = activityName;
     stmt['object']['definition']['description'] = {};
-    stmt['object']['definition']['description'][language] = activityDescription;
+    stmt['object']['definition']['description'][activityLanguage] = activityDescription;
 
     //console.log(stmt);
     return stmt;
