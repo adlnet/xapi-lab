@@ -5,22 +5,22 @@ var editor = ace.edit('editor');
 editor.getSession().setMode('ace/mode/javascript');
 
 var notificationSettings = {
-	animate: {
-		enter: 'animated fadeInUp',
-		exit: 'animated fadeOutDown'
-	},
-	type: "success",
-	placement: {
-		from: "bottom",
-		align: "right"
-	},
+    animate: {
+        enter: 'animated fadeInUp',
+        exit: 'animated fadeOutDown'
+    },
+    type: "success",
+    placement: {
+        from: "bottom",
+        align: "right"
+    },
 };
 var notificationErrorSettings = jQuery.extend(true, {}, notificationSettings);
 notificationErrorSettings.type = "danger";
 
 var dateTimeSettings = {
-  showTodayButton: true,
-  showClear: true
+    showTodayButton: true,
+    showClear: true
 };
 
 // Handle XAPIWrapper XHR Errors
@@ -47,8 +47,8 @@ $(function(){
         }
     }
 
-	$("#object-types > div").hide();
-	$("#object-Activity").show();
+    $("#object-types > div").hide();
+    $("#object-Activity").show();
 
     $('#search-statements-since-date').datetimepicker(dateTimeSettings);
     $('#search-statements-until-date').datetimepicker(dateTimeSettings);
@@ -238,8 +238,8 @@ function setupConfig() {
     var password = $("#password").val();
 
     var conf = {
-      "endpoint" : endpoint,
-      "auth" : "Basic " + toBase64(user + ":" + password),
+        "endpoint" : endpoint,
+        "auth" : "Basic " + toBase64(user + ":" + password),
     };
     ADL.XAPIWrapper.changeConfig(conf);
 }
@@ -271,6 +271,16 @@ function buildStatement() {
     var resultResponse = $("#result-response").val();
     var resultDuration = $("#result-duration").val();
     var resultExtensions = $("#result-extensions").val();
+    var contextRegistrationID = $("#context-registration-id").val();
+    var contextInstructorEmail = $("#context-instructor-email").val();
+    var contextInstructorName = $("#context-instructor-name").val();
+    var contextTeamName = $("#context-team-name").val();
+    var contextTeamMembers = $("#context-team-members").val();
+    var contextContextActivities = $("#context-context-activities").val();
+    var contextRevision = $("#context-revision").val();
+    var contextPlatform = $("#context-platform").val();
+    var contextLanguage = $("#context-language").val();
+    var contextStatement = $("#context-statement").val();
 
     var stmt = {};
     stmt['actor'] = {};
@@ -283,53 +293,79 @@ function buildStatement() {
     stmt['verb']['display'][verbLanguage] = verbDisplay;
     stmt['object'] = {};
 
-	switch(objectType) {
-		case "Activity":
-			stmt['object']['id'] = objectActivityID;
-			if (objectActivityName != "" || objectActivityDescription != "") {
-				stmt['object']['definition'] = {};
-			}
-			if (objectActivityName != "" && objectActivityLanguage != "") {
-				stmt['object']['definition']['name'] = {};
-				stmt['object']['definition']['name'][objectActivityLanguage] = objectActivityName;
-			}
-			if (objectActivityDescription != "" && objectActivityLanguage != "") {
-				stmt['object']['definition']['description'] = {};
-				stmt['object']['definition']['description'][objectActivityLanguage] = objectActivityDescription;
-			}
-			break;
-		case "Agent":
-			stmt['object']['mbox'] = "mailto:" + objectAgentEmail;
-			stmt['object']['name'] = objectAgentName;
-			break;
-		case "Group":
-			stmt['object']['name'] = objectGroupName;
-			stmt['object']['member'] = $.parseJSON(objectGroupMembers);
-			break;
-		case "StatementRef":
-			stmt['object']['id'] = objectStatementRef;
-			break;
-		case "SubStatement":
-			stmt['object'] = $.parseJSON(objectSubStatement);
-			break;
-		default:
-	}
+    switch(objectType) {
+      case "Activity":
+        stmt['object']['id'] = objectActivityID;
+        if (objectActivityName != "" || objectActivityDescription != "") {
+            stmt['object']['definition'] = {};
+        }
+        if (objectActivityName != "" && objectActivityLanguage != "") {
+            stmt['object']['definition']['name'] = {};
+            stmt['object']['definition']['name'][objectActivityLanguage] = objectActivityName;
+        }
+        if (objectActivityDescription != "" && objectActivityLanguage != "") {
+            stmt['object']['definition']['description'] = {};
+            stmt['object']['definition']['description'][objectActivityLanguage] = objectActivityDescription;
+        }
+        break;
+      case "Agent":
+        stmt['object']['mbox'] = "mailto:" + objectAgentEmail;
+        stmt['object']['name'] = objectAgentName;
+        break;
+      case "Group":
+        stmt['object']['name'] = objectGroupName;
+        stmt['object']['member'] = $.parseJSON(objectGroupMembers);
+        break;
+      case "StatementRef":
+        stmt['object']['id'] = objectStatementRef;
+        break;
+      case "SubStatement":
+        stmt['object'] = $.parseJSON(objectSubStatement);
+        break;
+      default:
+    }
 
-	if ( resultScaledScore != "" || resultRawScore != "" || resultMinScore != "" || resultMaxScore != "" || resultSuccess != "" || resultCompletion != "" || resultResponse != "" || resultDuration != "" || resultExtensions != "" ) {
-		stmt['object']['result'] = {};
-		if ( resultScaledScore != "" || resultRawScore != "" || resultMinScore != "" || resultMaxScore != "" ) {
-			stmt['object']['result']['score'] = {};
-			if (resultScaledScore != "") { stmt['object']['result']['score']['scaled'] = resultScaledScore; }
-			if (resultRawScore != "") { stmt['object']['result']['score']['raw'] = resultRawScore; }
-			if (resultMinScore != "") { stmt['object']['result']['score']['min'] = resultMinScore; }
-			if (resultMaxScore != "") { stmt['object']['result']['score']['max'] = resultMaxScore; }
-		}
-		if (resultSuccess != "") { stmt['object']['result']['success'] = resultSuccess; }
-		if (resultCompletion != "") { stmt['object']['result']['completion'] = resultCompletion; }
-		if (resultResponse != "") { stmt['object']['result']['response'] = resultResponse; }
-		if (resultDuration != "") { stmt['object']['result']['duration'] = resultDuration; }
-		if (resultExtensions != "") { stmt['object']['result']['extensions'] = $.parseJSON(resultExtensions); }
-	}
+    if ( resultScaledScore != "" || resultRawScore != "" || resultMinScore != "" || resultMaxScore != "" || resultSuccess != "" || resultCompletion != "" || resultResponse != "" || resultDuration != "" || resultExtensions != "" ) {
+        stmt['result'] = {};
+        if ( resultScaledScore != "" || resultRawScore != "" || resultMinScore != "" || resultMaxScore != "" ) {
+            stmt['result']['score'] = {};
+            if (resultScaledScore != "") { stmt['result']['score']['scaled'] = parseFloat(resultScaledScore); }
+            if (resultRawScore != "") { stmt['result']['score']['raw'] = parseInt(resultRawScore); }
+            if (resultMinScore != "") { stmt['result']['score']['min'] = parseInt(resultMinScore); }
+            if (resultMaxScore != "") { stmt['result']['score']['max'] = parseInt(resultMaxScore); }
+        }
+        if (resultSuccess != "") { stmt['result']['success'] = (resultSuccess === 'true'); }
+        if (resultCompletion != "") { stmt['result']['completion'] = (resultCompletion === 'true'); }
+        if (resultResponse != "") { stmt['result']['response'] = resultResponse; }
+        if (resultDuration != "") { stmt['result']['duration'] = resultDuration; }
+        if (resultExtensions != "") { stmt['result']['extensions'] = $.parseJSON(resultExtensions); }
+    }
+
+    if ( contextRegistrationID != "" || contextInstructorEmail != "" || contextInstructorName != "" || contextTeamName != "" || contextTeamMembers != "" || contextContextActivities != "" || contextRevision != "" || contextPlatform != "" || contextLanguage != "" || contextStatement != "" ) {
+        stmt['context'] = {};
+        if (contextRegistrationID != "") { stmt['context']['registration'] = contextRegistrationID; }
+        if (contextInstructorEmail != "" || contextInstructorName != "") {
+            stmt['context']['instructor'] = {};
+            if (contextInstructorEmail != "") { stmt['context']['instructor']['mbox'] = "mailto:" + contextInstructorEmail; }
+            if (contextInstructorName != "") { stmt['context']['instructor']['name'] = contextInstructorName; }
+        }
+        if (contextTeamName != "" || contextTeamMembers != "") { // This is going to need to support more formats
+            stmt['context']['team'] = {};
+            if (contextTeamName != "") { stmt['context']['team']['name'] = contextTeamName; }
+            if (contextTeamMembers != "") { stmt['context']['team']['member'] = $.parseJSON(contextTeamMembers); }
+            stmt['context']['team']['objectType'] = "Group";
+        }
+        if (contextContextActivities != "") { // The user must know where they are doing here
+            stmt['context']['contextActivities'] = $.parseJSON(contextContextActivities);
+        }
+        if (contextRevision != "") { stmt['context']['revision'] = contextRevision; }
+        if (contextPlatform != "") { stmt['context']['platform'] = contextPlatform; }
+        if (contextLanguage != "") { stmt['context']['language'] = contextLanguage; }
+        if (contextStatement != "") {
+            stmt['context']['statement']['id'] = contextStatement;
+            stmt['context']['statement']['objectType'] = "Group";
+        }
+    }
 
     stmt['object']['objectType'] = objectType;
 
@@ -498,7 +534,7 @@ function getStatementsWithSearch() {
                 var length = 1;
             }
 
-			$.growl({ title: "Status " + r.status + " " + r.statusText + ": ", message: "statements received successfully from LRS" }, notificationSettings);
+            $.growl({ title: "Status " + r.status + " " + r.statusText + ": ", message: "statements received successfully from LRS" }, notificationSettings);
 
             if (length > 0) {
                 if (stmt) {
@@ -535,9 +571,9 @@ function sendState() {
     // callback
 
     ADL.XAPIWrapper.sendState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, stateValue, null, null, function(r) {
-      $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#sent-documents").append("<p>Sent State <b>" + stateId + "</b>: " + stateValue + "</p>");
-      console.log(r);
+        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $("#sent-documents").append("<p>Sent State <b>" + stateId + "</b>: " + stateValue + "</p>");
+        console.log(r);
     });
 }
 
@@ -553,9 +589,9 @@ function sendActivityProfile() {
     // callback
 
     ADL.XAPIWrapper.sendActivityProfile(activityId, profileId, profileValue, null, null, function(r) {
-      $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#sent-documents").append("<p>Sent Activity Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
-      console.log(r);
+        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $("#sent-documents").append("<p>Sent Activity Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
+        console.log(r);
     });
 }
 
@@ -571,9 +607,9 @@ function sendAgentProfile() {
     // callback
 
     ADL.XAPIWrapper.sendAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, profileValue, null, "*", function(r) {
-      $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#sent-documents").append("<p>Sent Agent Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
-      console.log(r);
+        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $("#sent-documents").append("<p>Sent Agent Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
+        console.log(r);
     });
 }
 
@@ -598,9 +634,9 @@ function getState() {
     // callback
 
     ADL.XAPIWrapper.getState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, sinceDate, function(r) {
-      $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#received-documents").append("<p>Received State <b>" + stateId + "</b>: " + r.response + "</p>");
-      console.log(r);
+        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $("#received-documents").append("<p>Received State <b>" + stateId + "</b>: " + r.response + "</p>");
+        console.log(r);
     });
 }
 
@@ -615,9 +651,9 @@ function getActivityProfile() {
     // callback
 
     ADL.XAPIWrapper.getActivityProfile(activityId, profileId, sinceDate, function(r) {
-      $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#received-documents").append("<p>Received Activity Profile <b>" + profileId + "</b>: " + r.response + "</p>");
-      console.log(r);
+        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $("#received-documents").append("<p>Received Activity Profile <b>" + profileId + "</b>: " + r.response + "</p>");
+        console.log(r);
     });
 }
 
@@ -632,9 +668,9 @@ function getAgentProfile() {
     // callback
 
     ADL.XAPIWrapper.getAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, sinceDate, function(r) {
-      $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#received-documents").append("<p>Received Agent Profile <b>" + profileId + "</b>: " + r.response + "</p>");
-      console.log(r);
+        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $("#received-documents").append("<p>Received Agent Profile <b>" + profileId + "</b>: " + r.response + "</p>");
+        console.log(r);
     });
 }
 
@@ -658,11 +694,11 @@ function deleteState() {
     // callback
 
     ADL.XAPIWrapper.deleteState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, null, null, function(r) {
-      $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      if (r.status == 204) {
-        $("#deleted-documents").append("<p>Deleted State: <b>" + stateId + "</b></p>");
-      }
-      console.log(r);
+        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        if (r.status == 204) {
+            $("#deleted-documents").append("<p>Deleted State: <b>" + stateId + "</b></p>");
+        }
+        console.log(r);
     });
 }
 
@@ -677,11 +713,11 @@ function deleteActivityProfile() {
     // callback
 
     ADL.XAPIWrapper.deleteActivityProfile(activityId, profileId, null, null, function(r) {
-      $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      if (r.status == 204) {
-        $("#deleted-documents").append("<p>Deleted Activity Profile: <b>" + profileId + "</b></p>");
-      }
-      console.log(r);
+        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        if (r.status == 204) {
+            $("#deleted-documents").append("<p>Deleted Activity Profile: <b>" + profileId + "</b></p>");
+        }
+        console.log(r);
     });
 }
 
@@ -696,11 +732,11 @@ function deleteAgentProfile() {
     // callback
 
     ADL.XAPIWrapper.deleteAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, null, null, function(r) {
-      $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-      $("#deleted-documents").append("<p>" + r.response + "</p>");
-      if (r.status == 204) {
-        $("#deleted-documents").append("<p>Deleted Agent Profile: <b>" + profileId + "</b></p>");
-      }
+        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $("#deleted-documents").append("<p>" + r.response + "</p>");
+        if (r.status == 204) {
+            $("#deleted-documents").append("<p>Deleted Agent Profile: <b>" + profileId + "</b></p>");
+        }
     });
 }
 

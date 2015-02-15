@@ -246,24 +246,24 @@
                                             <div class="form-group col-md-12">
                                               <label for="object-group-members">Group Members</label>
                                               <textarea class="form-control" rows="20" aria-describedby="Object Group Members" id="object-group-members">[
-		{
-				"name": "Bob",
-				"account": {
-						"homePage": "http://www.example.com",
-						"name": "13936749"
-				},
-				"objectType": "Agent"
-		},
-		{
-				"name": "Carol",
-				"openid": "http://carol.openid.example.org/",
-				"objectType": "Agent"
-		},
-		{
-				"name": "Alice",
-				"mbox_sha1sum": "ebd31e95054c018b10727de4db3ef2ec3a016ee9",
-				"objectType": "Agent"
-		}
+    {
+        "name": "Bob",
+        "account": {
+            "homePage": "http://www.example.com",
+            "name": "13936749"
+        },
+        "objectType": "Agent"
+    },
+    {
+        "name": "Carol",
+        "openid": "http://carol.openid.example.org/",
+        "objectType": "Agent"
+    },
+    {
+        "name": "Alice",
+        "mbox_sha1sum": "ebd31e95054c018b10727de4db3ef2ec3a016ee9",
+        "objectType": "Agent"
+    }
 ]
                                               </textarea>
                                             </div>
@@ -292,25 +292,25 @@
                                             <div class="form-group col-md-12">
                                               <label for="object-substatement-json">SubStatement JSON</label>
                                               <textarea class="form-control" rows="20" aria-describedby="Object SubStatement JSON" id="object-substatement-json">{
-				"actor" : {
-				"objectType": "Agent",
-				"mbox":"mailto:test@example.com" 
-		},
-		"verb" : { 
-				"id":"http://example.com/visited", 
-				"display":{
-						"en-US":"will visit"
-				} 
-		},
-		"object": {
-				"objectType": "Activity",
-				"id":"http://example.com/website",
-				"definition": { 
-						"name" : {
-								"en-US":"Some Awesome Website"
-						}
-				}
-		}
+        "actor" : {
+        "objectType": "Agent",
+        "mbox":"mailto:test@example.com" 
+    },
+    "verb" : { 
+        "id":"http://example.com/visited", 
+        "display":{
+            "en-US":"will visit"
+        } 
+    },
+    "object": {
+        "objectType": "Activity",
+        "id":"http://example.com/website",
+        "definition": { 
+            "name" : {
+                "en-US":"Some Awesome Website"
+            }
+        }
+    }
 }
                                               </textarea>
                                             </div>
@@ -326,98 +326,167 @@
 
                                   <div class="panel panel-default">
                                     <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#result" href="#result" class="collapsed">Result</a></h3></div>
-																		<div id="result" class="panel-collapse collapse">
-																			<div class="panel-body">
+                                    <div id="result" class="panel-collapse collapse">
+                                      <div class="panel-body">
 
-																				<div class="row">
+                                        <div class="row">
 
-																					<div class="form-group col-md-2">
-																						<label for="result-scaled-score">Scaled Score</label>
-																						<input type="text" class="form-control" placeholder="0" aria-describedby="Scaled Score" id="result-scaled-score" />
-																					</div>
+                                          <div class="form-group col-md-2">
+                                            <label for="result-scaled-score">Scaled Score</label>
+                                            <input type="text" class="form-control" placeholder="0" aria-describedby="Scaled Score" id="result-scaled-score" />
+                                          </div>
 
-																					<div class="form-group col-md-2">
-																						<label for="result-raw-score">Raw Score</label>
-																						<input type="text" class="form-control" placeholder="80" aria-describedby="Raw Score" id="result-raw-score" />
-																					</div>
+                                          <div class="form-group col-md-2">
+                                            <label for="result-raw-score">Raw Score</label>
+                                            <input type="text" class="form-control" placeholder="80" aria-describedby="Raw Score" id="result-raw-score" />
+                                          </div>
 
-																					<div class="form-group col-md-2">
-																						<label for="result-min-score">Minimum Score</label>
-																						<input type="text" class="form-control" placeholder="0" aria-describedby="Minimum Score" id="result-min-score" />
-																					</div>
+                                          <div class="form-group col-md-2">
+                                            <label for="result-min-score">Minimum Score</label>
+                                            <input type="text" class="form-control" placeholder="0" aria-describedby="Minimum Score" id="result-min-score" />
+                                          </div>
 
-																					<div class="form-group col-md-2">
-																						<label for="result-max-score">Maximum Score</label>
-																						<input type="text" class="form-control" placeholder="100" aria-describedby="Maximum Score" id="result-max-score" />
-																					</div>
+                                          <div class="form-group col-md-2">
+                                            <label for="result-max-score">Maximum Score</label>
+                                            <input type="text" class="form-control" placeholder="100" aria-describedby="Maximum Score" id="result-max-score" />
+                                          </div>
 
-																				</div><!-- .row -->
+                                        </div><!-- .row -->
 
-																				<div class="row">
+                                        <div class="row">
 
-																					<div class="form-group col-md-2">
-																						<label for="result-success">Success</label>
-																						<select class="form-control" name="result-success" id="result-success">
-																							<option></option>
-																							<option>true</option>
-																							<option>false</option>
-																						</select>
-																					</div>
+                                          <div class="form-group col-md-2">
+                                            <label for="result-success">Success</label>
+                                            <select class="form-control" name="result-success" id="result-success">
+                                              <option></option>
+                                              <option>true</option>
+                                              <option>false</option>
+                                            </select>
+                                          </div>
 
-																					<div class="form-group col-md-2">
-																						<label for="result-completion">Completion</label>
-																						<select class="form-control" name="result-completion" id="result-completion">
-																							<option></option>
-																							<option>true</option>
-																							<option>false</option>
-																						</select>
-																					</div>
+                                          <div class="form-group col-md-2">
+                                            <label for="result-completion">Completion</label>
+                                            <select class="form-control" name="result-completion" id="result-completion">
+                                              <option></option>
+                                              <option>true</option>
+                                              <option>false</option>
+                                            </select>
+                                          </div>
 
-																				</div><!-- .row -->
+                                        </div><!-- .row -->
 
-																				<div class="row">
+                                        <div class="row">
 
-																					<div class="form-group col-md-12">
-																						<label for="result-response">Response</label>
-																						<input type="text" class="form-control" aria-describedby="Response" id="result-response" />
-																					</div>
+                                          <div class="form-group col-md-12">
+                                            <label for="result-response">Response</label>
+                                            <input type="text" class="form-control" aria-describedby="Response" id="result-response" />
+                                          </div>
 
-																				</div><!-- .row -->
+                                        </div><!-- .row -->
 
-																				<div class="row">
+                                        <div class="row">
 
-																					<div class="form-group col-md-3">
-																						<label for="result-duration">Duration</label>
-																						<input type="text" class="form-control" aria-describedby="Duration" placeholder="P3Y6M4DT12H30M5S" id="result-duration" />
-																					</div>
+                                          <div class="form-group col-md-3">
+                                            <label for="result-duration">Duration</label>
+                                            <input type="text" class="form-control" aria-describedby="Duration" placeholder="P3Y6M4DT12H30M5S" id="result-duration" />
+                                          </div>
 
-																				</div><!-- .row -->
+                                        </div><!-- .row -->
 
-																				<div class="row">
+                                        <div class="row">
 
-																					<div class="form-group col-md-12">
-																						<label for="result-extensions">Extensions</label>
-																						<textarea class="form-control" rows="5" aria-describedby="Result Extensions" id="result-extensions"></textarea>
-																					</div>
+                                          <div class="form-group col-md-12">
+                                            <label for="result-extensions">Extensions</label>
+                                            <textarea class="form-control" rows="5" aria-describedby="Result Extensions" id="result-extensions"></textarea>
+                                          </div>
 
-																				</div><!-- .row -->
+                                        </div><!-- .row -->
 
-																			</div><!-- .panel-body -->
-																		</div><!-- #result -->
+                                      </div><!-- .panel-body -->
+                                    </div><!-- #result -->
                                   </div><!-- .panel -->
 
                                   <div class="panel panel-default">
                                     <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#context" href="#context" class="collapsed">Context</a></h3></div>
-																		<div id="context" class="panel-collapse collapse">
-																			<div class="panel-body">
+                                    <div id="context" class="panel-collapse collapse">
+                                      <div class="panel-body">
 
-																				<div class="row">
+                                        <div class="row">
 
+                                          <div class="form-group col-md-6">
+                                            <label for="context-registration-id">Registration ID</label>
+                                            <input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" id="context-registration-id">
+                                          </div>
 
-																				</div><!-- .row -->
+                                        </div>
 
-																			</div><!-- .panel-body -->
-																		</div><!-- #context -->
+                                        <div class="row">
+
+                                          <div class="form-group col-md-6">
+                                            <label for="context-instructor-email">Instructor Email</label>
+                                            <input type="text" class="form-control" placeholder="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Instuctor Email" id="context-instructor-email" />
+                                          </div>
+
+                                          <div class="form-group col-md-6">
+                                            <label for="context-instructor-name">Instructor Name</label>
+                                            <input type="text" class="form-control" placeholder="Tyler" aria-describedby="Instructor Name" id="context-instructor-name" />
+                                          </div>
+
+                                        </div><!-- .row -->
+
+                                        <div class="row">
+
+                                          <div class="form-group col-md-6">
+                                            <label for="context-team-name">Team Name</label>
+                                            <input type="text" class="form-control" value="" placeholder="Student Team" aria-describedby="Context Team Name" id="context-team-name" />
+                                          </div>
+
+                                          <div class="form-group col-md-12">
+                                            <label for="context-team-members">Team Members</label>
+                                            <textarea class="form-control" rows="10" aria-describedby="Context Team Members" id="context-team-members"></textarea>
+                                          </div>
+
+                                        </div><!-- .row -->
+
+                                        <div class="row">
+
+                                          <div class="form-group col-md-12">
+                                            <label for="context-context-activities">Context Activities</label>
+                                            <textarea class="form-control" rows="10" aria-describedby="Context Activities" id="context-context-activities"></textarea>
+                                          </div>
+
+                                        </div><!-- .row -->
+
+                                        <div class="row">
+
+                                          <div class="form-group col-md-3">
+                                            <label for="context-revision">Revision</label>
+                                            <input type="text" class="form-control" aria-describedby="Revision" id="context-revision" />
+                                          </div>
+
+                                          <div class="form-group col-md-7">
+                                            <label for="context-platform">Platform</label>
+                                            <input type="text" class="form-control" aria-describedby="Platform" id="context-platform" />
+                                          </div>
+
+                                          <div class="form-group col-md-2">
+                                            <label for="context-language">Language</label>
+                                            <input type="text" class="form-control" aria-describedby="Language" id="context-language" />
+                                          </div>
+
+                                        </div><!-- .row -->
+
+                                        <div class="row">
+
+                                          <div class="form-group col-md-6">
+                                            <label for="context-statement">Statement</label>
+                                            <input type="text" class="form-control" placeholder="137ca18f-97f6-4477-981a-696fb41c6b63" aria-describedby="Context Statement" id="context-statement" />
+                                          </div>
+
+                                        </div><!-- .row -->
+
+                                      </div><!-- .panel-body -->
+                                    </div><!-- #context -->
                                   </div><!-- .panel -->
 
                                 </div><!-- .col-md-12 -->
@@ -440,7 +509,7 @@
 
                     </div><!-- .col-md-12 -->
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
 
                       <div class="panel panel-default">
                         <div class="panel-heading"><h3 class="panel-title">Statement Editor</h3></div>
@@ -456,7 +525,23 @@
                         </div><!-- .panel-body -->
                       </div><!-- .panel -->
 
+                    </div><!-- .col-md-12 -->
+
+                    <div class="col-md-6">
+
+                      <div class="panel panel-default">
+                        <div class="panel-heading"><h3 class="panel-title">Statement Queue</h3></div>
+                        <div class="panel-body">
+                          <div id="statement-queue"></div>
+                          <div class="pull-right">
+                            <a class="btn btn-default" href="#" role="button" id="clear-statement-queue">Clear Statement Queue <i class="glyphicon glyphicon-remove-sign"></i></a>
+                            <a class="btn btn-primary" href="#" role="button" id="send-statement-queue">Send Statement Queue <i class="glyphicon glyphicon-send"></i></a>
+                          </div>
+                        </div><!-- .panel-body -->
+                      </div><!-- .panel -->
+
                     </div><!-- .col-md-6 -->
+
                     <div class="col-md-6">
 
                       <div class="panel panel-default">
@@ -471,17 +556,6 @@
                             <a class="btn btn-default" href="#" role="button" id="clear-sent-statements">Clear Sent Statements <i class="glyphicon glyphicon-remove-sign"></i></a>
                           </div>
                       
-                        </div><!-- .panel-body -->
-                      </div><!-- .panel -->
-
-                      <div class="panel panel-default">
-                        <div class="panel-heading"><h3 class="panel-title">Statement Queue</h3></div>
-                        <div class="panel-body">
-                          <div id="statement-queue"></div>
-                          <div class="pull-right">
-                            <a class="btn btn-default" href="#" role="button" id="clear-statement-queue">Clear Statement Queue <i class="glyphicon glyphicon-remove-sign"></i></a>
-                            <a class="btn btn-primary" href="#" role="button" id="send-statement-queue">Send Statement Queue <i class="glyphicon glyphicon-send"></i></a>
-                          </div>
                         </div><!-- .panel-body -->
                       </div><!-- .panel -->
 
@@ -542,14 +616,14 @@
 
                           </div><!-- .row -->
 
-													<div class="row">
+                          <div class="row">
 
-														<div class="form-group col-md-12">
-															<label for="search-registration-id">Registration ID</label>
-															<input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" id="search-registration-id" />
-														</div>
+                            <div class="form-group col-md-12">
+                              <label for="search-registration-id">Registration ID</label>
+                              <input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" id="search-registration-id" />
+                            </div>
 
-													</div><!-- .row -->
+                          </div><!-- .row -->
 
                           <div class="row">
 

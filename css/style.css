@@ -1,11 +1,15 @@
 :focus {outline:none !important;} /* remove dotted outlines in FF */
+textarea.form-control {
+  font-size:10px;
+  font-family:courier;
+}
 .page-header i {
   color: #94D5F5;
   text-shadow: 1px 1px 1px #ccc;
 }
 #editor { 
     /*width:530px;*/
-    height:320px;
+    height:460px;
     border:1px solid #ccc;
     margin-bottom:10px;
 }
