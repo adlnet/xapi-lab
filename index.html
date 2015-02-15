@@ -46,21 +46,21 @@
 							<form id="endpoint-values">
 
 								<div class="form-group col-md-4">
-									<label for="endpoint">Endpoint</label>
+									<label class="control-label" for="endpoint">Endpoint</label>
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
 										<input type="url" class="form-control" value="https://lrs.adlnet.gov/xapi/" aria-describedby="LRS Endpoint" id="endpoint" required />
 									</div>
 								</div>
 								<div class="form-group col-md-4">
-									<label for="username">Username</label>
+									<label class="control-label" for="username">Username</label>
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
 										<input type="text" class="form-control" value="xapi-tools" aria-describedby="Username" id="username" required />
 									</div>
 								</div>
 								<div class="form-group col-md-4">
-									<label for="password">Password</label>
+									<label class="control-label" for="password">Password</label>
 									<div class="input-group">
 										<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
 										<input type="password" class="form-control" value="xapi-tools" aria-describedby="Password" id="password" required />
@@ -118,12 +118,12 @@
                                       <div class="row">
 
                                         <div class="form-group col-md-6">
-                                          <label for="actor-email">Email</label>
+                                          <label class="control-label" for="actor-email">Email</label>
                                           <input type="email" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Actor Email" id="actor-email" required />
                                         </div>
 
                                         <div class="form-group col-md-6">
-                                          <label for="actor-name">Name</label>
+                                          <label class="control-label" for="actor-name">Name</label>
                                           <input type="text" class="form-control" value="Tyler" aria-describedby="Actor Name" id="actor-name" />
                                         </div>
 
@@ -139,17 +139,17 @@
                                       <div class="row">
 
                                         <div class="form-group col-md-5">
-                                          <label for="predefined-verb">Predefined Verbs</label>
+                                          <label class="control-label" for="predefined-verb">Predefined Verbs</label>
                                           <select class="form-control" name="predefined-verb" id="predefined-verb"></select>
                                         </div>
 
                                         <div class="form-group col-md-5">
-                                          <label for="verb-display">Display Name</label>
+                                          <label class="control-label" for="verb-display">Display Name</label>
                                           <input type="text" class="form-control" value="answered" aria-describedby="Display" id="verb-display" />
                                         </div>
 
                                         <div class="form-group col-md-2">
-                                          <label for="verb-language">Language</label>
+                                          <label class="control-label" for="verb-language">Language</label>
                                           <input type="text" class="form-control" value="en-US" aria-describedby="Verb Language" id="verb-language" required />
                                         </div>
 
@@ -158,7 +158,7 @@
                                       <div class="row">
 
                                         <div class="form-group col-md-12">
-                                          <label for="verb-id">Verb ID</label>
+                                          <label class="control-label" for="verb-id">Verb ID</label>
                                           <input type="text" class="form-control" value="http://adlnet.gov/expapi/verbs/answered" aria-describedby="Verb ID" id="verb-id" required />
                                         </div>
 
@@ -174,7 +174,7 @@
                                       <div class="row">
 
                                         <div class="form-group col-md-5">
-                                          <label for="object-type">Object Type</label>
+                                          <label class="control-label" for="object-type">Object Type</label>
                                           <select class="form-control" name="object-type" id="object-type">
                                             <option value="Activity" selected>Activity</option>
                                             <option value="Agent">Agent</option>
@@ -193,7 +193,7 @@
                                           <div class="row">
 
                                             <div class="form-group col-md-12">
-                                              <label for="object-activity-id">Activity ID</label>
+                                              <label class="control-label" for="object-activity-id">Activity ID</label>
                                               <input type="text" class="form-control" value="http://adlnet.gov/expapi/activities/example" aria-describedby="Object Activity ID" id="object-activity-id" />
                                             </div>
 
@@ -202,17 +202,17 @@
                                           <div class="row">
 
                                             <div class="form-group col-md-5">
-                                              <label for="object-activity-name">Name</label>
+                                              <label class="control-label" for="object-activity-name">Name</label>
                                               <input type="text" class="form-control" value="Example Activity" aria-describedby="Object Acitivity Name" id="object-activity-name" />
                                             </div>
 
                                             <div class="form-group col-md-5">
-                                              <label for="object-activity-description">Description</label>
+                                              <label class="control-label" for="object-activity-description">Description</label>
                                               <input type="text" class="form-control" value="Example activity description" aria-describedby="Object Activity Description" id="object-activity-description" />
                                             </div>
 
                                             <div class="form-group col-md-2">
-                                              <label for="object-activity-language">Language</label>
+                                              <label class="control-label" for="object-activity-language">Language</label>
                                               <input type="text" class="form-control" value="en-US" aria-describedby="Object Activity Language" id="object-activity-language" />
                                             </div>
 
@@ -225,12 +225,12 @@
                                           <div class="row">
 
                                             <div class="form-group col-md-6">
-                                              <label for="object-agent-email">Email</label>
+                                              <label class="control-label" for="object-agent-email">Email</label>
                                               <input type="email" class="form-control" value="tom@example.com" aria-describedby="Object Agent Email" id="object-agent-email" required />
                                             </div>
 
                                             <div class="form-group col-md-6">
-                                              <label for="object-agent-name">Name</label>
+                                              <label class="control-label" for="object-agent-name">Name</label>
                                               <input type="text" class="form-control" value="Tom" aria-describedby="Object Agent Name" id="object-agent-name" />
                                             </div>
 
@@ -243,12 +243,12 @@
                                           <div class="row">
 
                                             <div class="form-group col-md-6">
-                                              <label for="object-group-name">Group Name</label>
+                                              <label class="control-label" for="object-group-name">Group Name</label>
                                               <input type="text" class="form-control" value="" placeholder="Student Group" aria-describedby="Object Group Name" id="object-group-name" />
                                             </div>
 
                                             <div class="form-group col-md-12">
-                                              <label for="object-group-members">Group Members</label>
+                                              <label class="control-label" for="object-group-members">Group Members</label>
                                               <textarea class="form-control" rows="20" aria-describedby="Object Group Members" id="object-group-members">[
     {
         "name": "Bob",
@@ -281,7 +281,7 @@
                                           <div class="row">
 
                                             <div class="form-group col-md-6">
-                                              <label for="object-statementref-id">Statement ID</label>
+                                              <label class="control-label" for="object-statementref-id">Statement ID</label>
                                               <input type="text" class="form-control" value="" placeholder="137ca18f-97f6-4477-981a-696fb41c6b63" aria-describedby="Object Statement Reference ID" id="object-statementref-id" required />
                                             </div>
 
@@ -294,7 +294,7 @@
                                           <div class="row">
 
                                             <div class="form-group col-md-12">
-                                              <label for="object-substatement-json">SubStatement JSON</label>
+                                              <label class="control-label" for="object-substatement-json">SubStatement JSON</label>
                                               <textarea class="form-control" rows="20" aria-describedby="Object SubStatement JSON" id="object-substatement-json">{
         "actor" : {
         "objectType": "Agent",
@@ -336,22 +336,23 @@
                                         <div class="row">
 
                                           <div class="form-group col-md-2">
-                                            <label for="result-scaled-score">Scaled Score</label>
-                                            <input type="number" class="form-control" placeholder="0" aria-describedby="Scaled Score" id="result-scaled-score" />
+                                            <label class="control-label" for="result-scaled-score">Scaled Score</label>
+                                            <!-- arbitrary number of decimal places due to html5 number input limitions -->
+                                            <input type="number" min="-1" max="1" step="0.00001" pattern="[0-9]*(.)?[0-9]+" class="form-control" placeholder="0" aria-describedby="Scaled Score" id="result-scaled-score" />
                                           </div>
 
                                           <div class="form-group col-md-2">
-                                            <label for="result-raw-score">Raw Score</label>
+                                            <label class="control-label" for="result-raw-score">Raw Score</label>
                                             <input type="number" class="form-control" placeholder="80" aria-describedby="Raw Score" id="result-raw-score" />
                                           </div>
 
                                           <div class="form-group col-md-2">
-                                            <label for="result-min-score">Minimum Score</label>
+                                            <label class="control-label" for="result-min-score">Minimum Score</label>
                                             <input type="number" class="form-control" placeholder="0" aria-describedby="Minimum Score" id="result-min-score" />
                                           </div>
 
                                           <div class="form-group col-md-2">
-                                            <label for="result-max-score">Maximum Score</label>
+                                            <label class="control-label" for="result-max-score">Maximum Score</label>
                                             <input type="number" class="form-control" placeholder="100" aria-describedby="Maximum Score" id="result-max-score" />
                                           </div>
 
@@ -360,7 +361,7 @@
                                         <div class="row">
 
                                           <div class="form-group col-md-2">
-                                            <label for="result-success">Success</label>
+                                            <label class="control-label" for="result-success">Success</label>
                                             <select class="form-control" name="result-success" id="result-success">
                                               <option></option>
                                               <option>true</option>
@@ -369,7 +370,7 @@
                                           </div>
 
                                           <div class="form-group col-md-2">
-                                            <label for="result-completion">Completion</label>
+                                            <label class="control-label" for="result-completion">Completion</label>
                                             <select class="form-control" name="result-completion" id="result-completion">
                                               <option></option>
                                               <option>true</option>
@@ -382,7 +383,7 @@
                                         <div class="row">
 
                                           <div class="form-group col-md-12">
-                                            <label for="result-response">Response</label>
+                                            <label class="control-label" for="result-response">Response</label>
                                             <input type="text" class="form-control" aria-describedby="Response" id="result-response" />
                                           </div>
 
@@ -391,7 +392,7 @@
                                         <div class="row">
 
                                           <div class="form-group col-md-3">
-                                            <label for="result-duration">Duration</label>
+                                            <label class="control-label" for="result-duration">Duration</label>
                                             <input type="text" class="form-control" aria-describedby="Duration" placeholder="P3Y6M4DT12H30M5S" id="result-duration" />
                                           </div>
 
@@ -400,7 +401,7 @@
                                         <div class="row">
 
                                           <div class="form-group col-md-12">
-                                            <label for="result-extensions">Extensions</label>
+                                            <label class="control-label" for="result-extensions">Extensions</label>
                                             <textarea class="form-control" rows="5" aria-describedby="Result Extensions" id="result-extensions"></textarea>
                                           </div>
 
@@ -418,7 +419,7 @@
                                         <div class="row">
 
                                           <div class="form-group col-md-6">
-                                            <label for="context-registration-id">Registration ID</label>
+                                            <label class="control-label" for="context-registration-id">Registration ID</label>
                                             <input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" id="context-registration-id" />
                                           </div>
 
@@ -427,12 +428,12 @@
                                         <div class="row">
 
                                           <div class="form-group col-md-6">
-                                            <label for="context-instructor-email">Instructor Email</label>
+                                            <label class="control-label" for="context-instructor-email">Instructor Email</label>
                                             <input type="email" class="form-control" placeholder="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Instuctor Email" id="context-instructor-email" />
                                           </div>
 
                                           <div class="form-group col-md-6">
-                                            <label for="context-instructor-name">Instructor Name</label>
+                                            <label class="control-label" for="context-instructor-name">Instructor Name</label>
                                             <input type="text" class="form-control" placeholder="Tyler" aria-describedby="Instructor Name" id="context-instructor-name" />
                                           </div>
 
@@ -441,12 +442,12 @@
                                         <div class="row">
 
                                           <div class="form-group col-md-6">
-                                            <label for="context-team-name">Team Name</label>
+                                            <label class="control-label" for="context-team-name">Team Name</label>
                                             <input type="text" class="form-control" value="" placeholder="Student Team" aria-describedby="Context Team Name" id="context-team-name" />
                                           </div>
 
                                           <div class="form-group col-md-12">
-                                            <label for="context-team-members">Team Members</label>
+                                            <label class="control-label" for="context-team-members">Team Members</label>
                                             <textarea class="form-control" rows="10" aria-describedby="Context Team Members" id="context-team-members"></textarea>
                                           </div>
 
@@ -455,7 +456,7 @@
                                         <div class="row">
 
                                           <div class="form-group col-md-12">
-                                            <label for="context-context-activities">Context Activities</label>
+                                            <label class="control-label" for="context-context-activities">Context Activities</label>
                                             <textarea class="form-control" rows="10" aria-describedby="Context Activities" id="context-context-activities"></textarea>
                                           </div>
 
@@ -464,17 +465,17 @@
                                         <div class="row">
 
                                           <div class="form-group col-md-3">
-                                            <label for="context-revision">Revision</label>
+                                            <label class="control-label" for="context-revision">Revision</label>
                                             <input type="text" class="form-control" aria-describedby="Revision" id="context-revision" />
                                           </div>
 
                                           <div class="form-group col-md-7">
-                                            <label for="context-platform">Platform</label>
+                                            <label class="control-label" for="context-platform">Platform</label>
                                             <input type="text" class="form-control" aria-describedby="Platform" id="context-platform" />
                                           </div>
 
                                           <div class="form-group col-md-2">
-                                            <label for="context-language">Language</label>
+                                            <label class="control-label" for="context-language">Language</label>
                                             <input type="text" class="form-control" aria-describedby="Language" id="context-language" />
                                           </div>
 
@@ -483,7 +484,7 @@
                                         <div class="row">
 
                                           <div class="form-group col-md-6">
-                                            <label for="context-statement">Statement</label>
+                                            <label class="control-label" for="context-statement">Statement</label>
                                             <input type="text" class="form-control" placeholder="137ca18f-97f6-4477-981a-696fb41c6b63" aria-describedby="Context Statement" id="context-statement" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
                                           </div>
 
@@ -499,7 +500,7 @@
 
                               <div class="form-group">
                                 <a class="btn btn-primary" href="#" role="button" id="generate-statement">Generate JSON Statement <i class="glyphicon glyphicon-fire"></i></a>
-                                <label>
+                                <label class="control-label">
                                   <input type="checkbox" id="automatically-build" value="yes" checked>
                                   Automatically generate statements when I edit the form
                                 </label>
@@ -580,13 +581,13 @@
 														<div class="row">
 
 															<div class="form-group col-md-6">
-																<label for="search-predefined-verb">Predefined Verb</label>
+																<label class="control-label" for="search-predefined-verb">Predefined Verb</label>
 																<select class="form-control" name="search-predefined-verb" id="search-predefined-verb">
 																	<option></option>
 																</select>
 															</div>
 															<div class="form-group col-md-6">
-																<label for="search-verb-sort">Verb Sort</label>
+																<label class="control-label" for="search-verb-sort">Verb Sort</label>
 																<select class="form-control" name="search-verb-sort" id="search-verb-sort">
 																	<option value="">Descending</option>
 																	<option value="true">Ascending</option>
@@ -598,7 +599,7 @@
 														<div class="row">
 
 															<div class="form-group col-md-12">
-																<label for="search-user-verb-id">Verb ID</label>
+																<label class="control-label" for="search-user-verb-id">Verb ID</label>
 																<input type="text" class="form-control" value="" aria-describedby="Verb ID" placeholder="http://adlnet.gov/verbs/answered" id="search-user-verb-id" />
 															</div>
 
@@ -607,7 +608,7 @@
 														<div class="row">
 
 															<div class="form-group col-md-12">
-																<label for="search-actor-email">Actor Email</label>
+																<label class="control-label" for="search-actor-email">Actor Email</label>
 																<input type="email" class="form-control" value="" aria-describedby="Actor Email" placeholder="tyler.mulligan.ctr@adlnet.gov" id="search-actor-email" />
 															</div>
 
@@ -616,7 +617,7 @@
 														<div class="row">
 
 															<div class="form-group col-md-12">
-																<label for="search-activity-id">Activity ID</label>
+																<label class="control-label" for="search-activity-id">Activity ID</label>
 																<input type="text" class="form-control" value="" aria-describedby="Activity ID" placeholder="http://adlnet.gov/activities/question" id="search-activity-id" />
 															</div>
 
@@ -625,7 +626,7 @@
 														<div class="row">
 
 															<div class="form-group col-md-12">
-																<label for="search-registration-id">Registration ID</label>
+																<label class="control-label" for="search-registration-id">Registration ID</label>
 																<input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" id="search-registration-id" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
 															</div>
 
@@ -634,7 +635,7 @@
 														<div class="row">
 
 															<div class="form-group col-md-12">
-																<label for="search-statement-id">Statement ID</label>
+																<label class="control-label" for="search-statement-id">Statement ID</label>
 																<input type="text" class="form-control" value="" aria-describedby="Activity ID" placeholder="ef8a3c05-7c88-4d46-a821-c6f2f061ef23" id="search-statement-id" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
 															</div>
 
@@ -643,7 +644,7 @@
 														<div class="row">
 
 															<div class="form-group col-md-6">
-																<label for="search-statements-since-date">Since Date</label>
+																<label class="control-label" for="search-statements-since-date">Since Date</label>
 																<div class="input-group date" id="search-statements-since-date">
 																	<input type="text" class="form-control" />
 																	<span class="input-group-addon">
@@ -653,7 +654,7 @@
 															</div>
 
 															<div class="form-group col-md-6">
-																<label for="search-statements-until-date">Until Date</label>
+																<label class="control-label" for="search-statements-until-date">Until Date</label>
 																<div class="input-group date" id="search-statements-until-date">
 																	<input type="text" class="form-control" />
 																	<span class="input-group-addon">
@@ -667,7 +668,7 @@
 														<div class="row">
 
 															<div class="form-group col-md-12">
-																<label for="search-limit">Limit</label>
+																<label class="control-label" for="search-limit">Limit</label>
 																<input type="number" class="form-control" value="" aria-describedby="Limit" placeholder="25" id="search-limit" />
 															</div>
 
@@ -736,12 +737,12 @@
 										<div class="panel-body">
 
 											<div class="form-group col-md-6">
-												<label for="document-activity-id">Activity ID</label>
+												<label class="control-label" for="document-activity-id">Activity ID</label>
 												<input type="text" class="form-control" value="http://adlnet.gov/expapi/activities/example" aria-describedby="Activity ID" id="document-activity-id" />
 											</div>
 
 											<div class="form-group col-md-6">
-												<label for="document-actor-email">Actor Email</label>
+												<label class="control-label" for="document-actor-email">Actor Email</label>
 												<input type="email" class="form-control" value="" aria-describedby="Actor Email" placeholder="tyler.mulligan.ctr@adlnet.gov" id="document-actor-email" />
 											</div>
 
@@ -793,12 +794,12 @@
 																	<div class="row">
 
 																		<div class="form-group col-md-6">
-																			<label for="set-document-state-id">State ID</label>
+																			<label class="control-label" for="set-document-state-id">State ID</label>
 																			<input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="set-document-state-id" />
 																		</div>
 
 																		<div class="form-group col-md-6">
-																			<label for="set-document-state-string">State Value</label>
+																			<label class="control-label" for="set-document-state-string">State Value</label>
 																			<input type="text" class="form-control" value="" aria-describedby="State Value" placeholder="" id="set-document-state-string" />
 																		</div>
 
@@ -815,12 +816,12 @@
 																	<div class="row">
 
 																		<div class="form-group col-md-6">
-																			<label for="set-document-activity-profile-id">Profile ID</label>
+																			<label class="control-label" for="set-document-activity-profile-id">Profile ID</label>
 																			<input type="text" class="form-control" value="" aria-describedby="Agent Profile ID" placeholder="" id="set-document-activity-profile-id" />
 																		</div>
 
 																		<div class="form-group col-md-6">
-																			<label for="set-document-activity-profile-string">Profile Value</label>
+																			<label class="control-label" for="set-document-activity-profile-string">Profile Value</label>
 																			<input type="text" class="form-control" value="" aria-describedby="Activity Profile Value" placeholder="" id="set-document-activity-profile-string" />
 																		</div>
 
@@ -837,12 +838,12 @@
 																	<div class="row">
 
 																		<div class="form-group col-md-6">
-																			<label for="set-document-agent-profile-id">Profile ID</label>
+																			<label class="control-label" for="set-document-agent-profile-id">Profile ID</label>
 																			<input type="text" class="form-control" value="" aria-describedby="Agent Profile ID" placeholder="" id="set-document-agent-profile-id" />
 																		</div>
 
 																		<div class="form-group col-md-6">
-																			<label for="set-document-agent-profile-string">Profile Value</label>
+																			<label class="control-label" for="set-document-agent-profile-string">Profile Value</label>
 																			<input type="text" class="form-control" value="" aria-describedby="Agent Profile Value" placeholder="" id="set-document-agent-profile-string" />
 																		</div>
 
@@ -911,7 +912,7 @@
 
 														<div class="row">
 															<div class="form-group col-md-12">
-																<label for="get-document-since-date">Since Date</label>
+																<label class="control-label" for="get-document-since-date">Since Date</label>
 																<div class="input-group date" id="get-document-since-date">
 																	<input type="text" class="form-control" />
 																	<span class="input-group-addon">
@@ -940,7 +941,7 @@
 																	<div class="row">
 
 																		<div class="form-group col-md-6">
-																			<label for="get-document-state-id">State ID</label>
+																			<label class="control-label" for="get-document-state-id">State ID</label>
 																			<input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="get-document-state-id" />
 																		</div>
 																		
@@ -957,7 +958,7 @@
 																	<div class="row">
 
 																		<div class="form-group col-md-6">
-																			<label for="get-document-activity-profile-id">Profile ID</label>
+																			<label class="control-label" for="get-document-activity-profile-id">Profile ID</label>
 																			<input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="get-document-activity-profile-id" />
 																		</div>
 																		
@@ -974,7 +975,7 @@
 																<div class="row">
 
 																	<div class="form-group col-md-6">
-																		<label for="get-document-agent-profile-id">Profile ID</label>
+																		<label class="control-label" for="get-document-agent-profile-id">Profile ID</label>
 																		<input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="get-document-agent-profile-id" />
 																	</div>
 																	
@@ -1042,7 +1043,7 @@
 																	<div class="row">
 
 																		<div class="form-group col-md-6">
-																			<label for="delete-document-state-id">State ID</label>
+																			<label class="control-label" for="delete-document-state-id">State ID</label>
 																			<input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="delete-document-state-id" />
 																		</div>
 																		
@@ -1059,7 +1060,7 @@
 																	<div class="row">
 
 																		<div class="form-group col-md-6">
-																			<label for="delete-document-activity-profile-id">Profile ID</label>
+																			<label class="control-label" for="delete-document-activity-profile-id">Profile ID</label>
 																			<input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="delete-document-activity-profile-id" />
 																		</div>
 																		
@@ -1076,7 +1077,7 @@
 																<div class="row">
 
 																	<div class="form-group col-md-6">
-																		<label for="delete-document-agent-profile-id">Profile ID</label>
+																		<label class="control-label" for="delete-document-agent-profile-id">Profile ID</label>
 																		<input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="delete-document-agent-profile-id" />
 																	</div>
 																	
