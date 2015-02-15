@@ -47,6 +47,9 @@ $(function(){
         }
     }
 
+	$("#object-types > div").hide();
+	$("#object-Activity").show();
+
     $('#search-statements-since-date').datetimepicker(dateTimeSettings);
     $('#search-statements-until-date').datetimepicker(dateTimeSettings);
     $('#get-document-since-date').datetimepicker(dateTimeSettings);
@@ -85,6 +88,12 @@ $("#predefined-verb").change(function() {
     var $this = $(this);
     $("#verb-id").val($this.val());
     $("#verb-display").val($this.children(':selected').text());
+});
+
+$("#object-type").change(function() {
+    var objectType = $(this).val();
+    $("#object-types > div").hide();
+    $("#object-types > #object-" + objectType).show();
 });
 
 
@@ -242,10 +251,17 @@ function buildStatement() {
     var verbID = $("#verb-id").val();
     var verbDisplay = $("#verb-display").val();
     var verbLanguage = $("#verb-language").val();
-    var activityID = $("#activity-id").val();
-    var activityName = $("#activity-name").val();
-    var activityDescription = $("#activity-description").val();
-    var activityLanguage = $("#activity-language").val();
+    var objectType = $("#object-type").val();
+    var objectActivityID = $("#object-activity-id").val();
+    var objectActivityName = $("#object-activity-name").val();
+    var objectActivityDescription = $("#object-activity-description").val();
+    var objectActivityLanguage = $("#object-activity-language").val();
+    var objectAgentEmail = $("#object-agent-email").val();
+    var objectAgentName = $("#object-agent-name").val();
+    var objectGroupName = $("#object-group-name").val();
+    var objectGroupMembers = $.parseJSON($("#object-group-members").val());
+    var objectStatementRef = $("#object-statementref-id").val();
+    var objectSubStatement = $.parseJSON($("#object-substatement-json").val());
 
     var stmt = {};
     stmt['actor'] = {};
@@ -257,13 +273,34 @@ function buildStatement() {
     stmt['verb']['display'] = {};
     stmt['verb']['display'][verbLanguage] = verbDisplay;
     stmt['object'] = {};
-    stmt['object']['id'] = activityID;
-    stmt['object']['objectType'] = "Activity";
-    stmt['object']['definition'] = {};
-    stmt['object']['definition']['name'] = {};
-    stmt['object']['definition']['name'][activityLanguage] = activityName;
-    stmt['object']['definition']['description'] = {};
-    stmt['object']['definition']['description'][activityLanguage] = activityDescription;
+
+	switch(objectType) {
+		case "Activity":
+			stmt['object']['id'] = objectActivityID;
+			stmt['object']['definition'] = {};
+			stmt['object']['definition']['name'] = {};
+			stmt['object']['definition']['name'][objectActivityLanguage] = objectActivityName;
+			stmt['object']['definition']['description'] = {};
+			stmt['object']['definition']['description'][objectActivityLanguage] = objectActivityDescription;
+			break;
+		case "Agent":
+			stmt['object']['mbox'] = "mailto:" + objectAgentEmail;
+			stmt['object']['name'] = objectAgentName;
+			break;
+		case "Group":
+			stmt['object']['name'] = objectGroupName;
+			stmt['object']['member'] = objectGroupMembers;
+			break;
+		case "StatementRef":
+			stmt['object']['id'] = objectStatementRef;
+			break;
+		case "SubStatement":
+			stmt['object'] = objectSubStatement;
+			break;
+		default:
+	}
+
+    stmt['object']['objectType'] = objectType;
 
     //console.log(stmt);
     return stmt;
