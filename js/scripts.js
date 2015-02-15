@@ -259,9 +259,18 @@ function buildStatement() {
     var objectAgentEmail = $("#object-agent-email").val();
     var objectAgentName = $("#object-agent-name").val();
     var objectGroupName = $("#object-group-name").val();
-    var objectGroupMembers = $.parseJSON($("#object-group-members").val());
+    var objectGroupMembers = $("#object-group-members").val();
     var objectStatementRef = $("#object-statementref-id").val();
-    var objectSubStatement = $.parseJSON($("#object-substatement-json").val());
+    var objectSubStatement = $("#object-substatement-json").val();
+    var resultScaledScore = $("#result-scaled-score").val();
+    var resultRawScore = $("#result-raw-score").val();
+    var resultMinScore = $("#result-min-score").val();
+    var resultMaxScore = $("#result-max-score").val();
+    var resultSuccess = $("#result-success").val();
+    var resultCompletion = $("#result-completion").val();
+    var resultResponse = $("#result-response").val();
+    var resultDuration = $("#result-duration").val();
+    var resultExtensions = $("#result-extensions").val();
 
     var stmt = {};
     stmt['actor'] = {};
@@ -277,11 +286,17 @@ function buildStatement() {
 	switch(objectType) {
 		case "Activity":
 			stmt['object']['id'] = objectActivityID;
-			stmt['object']['definition'] = {};
-			stmt['object']['definition']['name'] = {};
-			stmt['object']['definition']['name'][objectActivityLanguage] = objectActivityName;
-			stmt['object']['definition']['description'] = {};
-			stmt['object']['definition']['description'][objectActivityLanguage] = objectActivityDescription;
+			if (objectActivityName != "" || objectActivityDescription != "") {
+				stmt['object']['definition'] = {};
+			}
+			if (objectActivityName != "" && objectActivityLanguage != "") {
+				stmt['object']['definition']['name'] = {};
+				stmt['object']['definition']['name'][objectActivityLanguage] = objectActivityName;
+			}
+			if (objectActivityDescription != "" && objectActivityLanguage != "") {
+				stmt['object']['definition']['description'] = {};
+				stmt['object']['definition']['description'][objectActivityLanguage] = objectActivityDescription;
+			}
 			break;
 		case "Agent":
 			stmt['object']['mbox'] = "mailto:" + objectAgentEmail;
@@ -289,15 +304,31 @@ function buildStatement() {
 			break;
 		case "Group":
 			stmt['object']['name'] = objectGroupName;
-			stmt['object']['member'] = objectGroupMembers;
+			stmt['object']['member'] = $.parseJSON(objectGroupMembers);
 			break;
 		case "StatementRef":
 			stmt['object']['id'] = objectStatementRef;
 			break;
 		case "SubStatement":
-			stmt['object'] = objectSubStatement;
+			stmt['object'] = $.parseJSON(objectSubStatement);
 			break;
 		default:
+	}
+
+	if ( resultScaledScore != "" || resultRawScore != "" || resultMinScore != "" || resultMaxScore != "" || resultSuccess != "" || resultCompletion != "" || resultResponse != "" || resultDuration != "" || resultExtensions != "" ) {
+		stmt['object']['result'] = {};
+		if ( resultScaledScore != "" || resultRawScore != "" || resultMinScore != "" || resultMaxScore != "" ) {
+			stmt['object']['result']['score'] = {};
+			if (resultScaledScore != "") { stmt['object']['result']['score']['scaled'] = resultScaledScore; }
+			if (resultRawScore != "") { stmt['object']['result']['score']['raw'] = resultRawScore; }
+			if (resultMinScore != "") { stmt['object']['result']['score']['min'] = resultMinScore; }
+			if (resultMaxScore != "") { stmt['object']['result']['score']['max'] = resultMaxScore; }
+		}
+		if (resultSuccess != "") { stmt['object']['result']['success'] = resultSuccess; }
+		if (resultCompletion != "") { stmt['object']['result']['completion'] = resultCompletion; }
+		if (resultResponse != "") { stmt['object']['result']['response'] = resultResponse; }
+		if (resultDuration != "") { stmt['object']['result']['duration'] = resultDuration; }
+		if (resultExtensions != "") { stmt['object']['result']['extensions'] = $.parseJSON(resultExtensions); }
 	}
 
     stmt['object']['objectType'] = objectType;
@@ -431,6 +462,7 @@ function getStatementsWithSearch() {
     var verbId = $("#search-user-verb-id").val();
     var actorEmail = $("#search-actor-email").val();
     var activityId = $("#search-activity-id").val();
+    var registrationId = $("#search-registration-id").val();
     var statementId = $("#search-statement-id").val();
     var sinceDate = $("#search-statements-since-date input").val();
     var untilDate = $("#search-statements-until-date input").val();
@@ -442,6 +474,7 @@ function getStatementsWithSearch() {
     if (verbSort != "") { search['ascending'] = verbSort; }
     if (actorEmail != "") { search['agent'] = JSON.stringify({ "mbox": "mailto:" + actorEmail}); }
     if (activityId != "") { search['activity'] = activityId; }
+    if (registrationId != "") { search['registration'] = registrationId; }
     if (statementId != "") { search['statementId'] = statementId; }
     if (sinceDate != "") { search['since'] = sinceDate; }
     if (untilDate != "") { search['until'] = untilDate; }

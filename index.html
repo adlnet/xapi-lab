@@ -107,7 +107,7 @@
 
                                 <div class="col-md-12">
 
-                                  <div class="panel panel-default">
+                                  <div class="panel panel-info">
                                     <div class="panel-heading"><h3 class="panel-title">Actor</h3></div>
                                     <div class="panel-body">
 
@@ -128,7 +128,7 @@
                                     </div><!-- .panel-body -->
                                   </div><!-- .panel -->
 
-                                  <div class="panel panel-default">
+                                  <div class="panel panel-info">
                                     <div class="panel-heading"><h3 class="panel-title">Verb</h3></div>
                                     <div class="panel-body">
 
@@ -163,7 +163,7 @@
                                     </div><!-- .panel-body -->
                                   </div><!-- .panel -->
 
-                                  <div class="panel panel-default">
+                                  <div class="panel panel-info">
                                     <div class="panel-heading"><h3 class="panel-title">Object</h3></div>
                                     <div class="panel-body">
 
@@ -324,6 +324,102 @@
                                     </div><!-- .panel-body -->
                                   </div><!-- .panel -->
 
+                                  <div class="panel panel-default">
+                                    <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#result" href="#result" class="collapsed">Result</a></h3></div>
+																		<div id="result" class="panel-collapse collapse">
+																			<div class="panel-body">
+
+																				<div class="row">
+
+																					<div class="form-group col-md-2">
+																						<label for="result-scaled-score">Scaled Score</label>
+																						<input type="text" class="form-control" placeholder="0" aria-describedby="Scaled Score" id="result-scaled-score" />
+																					</div>
+
+																					<div class="form-group col-md-2">
+																						<label for="result-raw-score">Raw Score</label>
+																						<input type="text" class="form-control" placeholder="80" aria-describedby="Raw Score" id="result-raw-score" />
+																					</div>
+
+																					<div class="form-group col-md-2">
+																						<label for="result-min-score">Minimum Score</label>
+																						<input type="text" class="form-control" placeholder="0" aria-describedby="Minimum Score" id="result-min-score" />
+																					</div>
+
+																					<div class="form-group col-md-2">
+																						<label for="result-max-score">Maximum Score</label>
+																						<input type="text" class="form-control" placeholder="100" aria-describedby="Maximum Score" id="result-max-score" />
+																					</div>
+
+																				</div><!-- .row -->
+
+																				<div class="row">
+
+																					<div class="form-group col-md-2">
+																						<label for="result-success">Success</label>
+																						<select class="form-control" name="result-success" id="result-success">
+																							<option></option>
+																							<option>true</option>
+																							<option>false</option>
+																						</select>
+																					</div>
+
+																					<div class="form-group col-md-2">
+																						<label for="result-completion">Completion</label>
+																						<select class="form-control" name="result-completion" id="result-completion">
+																							<option></option>
+																							<option>true</option>
+																							<option>false</option>
+																						</select>
+																					</div>
+
+																				</div><!-- .row -->
+
+																				<div class="row">
+
+																					<div class="form-group col-md-12">
+																						<label for="result-response">Response</label>
+																						<input type="text" class="form-control" aria-describedby="Response" id="result-response" />
+																					</div>
+
+																				</div><!-- .row -->
+
+																				<div class="row">
+
+																					<div class="form-group col-md-3">
+																						<label for="result-duration">Duration</label>
+																						<input type="text" class="form-control" aria-describedby="Duration" placeholder="P3Y6M4DT12H30M5S" id="result-duration" />
+																					</div>
+
+																				</div><!-- .row -->
+
+																				<div class="row">
+
+																					<div class="form-group col-md-12">
+																						<label for="result-extensions">Extensions</label>
+																						<textarea class="form-control" rows="5" aria-describedby="Result Extensions" id="result-extensions"></textarea>
+																					</div>
+
+																				</div><!-- .row -->
+
+																			</div><!-- .panel-body -->
+																		</div><!-- #result -->
+                                  </div><!-- .panel -->
+
+                                  <div class="panel panel-default">
+                                    <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#context" href="#context" class="collapsed">Context</a></h3></div>
+																		<div id="context" class="panel-collapse collapse">
+																			<div class="panel-body">
+
+																				<div class="row">
+
+
+																				</div><!-- .row -->
+
+																			</div><!-- .panel-body -->
+																		</div><!-- #context -->
+                                  </div><!-- .panel -->
+
                                 </div><!-- .col-md-12 -->
 
                               </div><!-- .row -->
@@ -445,6 +541,15 @@
                             </div>
 
                           </div><!-- .row -->
+
+													<div class="row">
+
+														<div class="form-group col-md-12">
+															<label for="search-registration-id">Registration ID</label>
+															<input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" id="search-registration-id" />
+														</div>
+
+													</div><!-- .row -->
 
                           <div class="row">
 
