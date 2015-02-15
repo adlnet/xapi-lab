@@ -43,27 +43,31 @@
 
             <div class="row">
 
-              <div class="form-group col-md-4">
-                <label for="endpoint">Endpoint</label>
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
-                  <input type="text" class="form-control" value="https://lrs.adlnet.gov/xapi/" aria-describedby="LRS Endpoint" id="endpoint" />
-                </div>
-              </div>
-              <div class="form-group col-md-4">
-                <label for="username">Username</label>
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                  <input type="text" class="form-control" value="xapi-tools" aria-describedby="Username" id="username" />
-                </div>
-              </div>
-              <div class="form-group col-md-4">
-                <label for="password">Password</label>
-                <div class="input-group">
-                  <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                  <input type="password" class="form-control" value="xapi-tools" aria-describedby="Password" id="password" />
-                </div>
-              </div>
+							<form id="endpoint-values">
+
+								<div class="form-group col-md-4">
+									<label for="endpoint">Endpoint</label>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-globe"></i></span>
+										<input type="url" class="form-control" value="https://lrs.adlnet.gov/xapi/" aria-describedby="LRS Endpoint" id="endpoint" required />
+									</div>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="username">Username</label>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+										<input type="text" class="form-control" value="xapi-tools" aria-describedby="Username" id="username" required />
+									</div>
+								</div>
+								<div class="form-group col-md-4">
+									<label for="password">Password</label>
+									<div class="input-group">
+										<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+										<input type="password" class="form-control" value="xapi-tools" aria-describedby="Password" id="password" required />
+									</div>
+								</div>
+
+							</form><!-- #endpoint-values -->
 
             </div><!-- .row -->
 
@@ -101,7 +105,7 @@
                         <div id="avo" class="panel-collapse collapse in">
                           <div class="panel-body">
 
-                            <form id="statement-values">
+                            <form id="statement-builder-values">
 
                               <div class="row">
 
@@ -115,7 +119,7 @@
 
                                         <div class="form-group col-md-6">
                                           <label for="actor-email">Email</label>
-                                          <input type="text" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Actor Email" id="actor-email" />
+                                          <input type="email" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Actor Email" id="actor-email" required />
                                         </div>
 
                                         <div class="form-group col-md-6">
@@ -146,7 +150,7 @@
 
                                         <div class="form-group col-md-2">
                                           <label for="verb-language">Language</label>
-                                          <input type="text" class="form-control" value="en-US" aria-describedby="Verb Language" id="verb-language" />
+                                          <input type="text" class="form-control" value="en-US" aria-describedby="Verb Language" id="verb-language" required />
                                         </div>
 
                                       </div><!-- .row -->
@@ -155,7 +159,7 @@
 
                                         <div class="form-group col-md-12">
                                           <label for="verb-id">Verb ID</label>
-                                          <input type="text" class="form-control" value="http://adlnet.gov/expapi/verbs/answered" aria-describedby="Verb ID" id="verb-id" />
+                                          <input type="text" class="form-control" value="http://adlnet.gov/expapi/verbs/answered" aria-describedby="Verb ID" id="verb-id" required />
                                         </div>
 
                                       </div><!-- .row -->
@@ -222,7 +226,7 @@
 
                                             <div class="form-group col-md-6">
                                               <label for="object-agent-email">Email</label>
-                                              <input type="text" class="form-control" value="tom@example.com" aria-describedby="Object Agent Email" id="object-agent-email" />
+                                              <input type="email" class="form-control" value="tom@example.com" aria-describedby="Object Agent Email" id="object-agent-email" required />
                                             </div>
 
                                             <div class="form-group col-md-6">
@@ -278,7 +282,7 @@
 
                                             <div class="form-group col-md-6">
                                               <label for="object-statementref-id">Statement ID</label>
-                                              <input type="text" class="form-control" value="" placeholder="137ca18f-97f6-4477-981a-696fb41c6b63" aria-describedby="Object Statement Reference ID" id="object-statementref-id" />
+                                              <input type="text" class="form-control" value="" placeholder="137ca18f-97f6-4477-981a-696fb41c6b63" aria-describedby="Object Statement Reference ID" id="object-statementref-id" required />
                                             </div>
 
                                           </div><!-- .row -->
@@ -333,22 +337,22 @@
 
                                           <div class="form-group col-md-2">
                                             <label for="result-scaled-score">Scaled Score</label>
-                                            <input type="text" class="form-control" placeholder="0" aria-describedby="Scaled Score" id="result-scaled-score" />
+                                            <input type="number" class="form-control" placeholder="0" aria-describedby="Scaled Score" id="result-scaled-score" />
                                           </div>
 
                                           <div class="form-group col-md-2">
                                             <label for="result-raw-score">Raw Score</label>
-                                            <input type="text" class="form-control" placeholder="80" aria-describedby="Raw Score" id="result-raw-score" />
+                                            <input type="number" class="form-control" placeholder="80" aria-describedby="Raw Score" id="result-raw-score" />
                                           </div>
 
                                           <div class="form-group col-md-2">
                                             <label for="result-min-score">Minimum Score</label>
-                                            <input type="text" class="form-control" placeholder="0" aria-describedby="Minimum Score" id="result-min-score" />
+                                            <input type="number" class="form-control" placeholder="0" aria-describedby="Minimum Score" id="result-min-score" />
                                           </div>
 
                                           <div class="form-group col-md-2">
                                             <label for="result-max-score">Maximum Score</label>
-                                            <input type="text" class="form-control" placeholder="100" aria-describedby="Maximum Score" id="result-max-score" />
+                                            <input type="number" class="form-control" placeholder="100" aria-describedby="Maximum Score" id="result-max-score" />
                                           </div>
 
                                         </div><!-- .row -->
@@ -415,7 +419,7 @@
 
                                           <div class="form-group col-md-6">
                                             <label for="context-registration-id">Registration ID</label>
-                                            <input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" id="context-registration-id">
+                                            <input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" id="context-registration-id" />
                                           </div>
 
                                         </div>
@@ -424,7 +428,7 @@
 
                                           <div class="form-group col-md-6">
                                             <label for="context-instructor-email">Instructor Email</label>
-                                            <input type="text" class="form-control" placeholder="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Instuctor Email" id="context-instructor-email" />
+                                            <input type="email" class="form-control" placeholder="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Instuctor Email" id="context-instructor-email" />
                                           </div>
 
                                           <div class="form-group col-md-6">
@@ -480,7 +484,7 @@
 
                                           <div class="form-group col-md-6">
                                             <label for="context-statement">Statement</label>
-                                            <input type="text" class="form-control" placeholder="137ca18f-97f6-4477-981a-696fb41c6b63" aria-describedby="Context Statement" id="context-statement" />
+                                            <input type="text" class="form-control" placeholder="137ca18f-97f6-4477-981a-696fb41c6b63" aria-describedby="Context Statement" id="context-statement" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
                                           </div>
 
                                         </div><!-- .row -->
@@ -501,7 +505,7 @@
                                 </label>
                               </div>
 
-                            </form>
+                            </form><!-- #statement-builder-values -->
 
                           </div><!-- .panel-body -->
                         </div><!-- .panel-collapse -->
@@ -571,101 +575,105 @@
                         <div class="panel-heading"><h3 class="panel-title">Query Options</h3></div>
                         <div class="panel-body">
 
-                          <div class="row">
+													<form id="statement-search-values">
 
-                            <div class="form-group col-md-6">
-                              <label for="search-predefined-verb">Predefined Verb</label>
-                              <select class="form-control" name="search-predefined-verb" id="search-predefined-verb">
-                                <option></option>
-                              </select>
-                            </div>
-                            <div class="form-group col-md-6">
-                              <label for="search-verb-sort">Verb Sort</label>
-                              <select class="form-control" name="search-verb-sort" id="search-verb-sort">
-                                <option value="">Descending</option>
-                                <option value="true">Ascending</option>
-                              </select>
-                            </div>
+														<div class="row">
 
-                          </div><!-- .row -->
+															<div class="form-group col-md-6">
+																<label for="search-predefined-verb">Predefined Verb</label>
+																<select class="form-control" name="search-predefined-verb" id="search-predefined-verb">
+																	<option></option>
+																</select>
+															</div>
+															<div class="form-group col-md-6">
+																<label for="search-verb-sort">Verb Sort</label>
+																<select class="form-control" name="search-verb-sort" id="search-verb-sort">
+																	<option value="">Descending</option>
+																	<option value="true">Ascending</option>
+																</select>
+															</div>
 
-                          <div class="row">
+														</div><!-- .row -->
 
-                            <div class="form-group col-md-12">
-                              <label for="search-user-verb-id">Verb ID</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Verb ID" placeholder="http://adlnet.gov/verbs/answered" id="search-user-verb-id" />
-                            </div>
+														<div class="row">
 
-                          </div><!-- .row -->
+															<div class="form-group col-md-12">
+																<label for="search-user-verb-id">Verb ID</label>
+																<input type="text" class="form-control" value="" aria-describedby="Verb ID" placeholder="http://adlnet.gov/verbs/answered" id="search-user-verb-id" />
+															</div>
 
-                          <div class="row">
+														</div><!-- .row -->
 
-                            <div class="form-group col-md-12">
-                              <label for="search-actor-email">Actor Email</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Actor Email" placeholder="tyler.mulligan.ctr@adlnet.gov" id="search-actor-email" />
-                            </div>
+														<div class="row">
 
-                          </div><!-- .row -->
+															<div class="form-group col-md-12">
+																<label for="search-actor-email">Actor Email</label>
+																<input type="email" class="form-control" value="" aria-describedby="Actor Email" placeholder="tyler.mulligan.ctr@adlnet.gov" id="search-actor-email" />
+															</div>
 
-                          <div class="row">
+														</div><!-- .row -->
 
-                            <div class="form-group col-md-12">
-                              <label for="search-activity-id">Activity ID</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Activity ID" placeholder="http://adlnet.gov/activities/question" id="search-activity-id" />
-                            </div>
+														<div class="row">
 
-                          </div><!-- .row -->
+															<div class="form-group col-md-12">
+																<label for="search-activity-id">Activity ID</label>
+																<input type="text" class="form-control" value="" aria-describedby="Activity ID" placeholder="http://adlnet.gov/activities/question" id="search-activity-id" />
+															</div>
 
-                          <div class="row">
+														</div><!-- .row -->
 
-                            <div class="form-group col-md-12">
-                              <label for="search-registration-id">Registration ID</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" id="search-registration-id" />
-                            </div>
+														<div class="row">
 
-                          </div><!-- .row -->
+															<div class="form-group col-md-12">
+																<label for="search-registration-id">Registration ID</label>
+																<input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" id="search-registration-id" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
+															</div>
 
-                          <div class="row">
+														</div><!-- .row -->
 
-                            <div class="form-group col-md-12">
-                              <label for="search-statement-id">Statement ID</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Activity ID" placeholder="ef8a3c05-7c88-4d46-a821-c6f2f061ef23" id="search-statement-id" />
-                            </div>
+														<div class="row">
 
-                          </div><!-- .row -->
+															<div class="form-group col-md-12">
+																<label for="search-statement-id">Statement ID</label>
+																<input type="text" class="form-control" value="" aria-describedby="Activity ID" placeholder="ef8a3c05-7c88-4d46-a821-c6f2f061ef23" id="search-statement-id" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
+															</div>
 
-                          <div class="row">
+														</div><!-- .row -->
 
-                            <div class="form-group col-md-6">
-                              <label for="search-statements-since-date">Since Date</label>
-                              <div class="input-group date" id="search-statements-since-date">
-                                <input type="text" class="form-control" />
-                                <span class="input-group-addon">
-                                  <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                              </div>
-                            </div>
+														<div class="row">
 
-                            <div class="form-group col-md-6">
-                              <label for="search-statements-until-date">Until Date</label>
-                              <div class="input-group date" id="search-statements-until-date">
-                                <input type="text" class="form-control" />
-                                <span class="input-group-addon">
-                                  <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                              </div>
-                            </div>
+															<div class="form-group col-md-6">
+																<label for="search-statements-since-date">Since Date</label>
+																<div class="input-group date" id="search-statements-since-date">
+																	<input type="text" class="form-control" />
+																	<span class="input-group-addon">
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																</div>
+															</div>
 
-                          </div><!-- .row -->
+															<div class="form-group col-md-6">
+																<label for="search-statements-until-date">Until Date</label>
+																<div class="input-group date" id="search-statements-until-date">
+																	<input type="text" class="form-control" />
+																	<span class="input-group-addon">
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																</div>
+															</div>
 
-                          <div class="row">
+														</div><!-- .row -->
 
-                            <div class="form-group col-md-12">
-                              <label for="search-limit">Limit</label>
-                              <input type="text" class="form-control" value="" aria-describedby="Limit" placeholder="25" id="search-limit" />
-                            </div>
+														<div class="row">
 
-                          </div><!-- .row -->
+															<div class="form-group col-md-12">
+																<label for="search-limit">Limit</label>
+																<input type="number" class="form-control" value="" aria-describedby="Limit" placeholder="25" id="search-limit" />
+															</div>
+
+														</div><!-- .row -->
+														
+													</form><!-- #statement-search-values -->
 
                           <p>
                             <a class="btn btn-primary" href="#" role="button" id="get-statements-with-search">Get Statements <i class="glyphicon glyphicon-cloud-download"></i></a>
@@ -717,400 +725,406 @@
               <p>The Document API section of the specification is still being worked out and thus some features are not yet implemented by LRSes. This part of the tool will provide basic interactions that are supported.</p>
             </div>
 
-            <div class="row">
-              <div class="col-md-12">
+						<form id="dmar-values">
 
-                <div class="panel panel-info">
-                  <div class="panel-heading"><h3 class="panel-title">Global Document Values</h3></div>
-                  <div class="panel-body">
+							<div class="row">
+							
+								<div class="col-md-12">
 
-                    <div class="form-group col-md-6">
-                      <label for="document-activity-id">Activity ID</label>
-                      <input type="text" class="form-control" value="http://adlnet.gov/expapi/activities/example" aria-describedby="Activity ID" id="document-activity-id" />
-                    </div>
+									<div class="panel panel-info">
+										<div class="panel-heading"><h3 class="panel-title">Global Document Values</h3></div>
+										<div class="panel-body">
 
-                    <div class="form-group col-md-6">
-                      <label for="document-actor-email">Actor Email</label>
-                      <input type="text" class="form-control" value="" aria-describedby="Actor Email" placeholder="tyler.mulligan.ctr@adlnet.gov" id="document-actor-email" />
-                    </div>
+											<div class="form-group col-md-6">
+												<label for="document-activity-id">Activity ID</label>
+												<input type="text" class="form-control" value="http://adlnet.gov/expapi/activities/example" aria-describedby="Activity ID" id="document-activity-id" />
+											</div>
 
-                  </div><!-- .panel-body -->
-                </div><!-- .panel -->
+											<div class="form-group col-md-6">
+												<label for="document-actor-email">Actor Email</label>
+												<input type="email" class="form-control" value="" aria-describedby="Actor Email" placeholder="tyler.mulligan.ctr@adlnet.gov" id="document-actor-email" />
+											</div>
 
-              </div><!-- .col-md-12 -->
-            </div><!-- .row -->
+										</div><!-- .panel-body -->
+									</div><!-- .panel -->
 
-            <div role="tabpanel">
+								
+								</div><!-- .col-md-12 -->
+							</div><!-- .row -->
 
-              <!-- Nav tabs -->
-              <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#tab-dmar-sending" aria-controls="tab-dmar-sending" role="tab" data-toggle="tab">Sending</a></li>
-                <li role="presentation"><a href="#tab-dmar-receiving" aria-controls="tab-dmar-receiving" role="tab" data-toggle="tab">Receiving</a></li>
-                <li role="presentation"><a href="#tab-dmar-deleting" aria-controls="tab-dmar-deleting" role="tab" data-toggle="tab">Deleting</a></li>
-              </ul>
+							<div role="tabpanel">
 
-              <div class="row">
+								<!-- Nav tabs -->
+								<ul class="nav nav-tabs" role="tablist">
+									<li role="presentation" class="active"><a href="#tab-dmar-sending" aria-controls="tab-dmar-sending" role="tab" data-toggle="tab">Sending</a></li>
+									<li role="presentation"><a href="#tab-dmar-receiving" aria-controls="tab-dmar-receiving" role="tab" data-toggle="tab">Receiving</a></li>
+									<li role="presentation"><a href="#tab-dmar-deleting" aria-controls="tab-dmar-deleting" role="tab" data-toggle="tab">Deleting</a></li>
+								</ul>
 
-                <!-- Tab panes -->
-                <div class="tab-content">
+								<div class="row">
 
-                  <div role="tabpanel" class="tab-pane active" id="tab-dmar-sending">
+									<!-- Tab panes -->
+									<div class="tab-content">
 
-                    <div class="col-md-6">
+										<div role="tabpanel" class="tab-pane active" id="tab-dmar-sending">
 
-                      <div class="panel panel-info">
-                        <div class="panel-heading"><h3 class="panel-title">Send Documents</h3></div>
-                        <div class="panel-body">
+											<div class="col-md-6">
 
-                          <h4>Document</h4>
+												<div class="panel panel-info">
+													<div class="panel-heading"><h3 class="panel-title">Send Documents</h3></div>
+													<div class="panel-body">
 
-                          <div role="tabpanel">
+														<h4>Document</h4>
 
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                              <li role="presentation" class="active"><a href="#tab-1a" aria-controls="tab-1a" role="tab" data-toggle="tab">State</a></li>
-                              <li role="presentation"><a href="#tab-2a" aria-controls="tab-2a" role="tab" data-toggle="tab">Activity Profile</a></li>
-                              <li role="presentation"><a href="#tab-3a" aria-controls="tab-3a" role="tab" data-toggle="tab">Agent Profile</a></li>
-                            </ul>
+														<div role="tabpanel">
 
-                            <!-- Tab panes -->
-                            <div class="tab-content">
+															<!-- Nav tabs -->
+															<ul class="nav nav-tabs" role="tablist">
+																<li role="presentation" class="active"><a href="#tab-1a" aria-controls="tab-1a" role="tab" data-toggle="tab">State</a></li>
+																<li role="presentation"><a href="#tab-2a" aria-controls="tab-2a" role="tab" data-toggle="tab">Activity Profile</a></li>
+																<li role="presentation"><a href="#tab-3a" aria-controls="tab-3a" role="tab" data-toggle="tab">Agent Profile</a></li>
+															</ul>
 
-                              <div role="tabpanel" class="tab-pane active" id="tab-1a">
+															<!-- Tab panes -->
+															<div class="tab-content">
 
-                                <div class="row">
+																<div role="tabpanel" class="tab-pane active" id="tab-1a">
 
-                                  <div class="form-group col-md-6">
-                                    <label for="set-document-state-id">State ID</label>
-                                    <input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="set-document-state-id" />
-                                  </div>
+																	<div class="row">
 
-                                  <div class="form-group col-md-6">
-                                    <label for="set-document-state-string">State Value</label>
-                                    <input type="text" class="form-control" value="" aria-describedby="State Value" placeholder="" id="set-document-state-string" />
-                                  </div>
+																		<div class="form-group col-md-6">
+																			<label for="set-document-state-id">State ID</label>
+																			<input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="set-document-state-id" />
+																		</div>
 
-                                </div><!-- .row -->
+																		<div class="form-group col-md-6">
+																			<label for="set-document-state-string">State Value</label>
+																			<input type="text" class="form-control" value="" aria-describedby="State Value" placeholder="" id="set-document-state-string" />
+																		</div>
 
-                                <p>
-                                  <a class="btn btn-primary" href="#" role="button" id="send-state">Send State <i class="glyphicon glyphicon-send"></i></a>
-                                </p>
-                        
-                              </div><!-- tab-1a -->
+																	</div><!-- .row -->
 
-                              <div role="tabpanel" class="tab-pane" id="tab-2a">
-                        
-                                <div class="row">
+																	<p>
+																		<a class="btn btn-primary" href="#" role="button" id="send-state">Send State <i class="glyphicon glyphicon-send"></i></a>
+																	</p>
+													
+																</div><!-- tab-1a -->
 
-                                  <div class="form-group col-md-6">
-                                    <label for="set-document-activity-profile-id">Profile ID</label>
-                                    <input type="text" class="form-control" value="" aria-describedby="Agent Profile ID" placeholder="" id="set-document-activity-profile-id" />
-                                  </div>
+																<div role="tabpanel" class="tab-pane" id="tab-2a">
+													
+																	<div class="row">
 
-                                  <div class="form-group col-md-6">
-                                    <label for="set-document-activity-profile-string">Profile Value</label>
-                                    <input type="text" class="form-control" value="" aria-describedby="Activity Profile Value" placeholder="" id="set-document-activity-profile-string" />
-                                  </div>
+																		<div class="form-group col-md-6">
+																			<label for="set-document-activity-profile-id">Profile ID</label>
+																			<input type="text" class="form-control" value="" aria-describedby="Agent Profile ID" placeholder="" id="set-document-activity-profile-id" />
+																		</div>
 
-                                </div><!-- .row -->
+																		<div class="form-group col-md-6">
+																			<label for="set-document-activity-profile-string">Profile Value</label>
+																			<input type="text" class="form-control" value="" aria-describedby="Activity Profile Value" placeholder="" id="set-document-activity-profile-string" />
+																		</div>
 
-                                <p>
-                                  <a class="btn btn-primary" href="#" role="button" id="send-activity-profile">Send Activity Profile <i class="glyphicon glyphicon-send"></i></a>
-                                </p>
-                        
-                              </div><!-- tab-2a -->
-
-                              <div role="tabpanel" class="tab-pane" id="tab-3a">
-                        
-                                <div class="row">
-
-                                  <div class="form-group col-md-6">
-                                    <label for="set-document-agent-profile-id">Profile ID</label>
-                                    <input type="text" class="form-control" value="" aria-describedby="Agent Profile ID" placeholder="" id="set-document-agent-profile-id" />
-                                  </div>
+																	</div><!-- .row -->
 
-                                  <div class="form-group col-md-6">
-                                    <label for="set-document-agent-profile-string">Profile Value</label>
-                                    <input type="text" class="form-control" value="" aria-describedby="Agent Profile Value" placeholder="" id="set-document-agent-profile-string" />
-                                  </div>
-
-                                </div><!-- .row -->
-
-                                <p>
-                                  <a class="btn btn-primary" href="#" role="button" id="send-agent-profile">Send Agent Profile <i class="glyphicon glyphicon-send"></i></a>
-                                </p>
-
-                              </div><!-- tab-3a -->
-                            
-                            </div><!-- .tab-content -->
-                            
-                          </div><!-- tab-panel -->
+																	<p>
+																		<a class="btn btn-primary" href="#" role="button" id="send-activity-profile">Send Activity Profile <i class="glyphicon glyphicon-send"></i></a>
+																	</p>
+													
+																</div><!-- tab-2a -->
+
+																<div role="tabpanel" class="tab-pane" id="tab-3a">
+													
+																	<div class="row">
+
+																		<div class="form-group col-md-6">
+																			<label for="set-document-agent-profile-id">Profile ID</label>
+																			<input type="text" class="form-control" value="" aria-describedby="Agent Profile ID" placeholder="" id="set-document-agent-profile-id" />
+																		</div>
 
-                        </div><!-- .panel-body -->
-                      </div><!-- .panel -->
-
-                    </div><!-- .col-md-6 -->
-                    <div class="col-md-6">
-
-                      <div class="panel panel-default">
-                        <div class="panel-heading"><h3 class="panel-title">Documents Sent to the LRS</h3></div>
-                        <div class="panel-body">
-
-                          <div>
-                            <div id="sent-documents"></div>
-                          </div>
-
-                          <div class="pull-right">
-                            <a class="btn btn-default" href="#" role="button" id="clear-sent-documents">Clear Documents <i class="glyphicon glyphicon-remove-sign"></i></a>
-                          </div>
-                      
-                        </div><!-- .panel-body -->
-                      </div><!-- .panel -->
-
-<!--
-                      <div class="panel panel-default">
-                        <div class="panel-heading"><h3 class="panel-title">Documents Updated in the LRS</h3></div>
-                        <div class="panel-body">
-
-                          <div>
-                            <div id="updated-documents"></div>
-                          </div>
-
-                          <div class="pull-right">
-                            <a class="btn btn-default" href="#" role="button" id="clear-updated-documents">Clear Documents <i class="glyphicon glyphicon-remove-sign"></i></a>
-                          </div>
-                      
-                        </div><!-- .panel-body -->
-<!--                      </div><!-- .panel -->
-
-                    </div><!-- .col-md-6 -->
-
-                  </div><!-- #tab-dmar-sending -->
-
-                  <div role="tabpanel" class="tab-pane" id="tab-dmar-receiving">
-
-                    <div class="col-md-6">
-
-                      <div class="panel panel-info">
-                        <div class="panel-heading"><h3 class="panel-title">Receive Documents</h3></div>
-                        <div class="panel-body">
-
-                          <h4>Global</h4>
-
-                          <div class="row">
-                            <div class="form-group col-md-12">
-                              <label for="get-document-since-date">Since Date</label>
-                              <div class="input-group date" id="get-document-since-date">
-                                <input type="text" class="form-control" />
-                                <span class="input-group-addon">
-                                  <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                              </div>
-                            </div>
-                          </div>
+																		<div class="form-group col-md-6">
+																			<label for="set-document-agent-profile-string">Profile Value</label>
+																			<input type="text" class="form-control" value="" aria-describedby="Agent Profile Value" placeholder="" id="set-document-agent-profile-string" />
+																		</div>
+
+																	</div><!-- .row -->
+
+																	<p>
+																		<a class="btn btn-primary" href="#" role="button" id="send-agent-profile">Send Agent Profile <i class="glyphicon glyphicon-send"></i></a>
+																	</p>
+
+																</div><!-- tab-3a -->
+															
+															</div><!-- .tab-content -->
+															
+														</div><!-- tab-panel -->
 
-                          <h4>Document</h4>
-
-                          <div role="tabpanel">
+													</div><!-- .panel-body -->
+												</div><!-- .panel -->
+
+											</div><!-- .col-md-6 -->
+											<div class="col-md-6">
+
+												<div class="panel panel-default">
+													<div class="panel-heading"><h3 class="panel-title">Documents Sent to the LRS</h3></div>
+													<div class="panel-body">
+
+														<div>
+															<div id="sent-documents"></div>
+														</div>
+
+														<div class="pull-right">
+															<a class="btn btn-default" href="#" role="button" id="clear-sent-documents">Clear Documents <i class="glyphicon glyphicon-remove-sign"></i></a>
+														</div>
+												
+													</div><!-- .panel-body -->
+												</div><!-- .panel -->
+
+	<!--
+												<div class="panel panel-default">
+													<div class="panel-heading"><h3 class="panel-title">Documents Updated in the LRS</h3></div>
+													<div class="panel-body">
+
+														<div>
+															<div id="updated-documents"></div>
+														</div>
+
+														<div class="pull-right">
+															<a class="btn btn-default" href="#" role="button" id="clear-updated-documents">Clear Documents <i class="glyphicon glyphicon-remove-sign"></i></a>
+														</div>
+												
+													</div><!-- .panel-body -->
+	<!--                      </div><!-- .panel -->
+
+											</div><!-- .col-md-6 -->
+
+										</div><!-- #tab-dmar-sending -->
+
+										<div role="tabpanel" class="tab-pane" id="tab-dmar-receiving">
+
+											<div class="col-md-6">
+
+												<div class="panel panel-info">
+													<div class="panel-heading"><h3 class="panel-title">Receive Documents</h3></div>
+													<div class="panel-body">
+
+														<h4>Global</h4>
+
+														<div class="row">
+															<div class="form-group col-md-12">
+																<label for="get-document-since-date">Since Date</label>
+																<div class="input-group date" id="get-document-since-date">
+																	<input type="text" class="form-control" />
+																	<span class="input-group-addon">
+																		<span class="glyphicon glyphicon-calendar"></span>
+																	</span>
+																</div>
+															</div>
+														</div>
 
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                              <li role="presentation" class="active"><a href="#tab-1b" aria-controls="tab-1b" role="tab" data-toggle="tab">State</a></li>
-                              <li role="presentation"><a href="#tab-2b" aria-controls="tab-2b" role="tab" data-toggle="tab">Activity Profile</a></li>
-                              <li role="presentation"><a href="#tab-3b" aria-controls="tab-3b" role="tab" data-toggle="tab">Agent Profile</a></li>
-                            </ul>
+														<h4>Document</h4>
+
+														<div role="tabpanel">
 
-                            <!-- Tab panes -->
-                            <div class="tab-content">
+															<!-- Nav tabs -->
+															<ul class="nav nav-tabs" role="tablist">
+																<li role="presentation" class="active"><a href="#tab-1b" aria-controls="tab-1b" role="tab" data-toggle="tab">State</a></li>
+																<li role="presentation"><a href="#tab-2b" aria-controls="tab-2b" role="tab" data-toggle="tab">Activity Profile</a></li>
+																<li role="presentation"><a href="#tab-3b" aria-controls="tab-3b" role="tab" data-toggle="tab">Agent Profile</a></li>
+															</ul>
 
-                              <div role="tabpanel" class="tab-pane active" id="tab-1b">
+															<!-- Tab panes -->
+															<div class="tab-content">
 
-                                <div class="row">
+																<div role="tabpanel" class="tab-pane active" id="tab-1b">
 
-                                  <div class="form-group col-md-6">
-                                    <label for="get-document-state-id">State ID</label>
-                                    <input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="get-document-state-id" />
-                                  </div>
-                                  
-                                </div><!-- .row -->
+																	<div class="row">
 
-                                <p>
-                                  <a class="btn btn-primary" href="#" role="button" id="get-state">Get State <i class="glyphicon glyphicon-cloud-download"></i></a>
-                                </p>
+																		<div class="form-group col-md-6">
+																			<label for="get-document-state-id">State ID</label>
+																			<input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="get-document-state-id" />
+																		</div>
+																		
+																	</div><!-- .row -->
 
-                              </div><!-- tab-1b -->
+																	<p>
+																		<a class="btn btn-primary" href="#" role="button" id="get-state">Get State <i class="glyphicon glyphicon-cloud-download"></i></a>
+																	</p>
 
-                              <div role="tabpanel" class="tab-pane" id="tab-2b">
-            
-                                <div class="row">
+																</div><!-- tab-1b -->
 
-                                  <div class="form-group col-md-6">
-                                    <label for="get-document-activity-profile-id">Profile ID</label>
-                                    <input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="get-document-activity-profile-id" />
-                                  </div>
-                                  
-                                </div><!-- .row -->
+																<div role="tabpanel" class="tab-pane" id="tab-2b">
+							
+																	<div class="row">
 
-                                <p>
-                                  <a class="btn btn-primary" href="#" role="button" id="get-activity-profile">Get Activity Profile <i class="glyphicon glyphicon-cloud-download"></i></a>
-                                </p>
+																		<div class="form-group col-md-6">
+																			<label for="get-document-activity-profile-id">Profile ID</label>
+																			<input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="get-document-activity-profile-id" />
+																		</div>
+																		
+																	</div><!-- .row -->
 
-                              </div><!-- tab-2b -->
+																	<p>
+																		<a class="btn btn-primary" href="#" role="button" id="get-activity-profile">Get Activity Profile <i class="glyphicon glyphicon-cloud-download"></i></a>
+																	</p>
 
-                              <div role="tabpanel" class="tab-pane" id="tab-3b">
-                          
-                              <div class="row">
+																</div><!-- tab-2b -->
 
-                                <div class="form-group col-md-6">
-                                  <label for="get-document-agent-profile-id">Profile ID</label>
-                                  <input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="get-document-agent-profile-id" />
-                                </div>
-                                
-                              </div><!-- .row -->
+																<div role="tabpanel" class="tab-pane" id="tab-3b">
+														
+																<div class="row">
 
-                              <p>
-                                <a class="btn btn-primary" href="#" role="button" id="get-agent-profile">Get Agent Profile <i class="glyphicon glyphicon-cloud-download"></i></a>
-                              </p>
+																	<div class="form-group col-md-6">
+																		<label for="get-document-agent-profile-id">Profile ID</label>
+																		<input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="get-document-agent-profile-id" />
+																	</div>
+																	
+																</div><!-- .row -->
 
-                              </div><!-- tab-3b -->
-                            
-                            </div><!-- .tab-content -->
-                            
-                          </div><!-- tab-panel -->
+																<p>
+																	<a class="btn btn-primary" href="#" role="button" id="get-agent-profile">Get Agent Profile <i class="glyphicon glyphicon-cloud-download"></i></a>
+																</p>
 
-                        </div><!-- .panel-body -->
-                      </div><!-- .panel -->
+																</div><!-- tab-3b -->
+															
+															</div><!-- .tab-content -->
+															
+														</div><!-- tab-panel -->
 
-                    </div><!-- .col-md-6 -->
-                    <div class="col-md-6">
+													</div><!-- .panel-body -->
+												</div><!-- .panel -->
 
-                      <div class="panel panel-default">
-                        <div class="panel-heading"><h3 class="panel-title">Documents Received from the LRS</h3></div>
-                        <div class="panel-body">
+											</div><!-- .col-md-6 -->
+											<div class="col-md-6">
 
-                          <div>
-                            <div id="received-documents"></div>
-                          </div>
+												<div class="panel panel-default">
+													<div class="panel-heading"><h3 class="panel-title">Documents Received from the LRS</h3></div>
+													<div class="panel-body">
 
-                          <div class="pull-right">
-                            <a class="btn btn-default" href="#" role="button" id="clear-received-documents">Clear Documents <i class="glyphicon glyphicon-remove-sign"></i></a>
-                          </div>
-                      
-                        </div><!-- .panel-body -->
-                      </div><!-- .panel -->
-
-                    </div><!-- .col-md-6 -->
-
-                  </div><!-- #tab-dmar-receiving -->
-
-                  <div role="tabpanel" class="tab-pane" id="tab-dmar-deleting">
+														<div>
+															<div id="received-documents"></div>
+														</div>
 
-                    <div class="col-md-6">
+														<div class="pull-right">
+															<a class="btn btn-default" href="#" role="button" id="clear-received-documents">Clear Documents <i class="glyphicon glyphicon-remove-sign"></i></a>
+														</div>
+												
+													</div><!-- .panel-body -->
+												</div><!-- .panel -->
+
+											</div><!-- .col-md-6 -->
+
+										</div><!-- #tab-dmar-receiving -->
+
+										<div role="tabpanel" class="tab-pane" id="tab-dmar-deleting">
 
-                      <div class="panel panel-info">
-                        <div class="panel-heading"><h3 class="panel-title">Delete Documents</h3></div>
-                        <div class="panel-body">
+											<div class="col-md-6">
 
-                          <h4>Document</h4>
+												<div class="panel panel-info">
+													<div class="panel-heading"><h3 class="panel-title">Delete Documents</h3></div>
+													<div class="panel-body">
 
-                          <div role="tabpanel">
+														<h4>Document</h4>
 
-                            <!-- Nav tabs -->
-                            <ul class="nav nav-tabs" role="tablist">
-                              <li role="presentation" class="active"><a href="#tab-1c" aria-controls="tab-1c" role="tab" data-toggle="tab">State</a></li>
-                              <li role="presentation"><a href="#tab-2c" aria-controls="tab-2c" role="tab" data-toggle="tab">Activity Profile</a></li>
-                              <li role="presentation"><a href="#tab-3c" aria-controls="tab-3c" role="tab" data-toggle="tab">Agent Profile</a></li>
-                            </ul>
+														<div role="tabpanel">
 
-                            <!-- Tab panes -->
-                            <div class="tab-content">
+															<!-- Nav tabs -->
+															<ul class="nav nav-tabs" role="tablist">
+																<li role="presentation" class="active"><a href="#tab-1c" aria-controls="tab-1c" role="tab" data-toggle="tab">State</a></li>
+																<li role="presentation"><a href="#tab-2c" aria-controls="tab-2c" role="tab" data-toggle="tab">Activity Profile</a></li>
+																<li role="presentation"><a href="#tab-3c" aria-controls="tab-3c" role="tab" data-toggle="tab">Agent Profile</a></li>
+															</ul>
 
-                              <div role="tabpanel" class="tab-pane active" id="tab-1c">
+															<!-- Tab panes -->
+															<div class="tab-content">
 
-                                <div class="row">
+																<div role="tabpanel" class="tab-pane active" id="tab-1c">
 
-                                  <div class="form-group col-md-6">
-                                    <label for="delete-document-state-id">State ID</label>
-                                    <input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="delete-document-state-id" />
-                                  </div>
-                                  
-                                </div><!-- .row -->
+																	<div class="row">
 
-                                <p>
-                                  <a class="btn btn-danger" href="#" role="button" id="delete-state">Delete State <i class="glyphicon glyphicon-remove"></i></a>
-                                </p>
+																		<div class="form-group col-md-6">
+																			<label for="delete-document-state-id">State ID</label>
+																			<input type="text" class="form-control" value="" aria-describedby="State ID" placeholder="" id="delete-document-state-id" />
+																		</div>
+																		
+																	</div><!-- .row -->
 
-                              </div><!-- tab-1b -->
+																	<p>
+																		<a class="btn btn-danger" href="#" role="button" id="delete-state">Delete State <i class="glyphicon glyphicon-remove"></i></a>
+																	</p>
 
-                              <div role="tabpanel" class="tab-pane" id="tab-2c">
-            
-                                <div class="row">
+																</div><!-- tab-1b -->
 
-                                  <div class="form-group col-md-6">
-                                    <label for="delete-document-activity-profile-id">Profile ID</label>
-                                    <input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="delete-document-activity-profile-id" />
-                                  </div>
-                                  
-                                </div><!-- .row -->
+																<div role="tabpanel" class="tab-pane" id="tab-2c">
+							
+																	<div class="row">
 
-                                <p>
-                                  <a class="btn btn-danger" href="#" role="button" id="delete-activity-profile">Delete Activity Profile <i class="glyphicon glyphicon-remove"></i></a>
-                                </p>
+																		<div class="form-group col-md-6">
+																			<label for="delete-document-activity-profile-id">Profile ID</label>
+																			<input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="delete-document-activity-profile-id" />
+																		</div>
+																		
+																	</div><!-- .row -->
 
-                              </div><!-- tab-2b -->
+																	<p>
+																		<a class="btn btn-danger" href="#" role="button" id="delete-activity-profile">Delete Activity Profile <i class="glyphicon glyphicon-remove"></i></a>
+																	</p>
 
-                              <div role="tabpanel" class="tab-pane" id="tab-3c">
-                          
-                              <div class="row">
+																</div><!-- tab-2b -->
 
-                                <div class="form-group col-md-6">
-                                  <label for="delete-document-agent-profile-id">Profile ID</label>
-                                  <input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="delete-document-agent-profile-id" />
-                                </div>
-                                
-                              </div><!-- .row -->
+																<div role="tabpanel" class="tab-pane" id="tab-3c">
+														
+																<div class="row">
 
-                              <p>
-                                <a class="btn btn-danger" href="#" role="button" id="delete-agent-profile">Delete Agent Profile <i class="glyphicon glyphicon-remove"></i></a>
-                              </p>
+																	<div class="form-group col-md-6">
+																		<label for="delete-document-agent-profile-id">Profile ID</label>
+																		<input type="text" class="form-control" value="" aria-describedby="Profile ID" placeholder="" id="delete-document-agent-profile-id" />
+																	</div>
+																	
+																</div><!-- .row -->
 
-                              </div><!-- tab-3b -->
-                            
-                            </div><!-- .tab-content -->
-                            
-                          </div><!-- tab-panel -->
+																<p>
+																	<a class="btn btn-danger" href="#" role="button" id="delete-agent-profile">Delete Agent Profile <i class="glyphicon glyphicon-remove"></i></a>
+																</p>
 
-                        </div><!-- .panel-body -->
-                      </div><!-- .panel -->
+																</div><!-- tab-3b -->
+															
+															</div><!-- .tab-content -->
+															
+														</div><!-- tab-panel -->
 
-                    </div><!-- .col-md-6 -->
-                    <div class="col-md-6">
+													</div><!-- .panel-body -->
+												</div><!-- .panel -->
 
-                      <div class="panel panel-default">
-                        <div class="panel-heading"><h3 class="panel-title">Documents Deleted from the LRS</h3></div>
-                        <div class="panel-body">
+											</div><!-- .col-md-6 -->
+											<div class="col-md-6">
 
-                          <div>
-                            <div id="deleted-documents"></div>
-                          </div>
+												<div class="panel panel-default">
+													<div class="panel-heading"><h3 class="panel-title">Documents Deleted from the LRS</h3></div>
+													<div class="panel-body">
 
-                          <div class="pull-right">
-                            <a class="btn btn-default" href="#" role="button" id="clear-deleted-documents">Clear Documents <i class="glyphicon glyphicon-remove-sign"></i></a>
-                          </div>
-                      
-                        </div><!-- .panel-body -->
-                      </div><!-- .panel -->
+														<div>
+															<div id="deleted-documents"></div>
+														</div>
 
-                    </div><!-- .col-md-6 -->
+														<div class="pull-right">
+															<a class="btn btn-default" href="#" role="button" id="clear-deleted-documents">Clear Documents <i class="glyphicon glyphicon-remove-sign"></i></a>
+														</div>
+												
+													</div><!-- .panel-body -->
+												</div><!-- .panel -->
 
-                  </div><!-- #tab-dmar-deleting -->
+											</div><!-- .col-md-6 -->
 
-                </div><!-- .tab-content -->
+										</div><!-- #tab-dmar-deleting -->
 
-              </div><!-- tabpanel -->
+									</div><!-- .tab-content -->
 
-            </div><!-- .row -->
+								</div><!-- tabpanel -->
 
+							</div><!-- .row -->
+		
+						</form><!-- #dmar-values -->
+		
           </div><!-- .panel-body -->
         </div><!-- #damar -->
       </div><!-- .panel -->
@@ -1146,6 +1160,9 @@
 
     <!-- Notifications -->
     <script type="text/javascript" src="js/bootstrap-growl.min.js"></script>
+    
+    <!-- Form Validation -->
+    <script type="text/javascript" src="js/validator.min.js"></script>
 
     <!-- custom functions -->
     <script type="text/javascript" src="js/scripts.js"></script>

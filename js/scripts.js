@@ -78,11 +78,16 @@ $(".collapser a").click(function (e) { e.preventDefault(); });
 
 /* Statement Builder */
 
-$("#statement-values").change(function(e) {
+$("#statement-builder-values").change(function(e) {
     if ($("#automatically-build").is(':checked')) {
         previewStatement();
     }
 });
+
+$("#endpoint-values").validator();
+$("#statement-builder-values").validator();
+$("#statement-search-values").validator();
+$("#dmar-values").validator();
 
 $("#predefined-verb").change(function() {
     var $this = $(this);
