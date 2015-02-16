@@ -249,7 +249,7 @@
 
                                             <div class="form-group col-md-12">
                                               <label class="control-label" for="object-group-members">Group Members</label>
-                                              <textarea class="form-control" rows="20" aria-describedby="Object Group Members" id="object-group-members">[
+                                              <textarea class="form-control" rows="20" aria-describedby="Object Group Members" id="object-group-members" required>[
     {
         "name": "Bob",
         "account": {
@@ -270,6 +270,7 @@
     }
 ]
                                               </textarea>
+                                              <span class="help-block with-errors">Array of Agent Objects</span>
                                             </div>
 
                                           </div><!-- .row -->
@@ -449,6 +450,7 @@
                                           <div class="form-group col-md-12">
                                             <label class="control-label" for="context-team-members">Team Members</label>
                                             <textarea class="form-control" rows="10" aria-describedby="Context Team Members" id="context-team-members"></textarea>
+                                            <span class="help-block with-errors">Array of Agent Objects</span>
                                           </div>
 
                                         </div><!-- .row -->
