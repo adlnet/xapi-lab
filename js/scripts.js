@@ -286,6 +286,14 @@ function buildStatement() {
     var contextPlatform = $("#context-platform").val();
     var contextLanguage = $("#context-language").val();
     var contextStatement = $("#context-statement").val();
+    var attachmentUsageType = $("#attachment-usage-type").val();
+    var attachmentDisplay = $("#attachment-display").val();
+    var attachmentDescription = $("#attachment-description").val();
+    var attachmentLanguage = $("#attachment-language").val();
+    var attachmentContentType = $("#attachment-content-type").val();
+    var attachmentLength = $("#attachment-length").val();
+    var attachmentSha2 = $("#attachment-sha2").val();
+    var attachmentFileURL = $("#attachment-file-url").val();
 
     var stmt = {};
     stmt['actor'] = {};
@@ -370,6 +378,25 @@ function buildStatement() {
             stmt['context']['statement']['id'] = contextStatement;
             stmt['context']['statement']['objectType'] = "Group";
         }
+    }
+
+    if ( attachmentDisplay != "" || attachmentDescription != "" || attachmentLanguage != "" || attachmentContentType != "" || attachmentLength != "" || attachmentSha2 != "" ||attachmentFileURL != "" ) {
+      stmt['attachments'] = [];
+      var attachment = {};
+      attachment['usageType'] = attachmentUsageType;
+      if (attachmentDisplay != "" && attachmentLanguage != "") {
+          attachment['display'] = {};
+          attachment['display'][attachmentLanguage] = attachmentDisplay;
+      }
+      if (attachmentDescription != "" && attachmentLanguage != "") {
+          attachment['description'] = {};
+          attachment['description'][attachmentLanguage] = attachmentDescription;
+      }      
+      attachment['contentType'] = attachmentContentType;
+      attachment['length'] = parseInt(attachmentLength);
+      attachment['sha2'] = attachmentSha2;
+      if (attachmentFileURL != "") { attachment['fileUrl'] = attachmentFileURL; }
+      stmt['attachments'].push(attachment);
     }
 
     stmt['object']['objectType'] = objectType;
