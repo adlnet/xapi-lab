@@ -530,8 +530,11 @@ function getStatementsWithSearch() {
     var verbId = $("#search-user-verb-id").val();
     var actorEmail = $("#search-actor-email").val();
     var activityId = $("#search-activity-id").val();
+    var relatedAgents = $("#search-related-agents").val();
+    var relatedActivities = $("#search-related-activities").val();
     var registrationId = $("#search-registration-id").val();
     var statementId = $("#search-statement-id").val();
+    var voidedStatementId = $("#search-voided-statement-id").val();
     var sinceDate = $("#search-statements-since-date input").val();
     var untilDate = $("#search-statements-until-date input").val();
     var limit = $("#search-limit").val();
@@ -542,8 +545,11 @@ function getStatementsWithSearch() {
     if (verbSort != "") { search['ascending'] = verbSort; }
     if (actorEmail != "") { search['agent'] = JSON.stringify({ "mbox": "mailto:" + actorEmail}); }
     if (activityId != "") { search['activity'] = activityId; }
+    if (relatedAgents != "") { search['related_agents'] = relatedAgents; }
+    if (relatedActivities != "") { search['related_activities'] = relatedActivities; }
     if (registrationId != "") { search['registration'] = registrationId; }
     if (statementId != "") { search['statementId'] = statementId; }
+    if (voidedStatementId != "") { search['voidedStatementId'] = voidedStatementId; }
     if (sinceDate != "") { search['since'] = sinceDate; }
     if (untilDate != "") { search['until'] = untilDate; }
     if (limit != "") { search['limit'] = limit; }
