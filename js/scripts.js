@@ -31,6 +31,103 @@ ADL.xhrRequestOnError = function(xhr, method, url, callback, callbackargs) {
 
 stmts = [];
 
+// Examples -- for text areas where multiline placeholders aren't allowed
+var accountAgentExample = {
+  "name": "xapiguy",
+  "homePage": "http://example.com"
+};
+
+var accountGroupExample = {
+  "name": "Team xAPI",
+  "homePage": "http://xapi.adlnet.gov"
+};
+
+var groupExample = [
+    {
+        "name": "Bob",
+        "account": {
+            "homePage": "http://www.example.com",
+            "name": "13936749"
+        },
+        "objectType": "Agent"
+    },
+    {
+        "name": "Alice",
+        "mbox_sha1sum": "ebd31e95054c018b10727de4db3ef2ec3a016ee9",
+        "objectType": "Agent"
+    }
+];
+
+var groupExample2 = [
+    {
+        "name": "Bob",
+        "account": {
+            "homePage": "http://www.example.com",
+            "name": "13936749"
+        },
+        "objectType": "Agent"
+    },
+    {
+        "name": "Carol",
+        "openid": "http://carol.openid.example.org/",
+        "objectType": "Agent"
+    },
+    {
+        "name": "Alice",
+        "mbox_sha1sum": "ebd31e95054c018b10727de4db3ef2ec3a016ee9",
+        "objectType": "Agent"
+    }
+];
+
+var substatementExample = {
+    "actor" : {
+        "objectType": "Agent",
+        "mbox":"mailto:test@example.com" 
+    },
+    "verb" : { 
+        "id":"http://example.com/visited", 
+        "display":{
+            "en-US":"will visit"
+        } 
+    },
+    "object": {
+        "objectType": "Activity",
+        "id":"http://example.com/website",
+        "definition": { 
+            "name" : {
+                "en-US":"Some Awesome Website"
+            }
+        }
+    }
+};
+
+var contextActivitiesExample = {
+  "parent": [
+    {
+      "definition": {
+        "name": {
+          "en-US": "xAPI Lab"
+        },
+        "description": {
+          "en-US": "Assisting in developing statements and communicating with a Learning Record Store (LRS)"
+        }
+      },
+      "id": "http://adlnet.github.io/xapi-lab",
+      "objectType": "Activity"
+    },
+    {
+      "definition": {
+        "name": {
+          "en-US": "Statement Builder Context"
+        }
+      },
+      "id": "http://adlnet.github.io/xapi-lab/index.html#context",
+      "objectType": "Activity"
+    }
+  ]
+};
+
+
 // Page Load
 $(function(){
     // Pretty Print
@@ -46,6 +143,11 @@ $(function(){
             $options2.append($("<option />").val(ADL.verbs[key]['id']).text(ADL.verbs[key]['display']['en-US']));
         }
     }
+    
+    // Populate textareas
+    $("#actor-group-members").val(JSON.stringify(groupExample, undefined, 4));
+    $("#object-group-members").val(JSON.stringify(groupExample2, undefined, 4));
+    $("#object-substatement-json").val(JSON.stringify(substatementExample, undefined, 4));
 
     $("#actor-types > div").hide();
     $("#actor-Agent").show();
@@ -53,9 +155,9 @@ $(function(){
     $("#object-types > div").hide();
     $("#object-Activity").show();
 
-    $('#search-statements-since-date').datetimepicker(dateTimeSettings);
-    $('#search-statements-until-date').datetimepicker(dateTimeSettings);
-    $('#get-document-since-date').datetimepicker(dateTimeSettings);
+    $("#search-statements-since-date").datetimepicker(dateTimeSettings);
+    $("#search-statements-until-date").datetimepicker(dateTimeSettings);
+    $("#get-document-since-date").datetimepicker(dateTimeSettings);
 
     var hash = window.location.hash;
     hash && $('ul.nav a[href="' + hash + '"]').tab('show');
@@ -98,6 +200,16 @@ $("#actor-type").change(function() {
     $("#actor-types > #actor-" + actorType).show();
 });
 
+$("#actor-agent-account-example").click(function(e) {
+    $("#actor-agent-account").val(JSON.stringify(accountAgentExample, undefined, 4));
+    e.preventDefault();
+});
+
+$("#actor-group-account-example").click(function(e) {
+    $("#actor-group-account").val(JSON.stringify(accountGroupExample, undefined, 4));
+    e.preventDefault();
+});
+
 $("#predefined-verb").change(function() {
     var $this = $(this);
     $("#verb-id").val($this.val());
@@ -108,6 +220,16 @@ $("#object-type").change(function() {
     var objectType = $(this).val();
     $("#object-types > div").hide();
     $("#object-types > #object-" + objectType).show();
+});
+
+$("#context-team-members-example").click(function(e) {
+    $("#context-team-members").val(JSON.stringify(groupExample, undefined, 4));
+    e.preventDefault();
+});
+
+$("#context-context-activities-example").click(function(e) {
+    $("#context-context-activities").val(JSON.stringify(contextActivitiesExample, undefined, 4));
+    e.preventDefault();
 });
 
 
@@ -262,7 +384,14 @@ function setupConfig() {
 function buildStatement() {
     var actorType = $("#actor-type").val();
     var actorAgentEmail = $("#actor-agent-email").val();
+    var actorAgentEmailSha1 = $("#actor-agent-email-sha1").val();
+    var actorAgentOpenID = $("#actor-agent-openid").val();
+    var actorAgentAccount = $("#actor-agent-account").val();
     var actorAgentName = $("#actor-agent-name").val();
+    var actorGroupEmail = $("#actor-group-email").val();
+    var actorGroupEmailSha1 = $("#actor-group-email-sha1").val();
+    var actorGroupOpenID = $("#actor-group-openid").val();
+    var actorGroupAccount = $("#actor-group-account").val();
     var actorGroupName = $("#actor-group-name").val();
     var actorGroupMembers = $("#actor-group-members").val();
     var verbID = $("#verb-id").val();
@@ -312,11 +441,19 @@ function buildStatement() {
     stmt['actor'] = {};
     switch(actorType) {
       case "Agent":
-        stmt['actor']['mbox'] = "mailto:" + actorAgentEmail;
+        // LRS will reject if more than one IFI is in the statement
+        if (actorAgentEmail != "") { stmt['actor']['mbox'] = "mailto:" + actorAgentEmail; }
+        if (actorAgentEmailSha1 != "") { stmt['actor']['mbox_sha1sum'] = actorAgentEmailSha1; }
+        if (actorAgentOpenID != "") { stmt['actor']['openid'] = actorAgentOpenID; }
+        if (actorAgentAccount != "") { stmt['actor']['account'] = $.parseJSON(actorAgentAccount); }
         if (actorAgentName != "") { stmt['actor']['name'] = actorAgentName; }
         stmt['actor']['objectType'] = "Agent";
         break;
       case "Group":
+        if (actorGroupEmail != "") { stmt['actor']['mbox'] = "mailto:" + actorGroupEmail; }
+        if (actorGroupEmailSha1 != "") { stmt['actor']['mbox_sha1sum'] = actorGroupEmailSha1; }
+        if (actorGroupOpenID != "") { stmt['actor']['openid'] = actorGroupOpenID; }
+        if (actorGroupAccount != "") { stmt['actor']['account'] = $.parseJSON(actorGroupAccount); }
         if (actorGroupName != "") { stmt['actor']['name'] = actorGroupName; }
         stmt['actor']['member'] = $.parseJSON(actorGroupMembers);
         break;

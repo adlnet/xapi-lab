@@ -130,51 +130,100 @@
                                       <div id="actor-types">
 
                                         <div id="actor-Agent">
-                                          
+
                                           <div class="row">
 
-                                            <div class="form-group col-md-6">
-                                              <label class="control-label" for="actor-agent-email">Email</label>
-                                              <input type="email" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Actor Agent Email" id="actor-agent-email" required />
-                                            </div>
+                                            <div class="col-md-6">
+                                              
+                                              <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#inversefunctional" target="_blank">IFI</a> Below:</h4>
 
-                                            <div class="form-group col-md-6">
-                                              <label class="control-label" for="actor-agent-name">Name</label>
-                                              <input type="text" class="form-control" value="Tyler" aria-describedby="Actor Agent Name" id="actor-agent-name" />
-                                            </div>
+                                              <div class="form-group">
+                                                <label class="control-label" for="actor-agent-email">Email</label>
+                                                <input type="email" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Actor Agent Email" id="actor-agent-email" />
+                                              </div>
+
+                                              <div class="form-group">
+                                                <label class="control-label" for="actor-agent-email-sha1">Email SHA1</label>
+                                                <input type="text" class="form-control" placeholder="f522a694d7fc5c38d7c604f63c87c9f74dcd002e" aria-describedby="Actor Agent Email SHA1" id="actor-agent-email-sha1" />
+                                              </div>
+
+                                              <div class="form-group">
+                                                <label class="control-label" for="actor-agent-openid">OpenID</label>
+                                                <input type="text" class="form-control" placeholder="http://tyler.openid.example.com" aria-describedby="Actor Agent OpenID" id="actor-agent-openid" />
+                                              </div>
+
+                                              <div class="form-group">
+                                                <label class="control-label" for="actor-agent-account">Account</label>
+                                                <textarea class="form-control" rows="4" aria-describedby="Actor Agent Account" id="actor-agent-account"></textarea>
+                                                <span class="help-block">An Account Object <span class="pull-right"><a href="#" id="actor-agent-account-example">Insert Example JSON</a></span></span>
+                                              </div>
+
+                                            </div><!-- .col-md-6 -->
+
+                                            <div class="col-md-6">
+
+                                              <h4 class="text-info">Optional:</h4>
+
+                                              <div class="form-group">
+                                                <label class="control-label" for="actor-agent-name">Name</label>
+                                                <input type="text" class="form-control" value="Tyler" aria-describedby="Actor Agent Name" id="actor-agent-name" />
+                                              </div>
+
+                                            </div><!-- .col-md-6 -->
 
                                           </div><!-- .row -->
-                                        
+
                                         </div><!-- #actor-Agent -->
 
                                         <div id="actor-Group">
                                           
                                           <div class="row">
 
-                                            <div class="form-group col-md-6">
-                                              <label class="control-label" for="actor-group-name">Group Name</label>
-                                              <input type="text" class="form-control" value="" placeholder="Student Group" aria-describedby="Actor Group Name" id="actor-group-name" />
-                                            </div>
+                                            <div class="col-md-6">
+                                              
+                                              <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#inversefunctional" target="_blank">IFI</a> Below:</h4>
 
-                                            <div class="form-group col-md-12">
-                                              <label class="control-label" for="actor-group-members">Group Members</label>
-                                              <textarea class="form-control" rows="16" aria-describedby="Actor Group Members" id="actor-group-members" required>[
-    {
-        "name": "Bob",
-        "account": {
-            "homePage": "http://www.example.com",
-            "name": "13936749"
-        },
-        "objectType": "Agent"
-    },
-    {
-        "name": "Alice",
-        "mbox_sha1sum": "ebd31e95054c018b10727de4db3ef2ec3a016ee9",
-        "objectType": "Agent"
-    }
-]</textarea>
-                                              <span class="help-block with-errors">Array of Agent Objects</span>
-                                            </div>
+                                              <div class="form-group">
+                                                <label class="control-label" for="actor-group-email">Email</label>
+                                                <input type="email" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Actor Group Email" id="actor-group-email" />
+                                              </div>
+
+                                              <div class="form-group">
+                                                <label class="control-label" for="actor-group-email-sha1">Email SHA1</label>
+                                                <input type="text" class="form-control" placeholder="f522a694d7fc5c38d7c604f63c87c9f74dcd002e" aria-describedby="Actor Group Email SHA1" id="actor-group-email-sha1" />
+                                              </div>
+
+                                              <div class="form-group">
+                                                <label class="control-label" for="actor-group-openid">OpenID</label>
+                                                <input type="text" class="form-control" placeholder="http://xapi.openid.example.com" aria-describedby="Actor Group OpenID" id="actor-group-openid" />
+                                              </div>
+
+                                              <div class="form-group">
+                                                <label class="control-label" for="actor-group-account">Account</label>
+                                                <textarea class="form-control" rows="4" aria-describedby="Actor Group Account" id="actor-group-account"></textarea>
+                                                <span class="help-block">An Account Object <span class="pull-right"><a href="#" id="actor-group-account-example">Insert Example JSON</a></span></span>
+                                              </div>
+
+                                            </div><!-- .col-md-6 -->
+
+                                            <div class="col-md-6">
+
+                                              <h4 class="text-info">Optional:</h4>
+                                              
+                                              <div class="form-group">
+                                                <label class="control-label" for="actor-group-name">Group Name</label>
+                                                <input type="text" class="form-control" value="" placeholder="Student Group" aria-describedby="Actor Group Name" id="actor-group-name" />
+                                              </div>
+
+                                              <h4 class="text-info">Required if <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#requirements-for-anonymous-groups" target="_blank">Anonymous Group</a>, Otherwise Optional:</h4>
+
+                                              <div class="form-group">
+                                                <label class="control-label" for="actor-group-members">Group Members</label>
+                                                <textarea class="form-control" rows="15" aria-describedby="Actor Group Members" id="actor-group-members" required></textarea>
+                                                <span class="help-block with-errors">Array of Agent Objects</span>
+                                              </div>
+
+                                            </div><!-- .col-md-6 -->
 
                                           </div><!-- .row -->
                                         
@@ -302,26 +351,7 @@
 
                                             <div class="form-group col-md-12">
                                               <label class="control-label" for="object-group-members">Group Members</label>
-                                              <textarea class="form-control" rows="20" aria-describedby="Object Group Members" id="object-group-members" required>[
-    {
-        "name": "Bob",
-        "account": {
-            "homePage": "http://www.example.com",
-            "name": "13936749"
-        },
-        "objectType": "Agent"
-    },
-    {
-        "name": "Carol",
-        "openid": "http://carol.openid.example.org/",
-        "objectType": "Agent"
-    },
-    {
-        "name": "Alice",
-        "mbox_sha1sum": "ebd31e95054c018b10727de4db3ef2ec3a016ee9",
-        "objectType": "Agent"
-    }
-]</textarea>
+                                              <textarea class="form-control" rows="20" aria-describedby="Object Group Members" id="object-group-members" required></textarea>
                                               <span class="help-block with-errors">Array of Agent Objects</span>
                                             </div>
 
@@ -348,27 +378,7 @@
 
                                             <div class="form-group col-md-12">
                                               <label class="control-label" for="object-substatement-json">SubStatement JSON</label>
-                                              <textarea class="form-control" rows="20" aria-describedby="Object SubStatement JSON" id="object-substatement-json">{
-    "actor" : {
-        "objectType": "Agent",
-        "mbox":"mailto:test@example.com" 
-    },
-    "verb" : { 
-        "id":"http://example.com/visited", 
-        "display":{
-            "en-US":"will visit"
-        } 
-    },
-    "object": {
-        "objectType": "Activity",
-        "id":"http://example.com/website",
-        "definition": { 
-            "name" : {
-                "en-US":"Some Awesome Website"
-            }
-        }
-    }
-}</textarea>
+                                              <textarea class="form-control" rows="20" aria-describedby="Object SubStatement JSON" id="object-substatement-json"></textarea>
                                             </div>
 
                                           </div><!-- .row -->
@@ -501,7 +511,7 @@
                                           <div class="form-group col-md-12">
                                             <label class="control-label" for="context-team-members">Team Members</label>
                                             <textarea class="form-control" rows="10" aria-describedby="Context Team Members" id="context-team-members"></textarea>
-                                            <span class="help-block with-errors">Array of Agent Objects</span>
+                                            <span class="help-block">Array of Agent Objects <span class="pull-right"><a href="#" id="context-team-members-example">Insert Example JSON</a></span></span>
                                           </div>
 
                                         </div><!-- .row -->
@@ -511,6 +521,7 @@
                                           <div class="form-group col-md-12">
                                             <label class="control-label" for="context-context-activities">Context Activities</label>
                                             <textarea class="form-control" rows="10" aria-describedby="Context Activities" id="context-context-activities"></textarea>
+                                            <span class="help-block">An Account Object <span class="pull-right"><a href="#" id="context-context-activities-example">Insert Example JSON</a></span></span>
                                           </div>
 
                                         </div><!-- .row -->
