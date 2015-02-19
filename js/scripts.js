@@ -73,7 +73,7 @@ $(function(){
 
 /* General */
  
-$(".collapser a").click(function (e) { e.preventDefault(); });
+$("body").on("click", ".collapser a", function (e) { e.preventDefault(); });
 
 
 /* Statement Builder */
