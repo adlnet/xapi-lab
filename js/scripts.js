@@ -67,9 +67,14 @@ var groupExample2 = [
         },
         "objectType": "Agent"
     },
-    {
+    /*{
         "name": "Carol",
         "openid": "http://carol.openid.example.org/",
+        "objectType": "Agent"
+    },*/
+    {
+        "name": "Tom",
+        "mbox": "mailto:tom@example.com",
         "objectType": "Agent"
     },
     {
@@ -220,6 +225,16 @@ $("#object-type").change(function() {
     var objectType = $(this).val();
     $("#object-types > div").hide();
     $("#object-types > #object-" + objectType).show();
+});
+
+$("#object-agent-account-example").click(function(e) {
+    $("#object-agent-account").val(JSON.stringify(accountAgentExample, undefined, 4));
+    e.preventDefault();
+});
+
+$("#object-group-account-example").click(function(e) {
+    $("#object-group-account").val(JSON.stringify(accountGroupExample, undefined, 4));
+    e.preventDefault();
 });
 
 $("#context-team-members-example").click(function(e) {
@@ -403,7 +418,14 @@ function buildStatement() {
     var objectActivityDescription = $("#object-activity-description").val();
     var objectActivityLanguage = $("#object-activity-language").val();
     var objectAgentEmail = $("#object-agent-email").val();
+    var objectAgentEmailSha1 = $("#object-agent-email-sha1").val();
+    var objectAgentOpenID = $("#object-agent-openid").val();
+    var objectAgentAccount = $("#object-agent-account").val();
     var objectAgentName = $("#object-agent-name").val();
+    var objectGroupEmail = $("#object-group-email").val();
+    var objectGroupEmailSha1 = $("#object-group-email-sha1").val();
+    var objectGroupOpenID = $("#object-group-openid").val();
+    var objectGroupAccount = $("#object-group-account").val();
     var objectGroupName = $("#object-group-name").val();
     var objectGroupMembers = $("#object-group-members").val();
     var objectStatementRef = $("#object-statementref-id").val();
@@ -484,10 +506,19 @@ function buildStatement() {
         }
         break;
       case "Agent":
-        stmt['object']['mbox'] = "mailto:" + objectAgentEmail;
+        // LRS will reject if more than one IFI is in the statement
+        if (objectAgentEmail != "") { stmt['object']['mbox'] = "mailto:" + objectAgentEmail; }
+        if (objectAgentEmailSha1 != "") { stmt['object']['mbox_sha1sum'] = objectAgentEmailSha1; }
+        if (objectAgentOpenID != "") { stmt['object']['openid'] = objectAgentOpenID; }
+        if (objectAgentAccount != "") { stmt['object']['account'] = $.parseJSON(objectAgentAccount); }
         if (objectAgentName != "") { stmt['object']['name'] = objectAgentName; }
+        stmt['object']['objectType'] = "Agent";
         break;
       case "Group":
+        if (objectGroupEmail != "") { stmt['object']['mbox'] = "mailto:" + objectGroupEmail; }
+        if (objectGroupEmailSha1 != "") { stmt['object']['mbox_sha1sum'] = objectGroupEmailSha1; }
+        if (objectGroupOpenID != "") { stmt['object']['openid'] = objectGroupOpenID; }
+        if (objectGroupAccount != "") { stmt['object']['account'] = $.parseJSON(objectGroupAccount); }
         if (objectGroupName != "") { stmt['object']['name'] = objectGroupName; }
         stmt['object']['member'] = $.parseJSON(objectGroupMembers);
         break;
