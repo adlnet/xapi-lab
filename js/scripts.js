@@ -47,6 +47,9 @@ $(function(){
         }
     }
 
+    $("#actor-types > div").hide();
+    $("#actor-Agent").show();
+
     $("#object-types > div").hide();
     $("#object-Activity").show();
 
@@ -88,6 +91,12 @@ $("#endpoint-values").validator();
 $("#statement-builder-values").validator();
 $("#statement-search-values").validator();
 $("#dmar-values").validator();
+
+$("#actor-type").change(function() {
+    var actorType = $(this).val();
+    $("#actor-types > div").hide();
+    $("#actor-types > #actor-" + actorType).show();
+});
 
 $("#predefined-verb").change(function() {
     var $this = $(this);
@@ -251,8 +260,11 @@ function setupConfig() {
 
 // Build statement from the GUI
 function buildStatement() {
-    var actorEmail = $("#actor-email").val();
-    var actorName = $("#actor-name").val();
+    var actorType = $("#actor-type").val();
+    var actorAgentEmail = $("#actor-agent-email").val();
+    var actorAgentName = $("#actor-agent-name").val();
+    var actorGroupName = $("#actor-group-name").val();
+    var actorGroupMembers = $("#actor-group-members").val();
     var verbID = $("#verb-id").val();
     var verbDisplay = $("#verb-display").val();
     var verbLanguage = $("#verb-language").val();
@@ -296,10 +308,23 @@ function buildStatement() {
     var attachmentFileURL = $("#attachment-file-url").val();
 
     var stmt = {};
+
     stmt['actor'] = {};
-    stmt['actor']['mbox'] = "mailto:" + actorEmail;
-    stmt['actor']['name'] = actorName;
-    stmt['actor']['objectType'] = "Agent";
+    switch(actorType) {
+      case "Agent":
+        stmt['actor']['mbox'] = "mailto:" + actorAgentEmail;
+        if (actorAgentName != "") { stmt['actor']['name'] = actorAgentName; }
+        stmt['actor']['objectType'] = "Agent";
+        break;
+      case "Group":
+        if (actorGroupName != "") { stmt['actor']['name'] = actorGroupName; }
+        stmt['actor']['member'] = $.parseJSON(actorGroupMembers);
+        break;
+      default:
+    }
+    
+    stmt['actor']['objectType'] = actorType;
+
     stmt['verb'] = {};
     stmt['verb']['id'] = verbID;
     stmt['verb']['display'] = {};
@@ -323,10 +348,10 @@ function buildStatement() {
         break;
       case "Agent":
         stmt['object']['mbox'] = "mailto:" + objectAgentEmail;
-        stmt['object']['name'] = objectAgentName;
+        if (objectAgentName != "") { stmt['object']['name'] = objectAgentName; }
         break;
       case "Group":
-        stmt['object']['name'] = objectGroupName;
+        if (objectGroupName != "") { stmt['object']['name'] = objectGroupName; }
         stmt['object']['member'] = $.parseJSON(objectGroupMembers);
         break;
       case "StatementRef":
@@ -337,6 +362,8 @@ function buildStatement() {
         break;
       default:
     }
+    
+    stmt['object']['objectType'] = objectType;
 
     if ( resultScaledScore != "" || resultRawScore != "" || resultMinScore != "" || resultMaxScore != "" || resultSuccess != "" || resultCompletion != "" || resultResponse != "" || resultDuration != "" || resultExtensions != "" ) {
         stmt['result'] = {};
@@ -398,8 +425,6 @@ function buildStatement() {
       if (attachmentFileURL != "") { attachment['fileUrl'] = attachmentFileURL; }
       stmt['attachments'].push(attachment);
     }
-
-    stmt['object']['objectType'] = objectType;
 
     //console.log(stmt);
     return stmt;

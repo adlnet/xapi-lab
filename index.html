@@ -117,17 +117,70 @@
 
                                       <div class="row">
 
-                                        <div class="form-group col-md-6">
-                                          <label class="control-label" for="actor-email">Email</label>
-                                          <input type="email" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Actor Email" id="actor-email" required />
-                                        </div>
-
-                                        <div class="form-group col-md-6">
-                                          <label class="control-label" for="actor-name">Name</label>
-                                          <input type="text" class="form-control" value="Tyler" aria-describedby="Actor Name" id="actor-name" />
+                                        <div class="form-group col-md-5">
+                                          <label class="control-label" for="actor-type">Actor Type</label>
+                                          <select class="form-control" name="actor-type" id="actor-type">
+                                            <option value="Agent">Agent</option>
+                                            <option value="Group">Group</option>
+                                          </select>
                                         </div>
 
                                       </div><!-- .row -->
+
+                                      <div id="actor-types">
+
+                                        <div id="actor-Agent">
+                                          
+                                          <div class="row">
+
+                                            <div class="form-group col-md-6">
+                                              <label class="control-label" for="actor-agent-email">Email</label>
+                                              <input type="email" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Actor Agent Email" id="actor-agent-email" required />
+                                            </div>
+
+                                            <div class="form-group col-md-6">
+                                              <label class="control-label" for="actor-agent-name">Name</label>
+                                              <input type="text" class="form-control" value="Tyler" aria-describedby="Actor Agent Name" id="actor-agent-name" />
+                                            </div>
+
+                                          </div><!-- .row -->
+                                        
+                                        </div><!-- #actor-Agent -->
+
+                                        <div id="actor-Group">
+                                          
+                                          <div class="row">
+
+                                            <div class="form-group col-md-6">
+                                              <label class="control-label" for="actor-group-name">Group Name</label>
+                                              <input type="text" class="form-control" value="" placeholder="Student Group" aria-describedby="Actor Group Name" id="actor-group-name" />
+                                            </div>
+
+                                            <div class="form-group col-md-12">
+                                              <label class="control-label" for="actor-group-members">Group Members</label>
+                                              <textarea class="form-control" rows="16" aria-describedby="Actor Group Members" id="actor-group-members" required>[
+    {
+        "name": "Bob",
+        "account": {
+            "homePage": "http://www.example.com",
+            "name": "13936749"
+        },
+        "objectType": "Agent"
+    },
+    {
+        "name": "Alice",
+        "mbox_sha1sum": "ebd31e95054c018b10727de4db3ef2ec3a016ee9",
+        "objectType": "Agent"
+    }
+]</textarea>
+                                              <span class="help-block with-errors">Array of Agent Objects</span>
+                                            </div>
+
+                                          </div><!-- .row -->
+                                        
+                                        </div><!-- #object-Group -->
+
+                                      </div><!-- #actor-types -->
 
                                     </div><!-- .panel-body -->
                                   </div><!-- .panel -->
@@ -268,8 +321,7 @@
         "mbox_sha1sum": "ebd31e95054c018b10727de4db3ef2ec3a016ee9",
         "objectType": "Agent"
     }
-]
-                                              </textarea>
+]</textarea>
                                               <span class="help-block with-errors">Array of Agent Objects</span>
                                             </div>
 
@@ -316,8 +368,7 @@
             }
         }
     }
-}
-                                              </textarea>
+}</textarea>
                                             </div>
 
                                           </div><!-- .row -->
