@@ -700,7 +700,7 @@ function clearStatementQueue() {
     stmts = [];
 }
 
-// Pretty view of statements
+// Pretty view of statement
 function styleStatementView(id, stmt) {
     var rand = Math.random().toString(36).substr(2, 5);
     return '<div class="panel panel-info"><div class="panel-heading collapser"><h4 class="panel-title"><a data-toggle="collapse" data-target="#' + rand + id + '" href="#' + rand + id + '" class="collapsed">' + id + '</a></h4></div><div id="' + rand + id + '" class="panel-collapse collapse"><div class="panel-body"><pre class="prettyprint lang-js" >' + JSON.stringify(stmt, undefined, 4) + '</pre></div></div></div>';
@@ -803,7 +803,14 @@ function sendState() {
 
     ADL.XAPIWrapper.sendState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, stateValue, null, null, function(r) {
         $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-        $("#sent-documents").append("<p>Sent State <b>" + stateId + "</b>: " + stateValue + "</p>");
+        //$("#sent-documents").append("<p>Sent State <b>" + stateId + "</b>: " + stateValue + "</p>");
+        if (validateJSON(stateValue) == true) {
+          stateValue = JSON.stringify($.parseJSON(stateValue), undefined, 4);
+        }
+        $("#sent-documents").append(styleDocumentsView("State: " + stateId, stateValue));
+        if (validateJSON(stateValue) == true) {
+          PR.prettyPrint();
+        }
         console.log(r);
     });
 }
@@ -821,7 +828,14 @@ function sendActivityProfile() {
 
     ADL.XAPIWrapper.sendActivityProfile(activityId, profileId, profileValue, null, null, function(r) {
         $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-        $("#sent-documents").append("<p>Sent Activity Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
+        //$("#sent-documents").append("<p>Sent Activity Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
+        if (validateJSON(profileValue) == true) {
+          profileValue = JSON.stringify($.parseJSON(profileValue), undefined, 4);
+        }
+        $("#sent-documents").append(styleDocumentsView("Activity Profile: " + profileId, profileValue));
+        if (validateJSON(profileValue) == true) {
+          PR.prettyPrint();
+        }
         console.log(r);
     });
 }
@@ -839,7 +853,14 @@ function sendAgentProfile() {
 
     ADL.XAPIWrapper.sendAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, profileValue, null, "*", function(r) {
         $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-        $("#sent-documents").append("<p>Sent Agent Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
+        //$("#sent-documents").append("<p>Sent Agent Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
+        if (validateJSON(profileValue) == true) {
+          profileValue = JSON.stringify($.parseJSON(profileValue), undefined, 4);
+        }
+        $("#sent-documents").append(styleDocumentsView("Agent Profile: " + profileId, profileValue));
+        if (validateJSON(profileValue) == true) {
+          PR.prettyPrint();
+        }
         console.log(r);
     });
 }
@@ -866,7 +887,16 @@ function getState() {
 
     ADL.XAPIWrapper.getState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, sinceDate, function(r) {
         $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-        $("#received-documents").append("<p>Received State <b>" + stateId + "</b>: " + r.response + "</p>");
+        //$("#received-documents").append("<p>Received State <b>" + stateId + "</b>: " + r.response + "</p>");
+        if (validateJSON(r.response) != true) {
+          var stateValue = r.response;
+        } else {
+          var stateValue = JSON.stringify($.parseJSON(r.response), undefined, 4);
+        }
+        $("#received-documents").append(styleDocumentsView("State: " + stateId, stateValue));
+        if (validateJSON(r.response) == true) {
+          PR.prettyPrint();
+        }
         console.log(r);
     });
 }
@@ -883,7 +913,16 @@ function getActivityProfile() {
 
     ADL.XAPIWrapper.getActivityProfile(activityId, profileId, sinceDate, function(r) {
         $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-        $("#received-documents").append("<p>Received Activity Profile <b>" + profileId + "</b>: " + r.response + "</p>");
+        //$("#received-documents").append("<p>Received Activity Profile <b>" + profileId + "</b>: " + r.response + "</p>");
+        if (validateJSON(r.response) != true) {
+          var profileValue = r.response;
+        } else {
+          var profileValue = JSON.stringify($.parseJSON(r.response), undefined, 4);
+        }
+        $("#received-documents").append(styleDocumentsView("Activity Profile: " + profileId, profileValue));
+        if (validateJSON(r.response) == true) {
+          PR.prettyPrint();
+        }
         console.log(r);
     });
 }
@@ -900,9 +939,25 @@ function getAgentProfile() {
 
     ADL.XAPIWrapper.getAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, sinceDate, function(r) {
         $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
-        $("#received-documents").append("<p>Received Agent Profile <b>" + profileId + "</b>: " + r.response + "</p>");
+        //$("#received-documents").append("<p>Received Agent Profile <b>" + profileId + "</b>: " + r.response + "</p>");
+        if (validateJSON(r.response) != true) {
+          var profileValue = r.response;
+        } else {
+          var profileValue = JSON.stringify($.parseJSON(r.response), undefined, 4);
+        }
+        $("#received-documents").append(styleDocumentsView("Agent Profile: " + profileId, profileValue));
+        if (validateJSON(r.response) == true) {
+          PR.prettyPrint();
+        }
         console.log(r);
     });
+}
+
+// Pretty view of statements
+function styleDocumentsView(id, value) {
+    var rand = Math.random().toString(36).substr(2, 5);
+    var newId = id.replace(/[: ]/g, "");
+    return '<div class="panel panel-primary"><div class="panel-heading collapser"><h4 class="panel-title"><a data-toggle="collapse" data-target="#' + rand + newId + '" href="#' + rand + newId + '">' + id + '</a></h4></div><div id="' + rand + newId + '" class="panel-collapse collapse in"><div class="panel-body"><pre class="prettyprint lang-js" >' + value + '</pre></div></div></div>';
 }
 
 function clearReceivedDocuments() {
