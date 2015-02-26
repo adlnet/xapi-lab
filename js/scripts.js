@@ -189,9 +189,7 @@ $("body").on("click", ".collapser a", function (e) { e.preventDefault(); });
 /* Statement Builder */
 
 $("#statement-builder-values").change(function(e) {
-    if ($("#automatically-build").is(':checked')) {
-        previewStatement();
-    }
+  considerPreviewStatement();
 });
 
 $("#endpoint-values").validator();
@@ -207,17 +205,13 @@ $("#actor-type").change(function() {
 
 $("#actor-agent-account-example").click(function(e) {
     $("#actor-agent-account").val(JSON.stringify(accountAgentExample, undefined, 4));
-    if ($("#automatically-build").is(':checked')) {
-        previewStatement();
-    }
+    considerPreviewStatement();
     e.preventDefault();
 });
 
 $("#actor-group-account-example").click(function(e) {
     $("#actor-group-account").val(JSON.stringify(accountGroupExample, undefined, 4));
-    if ($("#automatically-build").is(':checked')) {
-        previewStatement();
-    }
+    considerPreviewStatement();
     e.preventDefault();
 });
 
@@ -235,33 +229,25 @@ $("#object-type").change(function() {
 
 $("#object-agent-account-example").click(function(e) {
     $("#object-agent-account").val(JSON.stringify(accountAgentExample, undefined, 4));
-    if ($("#automatically-build").is(':checked')) {
-        previewStatement();
-    }
+    considerPreviewStatement();
     e.preventDefault();
 });
 
 $("#object-group-account-example").click(function(e) {
     $("#object-group-account").val(JSON.stringify(accountGroupExample, undefined, 4));
-    if ($("#automatically-build").is(':checked')) {
-        previewStatement();
-    }
+    considerPreviewStatement();
     e.preventDefault();
 });
 
 $("#context-team-members-example").click(function(e) {
     $("#context-team-members").val(JSON.stringify(groupExample, undefined, 4));
-    if ($("#automatically-build").is(':checked')) {
-        previewStatement();
-    }
+    considerPreviewStatement();
     e.preventDefault();
 });
 
 $("#context-context-activities-example").click(function(e) {
     $("#context-context-activities").val(JSON.stringify(contextActivitiesExample, undefined, 4));
-    if ($("#automatically-build").is(':checked')) {
-        previewStatement();
-    }
+    considerPreviewStatement();
     e.preventDefault();
 });
 
@@ -269,9 +255,7 @@ $("#context-context-activities-example").click(function(e) {
 /*  Statement Manipulation and Response -- Sending */
 
 $("#generate-statement").click(function(e) {
-    if ($("#automatically-build").is(':checked')) {
-        previewStatement();
-    }
+    considerPreviewStatement();
     e.preventDefault();
 });
 
@@ -637,6 +621,13 @@ function previewStatement() {
 
     editor.setValue(JSON.stringify(stmt, undefined, 4)); // or session.setValue
     editor.clearSelection(); // or session.setValue
+}
+
+// Generate statement and preview in the editor if "automatically build is true
+function considerPreviewStatement() {
+    if ($("#automatically-build").is(':checked')) {
+        previewStatement();
+    }
 }
 
 // Send statement to the LRS
