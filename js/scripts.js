@@ -207,11 +207,17 @@ $("#actor-type").change(function() {
 
 $("#actor-agent-account-example").click(function(e) {
     $("#actor-agent-account").val(JSON.stringify(accountAgentExample, undefined, 4));
+    if ($("#automatically-build").is(':checked')) {
+        previewStatement();
+    }
     e.preventDefault();
 });
 
 $("#actor-group-account-example").click(function(e) {
     $("#actor-group-account").val(JSON.stringify(accountGroupExample, undefined, 4));
+    if ($("#automatically-build").is(':checked')) {
+        previewStatement();
+    }
     e.preventDefault();
 });
 
@@ -229,21 +235,33 @@ $("#object-type").change(function() {
 
 $("#object-agent-account-example").click(function(e) {
     $("#object-agent-account").val(JSON.stringify(accountAgentExample, undefined, 4));
+    if ($("#automatically-build").is(':checked')) {
+        previewStatement();
+    }
     e.preventDefault();
 });
 
 $("#object-group-account-example").click(function(e) {
     $("#object-group-account").val(JSON.stringify(accountGroupExample, undefined, 4));
+    if ($("#automatically-build").is(':checked')) {
+        previewStatement();
+    }
     e.preventDefault();
 });
 
 $("#context-team-members-example").click(function(e) {
     $("#context-team-members").val(JSON.stringify(groupExample, undefined, 4));
+    if ($("#automatically-build").is(':checked')) {
+        previewStatement();
+    }
     e.preventDefault();
 });
 
 $("#context-context-activities-example").click(function(e) {
     $("#context-context-activities").val(JSON.stringify(contextActivitiesExample, undefined, 4));
+    if ($("#automatically-build").is(':checked')) {
+        previewStatement();
+    }
     e.preventDefault();
 });
 
@@ -251,7 +269,9 @@ $("#context-context-activities-example").click(function(e) {
 /*  Statement Manipulation and Response -- Sending */
 
 $("#generate-statement").click(function(e) {
-    previewStatement();
+    if ($("#automatically-build").is(':checked')) {
+        previewStatement();
+    }
     e.preventDefault();
 });
 
