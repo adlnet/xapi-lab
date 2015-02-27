@@ -107,6 +107,17 @@ var substatementExample = {
 };
 
 var contextActivitiesExample = {
+  "grouping": [
+    {
+      "definition": {
+        "name": {
+          "en-US": "Statement Builder Context"
+        }
+      },
+      "id": "http://adlnet.github.io/xapi-lab/index.html#context",
+      "objectType": "Activity"
+    }
+  ],
   "parent": [
     {
       "definition": {
@@ -118,15 +129,6 @@ var contextActivitiesExample = {
         }
       },
       "id": "http://adlnet.github.io/xapi-lab",
-      "objectType": "Activity"
-    },
-    {
-      "definition": {
-        "name": {
-          "en-US": "Statement Builder Context"
-        }
-      },
-      "id": "http://adlnet.github.io/xapi-lab/index.html#context",
       "objectType": "Activity"
     }
   ]
