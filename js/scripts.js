@@ -14,6 +14,7 @@ var notificationSettings = {
         from: "bottom",
         align: "right"
     },
+    progressbar: false
 };
 var notificationErrorSettings = jQuery.extend(true, {}, notificationSettings);
 notificationErrorSettings.type = "danger";
@@ -26,7 +27,7 @@ var dateTimeSettings = {
 // Handle XAPIWrapper XHR Errors
 ADL.xhrRequestOnError = function(xhr, method, url, callback, callbackargs) {
     console.log(xhr);
-    $.growl({ title: "Status " + xhr.status + " " + xhr.statusText + ": ", message: xhr.response }, notificationErrorSettings);
+    $.notify({ title: "Status " + xhr.status + " " + xhr.statusText + ": ", message: xhr.response }, notificationErrorSettings);
 };
 
 stmts = [];
@@ -266,7 +267,7 @@ $("#validate-json").click(function(e) {
     var r = validateJSON(editor.getValue());
     var whichNotificationSettings = (r == true) ? notificationSettings : notificationErrorSettings;
     var notificationStatus = (r == true) ? "JSON is valid" : "JSON is <em>NOT</em> valid";
-    $.growl({ title: notificationStatus }, whichNotificationSettings);
+    $.notify({ title: notificationStatus }, whichNotificationSettings);
     e.preventDefault();
 });
 
@@ -639,7 +640,7 @@ function sendStatement() {
     var stmt = editor.getValue(); // or session.getValue
 
     if (validateJSON(stmt) != true) { // JSON is invalid
-        $.growl({ title: "invalid JSON, cannot send" }, notificationErrorSettings);
+        $.notify({ title: "invalid JSON, cannot send" }, notificationErrorSettings);
         return false;
     }
 
@@ -650,7 +651,7 @@ function sendStatement() {
         //console.log(obj);
         // notification
         if (r.status == 200) {
-            $.growl({ title: "Status " + r.status + " " + r.statusText + ": ", message: "<b><em>" + xstmt.verb.display['en-US'] + "</em></b> statement sent successfully to LRS" }, notificationSettings);
+            $.notify({ title: "Status " + r.status + " " + r.statusText + ": ", message: "<b><em>" + xstmt.verb.display['en-US'] + "</em></b> statement sent successfully to LRS" }, notificationSettings);
         }
         var prettyStatement = styleStatementView(xstmt.id, xstmt);
         $("#sent-statements").append(prettyStatement);
@@ -663,7 +664,7 @@ function queueStatement(stmt) {
     var stmt = editor.getValue(); // or session.getValue
 
     if (validateJSON(stmt) != true) { // JSON is invalid
-        $.growl({ title: "invalid JSON, cannot add to queue" }, notificationErrorSettings);
+        $.notify({ title: "invalid JSON, cannot add to queue" }, notificationErrorSettings);
         return false;
     }
     
@@ -689,7 +690,7 @@ function sendStatementQueue() {
         //console.log(obj);
         // notification
         if (r.status == 200) {
-            $.growl({ title: "Status " + r.status + " " + r.statusText + ": ", message: "<b><em>Statement Queue</em></b> sent successfully to LRS" }, notificationSettings);
+            $.notify({ title: "Status " + r.status + " " + r.statusText + ": ", message: "<b><em>Statement Queue</em></b> sent successfully to LRS" }, notificationSettings);
             //console.log(r, obj);
 
             var prettyStatement = styleStatementsView(obj[0], stmts);
@@ -778,7 +779,7 @@ function getStatementsWithSearch() {
                 var length = 1;
             }
 
-            $.growl({ title: "Status " + r.status + " " + r.statusText + ": ", message: "statements received successfully from LRS" }, notificationSettings);
+            $.notify({ title: "Status " + r.status + " " + r.statusText + ": ", message: "statements received successfully from LRS" }, notificationSettings);
 
             if (length > 0) {
                 if (stmt) {
@@ -815,7 +816,7 @@ function sendState() {
     // callback
 
     ADL.XAPIWrapper.sendState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, stateValue, null, null, function(r) {
-        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $.notify({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#sent-documents").append("<p>Sent State <b>" + stateId + "</b>: " + stateValue + "</p>");
         if (validateJSON(stateValue) == true) {
           stateValue = JSON.stringify($.parseJSON(stateValue), undefined, 4);
@@ -840,7 +841,7 @@ function sendActivityProfile() {
     // callback
 
     ADL.XAPIWrapper.sendActivityProfile(activityId, profileId, profileValue, null, null, function(r) {
-        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $.notify({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#sent-documents").append("<p>Sent Activity Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
         if (validateJSON(profileValue) == true) {
           profileValue = JSON.stringify($.parseJSON(profileValue), undefined, 4);
@@ -865,7 +866,7 @@ function sendAgentProfile() {
     // callback
 
     ADL.XAPIWrapper.sendAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, profileValue, null, "*", function(r) {
-        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $.notify({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#sent-documents").append("<p>Sent Agent Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
         if (validateJSON(profileValue) == true) {
           profileValue = JSON.stringify($.parseJSON(profileValue), undefined, 4);
@@ -899,7 +900,7 @@ function getState() {
     // callback
 
     ADL.XAPIWrapper.getState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, sinceDate, function(r) {
-        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $.notify({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#received-documents").append("<p>Received State <b>" + stateId + "</b>: " + r.response + "</p>");
         if (validateJSON(r.response) != true) {
           var stateValue = r.response;
@@ -925,7 +926,7 @@ function getActivityProfile() {
     // callback
 
     ADL.XAPIWrapper.getActivityProfile(activityId, profileId, sinceDate, function(r) {
-        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $.notify({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#received-documents").append("<p>Received Activity Profile <b>" + profileId + "</b>: " + r.response + "</p>");
         if (validateJSON(r.response) != true) {
           var profileValue = r.response;
@@ -951,7 +952,7 @@ function getAgentProfile() {
     // callback
 
     ADL.XAPIWrapper.getAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, sinceDate, function(r) {
-        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $.notify({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#received-documents").append("<p>Received Agent Profile <b>" + profileId + "</b>: " + r.response + "</p>");
         if (validateJSON(r.response) != true) {
           var profileValue = r.response;
@@ -993,7 +994,7 @@ function deleteState() {
     // callback
 
     ADL.XAPIWrapper.deleteState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, null, null, function(r) {
-        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $.notify({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
         if (r.status == 204) {
             $("#deleted-documents").append("<p>Deleted State: <b>" + stateId + "</b></p>");
         }
@@ -1012,7 +1013,7 @@ function deleteActivityProfile() {
     // callback
 
     ADL.XAPIWrapper.deleteActivityProfile(activityId, profileId, null, null, function(r) {
-        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $.notify({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
         if (r.status == 204) {
             $("#deleted-documents").append("<p>Deleted Activity Profile: <b>" + profileId + "</b></p>");
         }
@@ -1031,7 +1032,7 @@ function deleteAgentProfile() {
     // callback
 
     ADL.XAPIWrapper.deleteAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, null, null, function(r) {
-        $.growl({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        $.notify({ title: "Status " + r.status + " " + r.statusText }, notificationSettings);
         $("#deleted-documents").append("<p>" + r.response + "</p>");
         if (r.status == 204) {
             $("#deleted-documents").append("<p>Deleted Agent Profile: <b>" + profileId + "</b></p>");
