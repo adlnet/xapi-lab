@@ -424,6 +424,7 @@ function buildStatement() {
     var objectActivityName = $("#object-activity-name").val();
     var objectActivityDescription = $("#object-activity-description").val();
     var objectActivityLanguage = $("#object-activity-language").val();
+    var objectActivityExtensions = $("#object-activity-extensions").val();
     var objectAgentEmail = $("#object-agent-email").val();
     var objectAgentEmailSha1 = $("#object-agent-email-sha1").val();
     var objectAgentOpenID = $("#object-agent-openid").val();
@@ -456,6 +457,7 @@ function buildStatement() {
     var contextPlatform = $("#context-platform").val();
     var contextLanguage = $("#context-language").val();
     var contextStatement = $("#context-statement").val();
+    var contextExtensions = $("#context-extensions").val();
     var attachmentUsageType = $("#attachment-usage-type").val();
     var attachmentDisplay = $("#attachment-display").val();
     var attachmentDescription = $("#attachment-description").val();
@@ -511,6 +513,7 @@ function buildStatement() {
             stmt['object']['definition']['description'] = {};
             stmt['object']['definition']['description'][objectActivityLanguage] = objectActivityDescription;
         }
+        if (objectActivityExtensions != "") { stmt['object']['extensions'] = $.parseJSON(objectActivityExtensions); }
         break;
       case "Agent":
         // LRS will reject if more than one IFI is in the statement
@@ -556,7 +559,7 @@ function buildStatement() {
         if (resultExtensions != "") { stmt['result']['extensions'] = $.parseJSON(resultExtensions); }
     }
 
-    if ( contextRegistrationID != "" || contextInstructorEmail != "" || contextInstructorName != "" || contextTeamName != "" || contextTeamMembers != "" || contextContextActivities != "" || contextRevision != "" || contextPlatform != "" || contextLanguage != "" || contextStatement != "" ) {
+    if ( contextRegistrationID != "" || contextInstructorEmail != "" || contextInstructorName != "" || contextTeamName != "" || contextTeamMembers != "" || contextContextActivities != "" || contextRevision != "" || contextPlatform != "" || contextLanguage != "" || contextStatement != "" || contextExtensions != "" ) {
         stmt['context'] = {};
         if (contextRegistrationID != "") { stmt['context']['registration'] = contextRegistrationID; }
         if (contextInstructorEmail != "" || contextInstructorName != "") {
@@ -580,6 +583,7 @@ function buildStatement() {
             stmt['context']['statement']['id'] = contextStatement;
             stmt['context']['statement']['objectType'] = "Group";
         }
+        if (contextExtensions != "") { stmt['context']['extensions'] = $.parseJSON(contextExtensions); }
     }
 
     if ( attachmentDisplay != "" || attachmentDescription != "" || attachmentLanguage != "" || attachmentContentType != "" || attachmentLength != "" || attachmentSha2 != "" ||attachmentFileURL != "" ) {
