@@ -191,8 +191,19 @@ $("body").on("click", ".collapser a", function (e) { e.preventDefault(); });
 
 /* Statement Builder */
 
-$("#statement-builder-values").change(function(e) {
-  considerPreviewStatement();
+// Update statement viewer links to pass auth via query string
+$("#endpoint-values").keyup(function() {
+    var root = $(".statement-viewer").attr("rel");
+    console.log(root);
+    var endpoint = $("#endpoint").val();
+    var username = $("#username").val();
+    var password = $("#password").val();
+    var auth = "Basic%20" + toBase64(username + ":" + password);
+    $(".statement-viewer").attr("href", root + "?endpoint=" + endpoint + "&auth=" + auth);
+});
+
+$("#statement-builder-values").change(function() {
+    considerPreviewStatement();
 });
 
 $("#endpoint-values").validator();
