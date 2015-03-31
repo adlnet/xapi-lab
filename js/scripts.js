@@ -890,7 +890,7 @@ function sendActivityProfile() {
     // noneMatchHash
     // callback
 
-    ADL.XAPIWrapper.sendActivityProfile(activityId, profileId, profileValue, null, null, function(r) {
+    ADL.XAPIWrapper.sendActivityProfile(activityId, profileId, profileValue, null, "*", function(r) {
         notify({ message: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#sent-documents").append("<p>Sent Activity Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
         if (validateJSON(profileValue) == true) {
