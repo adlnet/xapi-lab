@@ -32,6 +32,13 @@ ADL.xhrRequestOnError = function(xhr, method, url, callback, callbackargs) {
     notify({ title: "Status " + xhr.status + " " + xhr.statusText + ": ", message: xhr.response }, notificationErrorSettings);
 };
 
+// Handle XAPIWrapper Logs
+ADL.XAPIWrapper.log = function(str) {
+    console.log(str);
+    if (str != "updating lrs object with new configuration")
+      notify({ message: str }, notificationErrorSettings);
+};
+
 stmts = [];
 
 // Examples -- for text areas where multiline placeholders aren't allowed
