@@ -18,6 +18,8 @@ var notificationSettings = {
 };
 var notificationErrorSettings = jQuery.extend(true, {}, notificationSettings);
 notificationErrorSettings.type = "danger";
+var notificationWarningSettings = jQuery.extend(true, {}, notificationSettings);
+notificationWarningSettings.type = "warning";
 
 var dateTimeSettings = {
     showTodayButton: true,
@@ -948,7 +950,10 @@ function getState() {
     // callback
 
     ADL.XAPIWrapper.getState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, sinceDate, function(r) {
-        notify({ message: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        if (r.status == 404)
+          notify({ message: "Status " + r.status + " " + r.statusText }, notificationWarningSettings);
+        else
+          notify({ message: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#received-documents").append("<p>Received State <b>" + stateId + "</b>: " + r.response + "</p>");
         if (validateJSON(r.response) != true) {
           var stateValue = r.response;
@@ -974,7 +979,10 @@ function getActivityProfile() {
     // callback
 
     ADL.XAPIWrapper.getActivityProfile(activityId, profileId, sinceDate, function(r) {
-        notify({ message: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        if (r.status == 404)
+          notify({ message: "Status " + r.status + " " + r.statusText }, notificationWarningSettings);
+        else
+          notify({ message: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#received-documents").append("<p>Received Activity Profile <b>" + profileId + "</b>: " + r.response + "</p>");
         if (validateJSON(r.response) != true) {
           var profileValue = r.response;
@@ -1000,7 +1008,10 @@ function getAgentProfile() {
     // callback
 
     ADL.XAPIWrapper.getAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, sinceDate, function(r) {
-        notify({ message: "Status " + r.status + " " + r.statusText }, notificationSettings);
+        if (r.status == 404)
+          notify({ message: "Status " + r.status + " " + r.statusText }, notificationWarningSettings);
+        else
+          notify({ message: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#received-documents").append("<p>Received Agent Profile <b>" + profileId + "</b>: " + r.response + "</p>");
         if (validateJSON(r.response) != true) {
           var profileValue = r.response;
