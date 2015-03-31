@@ -132,6 +132,16 @@ var contextActivitiesExample = {
       "id": "http://adlnet.github.io/xapi-lab",
       "objectType": "Activity"
     }
+  ],
+  "category": [
+    {
+      "id": "http://example.com/xapi/profile/xapi-tool"
+    }
+  ],
+  "other": [
+    {
+      "id": "http://adlnet.github.io"
+    }
   ]
 };
 
