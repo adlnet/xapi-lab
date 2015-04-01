@@ -77,11 +77,11 @@ var groupExample2 = [
         },
         "objectType": "Agent"
     },
-    /*{
+    {
         "name": "Carol",
         "openid": "http://carol.openid.example.org/",
         "objectType": "Agent"
-    },*/
+    },
     {
         "name": "Tom",
         "mbox": "mailto:tom@example.com",
