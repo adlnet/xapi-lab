@@ -235,7 +235,28 @@ $("#statement-builder-values").change(function() {
 });
 
 $("#endpoint-values").validator();
-$("#statement-builder-values").validator();
+$("#statement-builder-values").validator({
+    custom: {
+        actor_agent_ifi: function ($el) {
+            return validateAgentIFI('#actor-Agent');
+        },
+        actor_group_ifi: function ($el) {
+            return validateGroupIFI('#actor-Group', '#actor-group-members');
+        },
+        object_agent_ifi: function ($el) {
+            return validateAgentIFI('#object-Agent');
+        },
+        object_group_ifi: function ($el) {
+            return validateGroupIFI('#object-Group', '#object-group-members');
+        }
+    },
+    errors: {
+        actor_agent_ifi: 'Only use one IFI',
+        actor_group_ifi: 'Only use one IFI, or include group members for Anonymous Group',
+        object_agent_ifi: 'Only use one IFI',
+        object_group_ifi: 'Only use one IFI, or include group members for Anonymous Group'
+    }
+});
 $("#statement-search-values").validator();
 $("#dmar-values").validator();
 
@@ -429,6 +450,28 @@ $("#clear-deleted-documents").click(function(e) {
  
 // Helper Functions
 
+// Form Validation
+function validateAgentIFI(div) {
+    var inputs = $('input, textarea', div + ' .ifi').filter(function() {
+        return $.trim( this.value ).length > 0;
+    });
+
+    //console.log(inputs.length);
+    if (inputs.length > 1) { return false; }
+    return true;
+}
+
+function validateGroupIFI(div, members) {
+    var inputs = $('input, textarea', div + ' .ifi').filter(function() {
+        return $.trim( this.value ).length > 0;
+    });
+
+    //console.log(inputs.length);
+    if (inputs.length == 0 && $(members).val() == "") { return false; }
+    if (inputs.length > 1) { return false; }
+    return true;
+}
+
 // Notification
 function notify(message, settings) {
   // message is a JSON object with message and optional title
@@ -539,7 +582,7 @@ function buildStatement() {
         if (actorGroupOpenID != "") { stmt['actor']['openid'] = actorGroupOpenID; }
         if (actorGroupAccount != "") { stmt['actor']['account'] = $.parseJSON(actorGroupAccount); }
         if (actorGroupName != "") { stmt['actor']['name'] = actorGroupName; }
-        stmt['actor']['member'] = $.parseJSON(actorGroupMembers);
+        if (actorGroupMembers != "") { stmt['actor']['member'] = $.parseJSON(actorGroupMembers); }
         break;
       default:
     }
@@ -583,7 +626,7 @@ function buildStatement() {
         if (objectGroupOpenID != "") { stmt['object']['openid'] = objectGroupOpenID; }
         if (objectGroupAccount != "") { stmt['object']['account'] = $.parseJSON(objectGroupAccount); }
         if (objectGroupName != "") { stmt['object']['name'] = objectGroupName; }
-        stmt['object']['member'] = $.parseJSON(objectGroupMembers);
+        if (objectGroupMembers != "") { stmt['object']['member'] = $.parseJSON(objectGroupMembers); }
         break;
       case "StatementRef":
         stmt['object']['id'] = objectStatementRef;

@@ -140,30 +140,32 @@
 
                                           <div class="row">
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 ifi">
                                               
                                               <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#inversefunctional" target="_blank" title="Inverse Functional Identifier">IFI</a> Below:</h4>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-agent-email">Email</label>
-                                                <input type="email" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Actor Agent Email" id="actor-agent-email" />
+                                                <input type="email" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" data-actor_agent_ifi="ifi" aria-describedby="Actor Agent Email" id="actor-agent-email" />
+                                                <div class="help-block with-errors"></div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-agent-email-sha1">Email SHA1</label>
-                                                <input type="text" class="form-control" placeholder="f522a694d7fc5c38d7c604f63c87c9f74dcd002e" aria-describedby="Actor Agent Email SHA1" id="actor-agent-email-sha1" />
+                                                <input type="text" class="form-control" placeholder="f522a694d7fc5c38d7c604f63c87c9f74dcd002e"data-actor_agent_ifi="ifi" aria-describedby="Actor Agent Email SHA1" id="actor-agent-email-sha1" />
+                                                <div class="help-block with-errors"></div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-agent-openid">OpenID</label>
-                                                <input type="text" class="form-control" placeholder="http://tyler.openid.example.com" aria-describedby="Actor Agent OpenID" id="actor-agent-openid" />
-                                                <span class="help-block"><a href="https://github.com/adlnet/ADL_LRS/issues/317" target="_blank">See here</a> if the LRS returns an error using OpenID</span>
+                                                <input type="text" class="form-control" placeholder="http://tyler.openid.example.com"  data-actor_agent_ifi="ifi" aria-describedby="Actor Agent OpenID" id="actor-agent-openid" />
+                                                <div class="help-block with-errors"><a href="https://github.com/adlnet/ADL_LRS/issues/317" target="_blank">See here</a> if the LRS returns an error using OpenID</div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-agent-account">Account</label>
-                                                <textarea class="form-control" rows="4" aria-describedby="Actor Agent Account" id="actor-agent-account"></textarea>
-                                                <span class="help-block">An Account Object <span class="pull-right"><a href="#" id="actor-agent-account-example">Insert Example JSON</a></span></span>
+                                                <textarea class="form-control" rows="4" data-actor_agent_ifi="ifi" aria-describedby="Actor Agent Account" id="actor-agent-account"></textarea>
+                                                <div class="help-block with-errors">An Account Object <span class="pull-right"><a href="#" id="actor-agent-account-example">Insert Example JSON</a></span></div>
                                               </div>
 
                                             </div><!-- .col-md-6 -->
@@ -187,29 +189,32 @@
                                           
                                           <div class="row">
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 ifi">
                                               
                                               <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#inversefunctional" target="_blank" title="Inverse Functional Identifier">IFI</a> Below, Unless <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#requirements-for-anonymous-groups" target="_blank">Anonymous Group</a>:</h4>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-group-email">Email</label>
-                                                <input type="email" class="form-control" value="teamxapi@example.com" aria-describedby="Actor Group Email" id="actor-group-email" />
+                                                <input type="email" class="form-control" value="teamxapi@example.com" data-actor_group_ifi="ifi" aria-describedby="Actor Group Email" id="actor-group-email" />
+                                                <div class="help-block with-errors"></div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-group-email-sha1">Email SHA1</label>
-                                                <input type="text" class="form-control" placeholder="3931fc689771433af943607547a38feb5e916ffd" aria-describedby="Actor Group Email SHA1" id="actor-group-email-sha1" />
+                                                <input type="text" class="form-control" placeholder="3931fc689771433af943607547a38feb5e916ffd" data-actor_group_ifi="ifi" aria-describedby="Actor Group Email SHA1" id="actor-group-email-sha1" />
+                                                <div class="help-block with-errors"></div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-group-openid">OpenID</label>
-                                                <input type="text" class="form-control" placeholder="http://teamxapi.openid.example.com" aria-describedby="Actor Group OpenID" id="actor-group-openid" />
+                                                <input type="text" class="form-control" placeholder="http://teamxapi.openid.example.com" data-actor_group_ifi="ifi" aria-describedby="Actor Group OpenID" id="actor-group-openid" />
+                                                <div class="help-block with-errors"></div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-group-account">Account</label>
-                                                <textarea class="form-control" rows="4" aria-describedby="Actor Group Account" id="actor-group-account"></textarea>
-                                                <span class="help-block">An Account Object <span class="pull-right"><a href="#" id="actor-group-account-example">Insert Example JSON</a></span></span>
+                                                <textarea class="form-control" rows="4" data-actor_group_ifi="ifi" aria-describedby="Actor Group Account" id="actor-group-account"></textarea>
+                                                <div class="help-block with-errors">An Account Object <span class="pull-right"><a href="#" id="actor-group-account-example">Insert Example JSON</a></span></div>
                                               </div>
 
                                             </div><!-- .col-md-6 -->
@@ -227,8 +232,8 @@
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-group-members">Group Members</label>
-                                                <textarea class="form-control" rows="15" aria-describedby="Actor Group Members" id="actor-group-members" required></textarea>
-                                                <span class="help-block with-errors">Array of Agent Objects</span>
+                                                <textarea class="form-control" rows="15" data-actor_group_ifi="ifi" aria-describedby="Actor Group Members" id="actor-group-members"></textarea>
+                                                <div class="help-block with-errors">Array of Agent Objects</div>
                                               </div>
 
                                             </div><!-- .col-md-6 -->
@@ -343,30 +348,32 @@
 
                                           <div class="row">
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 ifi">
                                               
                                               <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#inversefunctional" target="_blank" title="Inverse Functional Identifier">IFI</a> Below:</h4>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="object-agent-email">Email</label>
-                                                <input type="email" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" aria-describedby="Object Agent Email" id="object-agent-email" />
+                                                <input type="email" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" data-object_agent_ifi="ifi" aria-describedby="Object Agent Email" id="object-agent-email" />
+                                                <div class="help-block with-errors"></div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="object-agent-email-sha1">Email SHA1</label>
-                                                <input type="text" class="form-control" placeholder="f522a694d7fc5c38d7c604f63c87c9f74dcd002e" aria-describedby="Object Agent Email SHA1" id="object-agent-email-sha1" />
+                                                <input type="text" class="form-control" placeholder="f522a694d7fc5c38d7c604f63c87c9f74dcd002e" data-object_agent_ifi="ifi" aria-describedby="Object Agent Email SHA1" id="object-agent-email-sha1" />
+                                                <div class="help-block with-errors"></div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="object-agent-openid">OpenID</label>
-                                                <input type="text" class="form-control" placeholder="http://tyler.openid.example.com" aria-describedby="Object Agent OpenID" id="object-agent-openid" />
-                                                <span class="help-block"><a href="https://github.com/adlnet/ADL_LRS/issues/317" target="_blank">See here</a> if the LRS returns an error using OpenID</span>
+                                                <input type="text" class="form-control" placeholder="http://tyler.openid.example.com" data-object_agent_ifi="ifi" aria-describedby="Object Agent OpenID" id="object-agent-openid" />
+                                                <div class="help-block with-errors"><a href="https://github.com/adlnet/ADL_LRS/issues/317" target="_blank">See here</a> if the LRS returns an error using OpenID</div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="object-agent-account">Account</label>
-                                                <textarea class="form-control" rows="4" aria-describedby="Object Agent Account" id="object-agent-account"></textarea>
-                                                <span class="help-block">An Account Object <span class="pull-right"><a href="#" id="object-agent-account-example">Insert Example JSON</a></span></span>
+                                                <textarea class="form-control" rows="4" data-object_agent_ifi="ifi" aria-describedby="Object Agent Account" id="object-agent-account"></textarea>
+                                                <div class="help-block with-errors">An Account Object <span class="pull-right"><a href="#" id="object-agent-account-example">Insert Example JSON</a></span></div>
                                               </div>
 
                                             </div><!-- .col-md-6 -->
@@ -390,29 +397,32 @@
                                           
                                           <div class="row">
 
-                                            <div class="col-md-6">
+                                            <div class="col-md-6 ifi">
                                               
                                               <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#inversefunctional" target="_blank" title="Inverse Functional Identifier">IFI</a> Below, Unless <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#requirements-for-anonymous-groups" target="_blank">Anonymous Group</a>:</h4>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="object-group-email">Email</label>
-                                                <input type="email" class="form-control" value="teamxapi@example.com" aria-describedby="Object Group Email" id="object-group-email" />
+                                                <input type="email" class="form-control" value="teamxapi@example.com" data-object_group_ifi="ifi" aria-describedby="Object Group Email" id="object-group-email" />
+                                                <div class="help-block with-errors"></div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="object-group-email-sha1">Email SHA1</label>
-                                                <input type="text" class="form-control" placeholder="3931fc689771433af943607547a38feb5e916ffd" aria-describedby="Object Group Email SHA1" id="object-group-email-sha1" />
+                                                <input type="text" class="form-control" placeholder="3931fc689771433af943607547a38feb5e916ffd" data-object_group_ifi="ifi" aria-describedby="Object Group Email SHA1" id="object-group-email-sha1" />
+                                                <div class="help-block with-errors"></div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="object-group-openid">OpenID</label>
-                                                <input type="text" class="form-control" placeholder="http://teamxapi.openid.example.com" aria-describedby="Object Group OpenID" id="object-group-openid" />
+                                                <input type="text" class="form-control" placeholder="http://teamxapi.openid.example.com" data-object_group_ifi="ifi" aria-describedby="Object Group OpenID" id="object-group-openid" />
+                                                <div class="help-block with-errors"></div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="object-group-account">Account</label>
-                                                <textarea class="form-control" rows="4" aria-describedby="Object Group Account" id="object-group-account"></textarea>
-                                                <span class="help-block">An Account Object <span class="pull-right"><a href="#" id="object-group-account-example">Insert Example JSON</a></span></span>
+                                                <textarea class="form-control" rows="4" data-object_group_ifi="ifi" aria-describedby="Object Group Account" id="object-group-account"></textarea>
+                                                <div class="help-block with-errors">An Account Object <span class="pull-right"><a href="#" id="object-group-account-example">Insert Example JSON</a></span></div>
                                               </div>
 
                                             </div><!-- .col-md-6 -->
@@ -430,8 +440,8 @@
 
                                               <div class="form-group">
                                                 <label class="control-label" for="object-group-members">Group Members</label>
-                                                <textarea class="form-control" rows="15" aria-describedby="Object Group Members" id="object-group-members" required></textarea>
-                                                <span class="help-block with-errors">Array of Agent Objects</span>
+                                                <textarea class="form-control" rows="15" data-object_group_ifi="ifi" aria-describedby="Object Group Members" id="object-group-members"></textarea>
+                                                <div class="help-block with-errors">Array of Agent Objects</div>
                                               </div>
 
                                             </div><!-- .col-md-6 -->
