@@ -605,7 +605,7 @@ function buildStatement() {
     switch(objectType) {
       case "Activity":
         stmt['object']['id'] = objectActivityID;
-        if (objectActivityName != "" || objectActivityDescription != "" || objectActivityType != "" || objectActivityMoreInfo != "" || objectActivityExtensions != "") {
+        if (/.+/.test([ objectActivityName, objectActivityDescription, objectActivityType, objectActivityMoreInfo, objectActivityExtensions ].join(""))) {
             stmt['object']['definition'] = {};
         }
         if (objectActivityName != "" && objectActivityLanguage != "") {
@@ -648,7 +648,7 @@ function buildStatement() {
     
     stmt['object']['objectType'] = objectType;
 
-    if ( resultScaledScore != "" || resultRawScore != "" || resultMinScore != "" || resultMaxScore != "" || resultSuccess != "" || resultCompletion != "" || resultResponse != "" || resultDuration != "" || resultExtensions != "" ) {
+    if (/.+/.test([ resultScaledScore, resultRawScore, resultMinScore, resultMaxScore, resultSuccess, resultCompletion, resultResponse, resultDuration, resultExtensions ].join(""))) {
         stmt['result'] = {};
         if ( resultScaledScore != "" || resultRawScore != "" || resultMinScore != "" || resultMaxScore != "" ) {
             stmt['result']['score'] = {};
@@ -664,7 +664,7 @@ function buildStatement() {
         if (resultExtensions != "") { stmt['result']['extensions'] = $.parseJSON(resultExtensions); }
     }
 
-    if ( contextRegistrationID != "" || contextInstructorEmail != "" || contextInstructorName != "" || contextTeamName != "" || contextTeamMembers != "" || contextContextActivities != "" || contextRevision != "" || contextPlatform != "" || contextLanguage != "" || contextStatement != "" || contextExtensions != "" ) {
+    if (/.+/.test([ contextRegistrationID, contextInstructorEmail, contextInstructorName, contextTeamName, contextTeamMembers, contextContextActivities, contextRevision, contextPlatform, contextLanguage, contextStatement, contextExtensions ].join(""))) {
         stmt['context'] = {};
         if (contextRegistrationID != "") { stmt['context']['registration'] = contextRegistrationID; }
         if (contextInstructorEmail != "" || contextInstructorName != "") {
@@ -691,7 +691,7 @@ function buildStatement() {
         if (contextExtensions != "") { stmt['context']['extensions'] = $.parseJSON(contextExtensions); }
     }
 
-    if ( attachmentDisplay != "" || attachmentDescription != "" || attachmentLanguage != "" || attachmentContentType != "" || attachmentLength != "" || attachmentSha2 != "" ||attachmentFileURL != "" ) {
+    if (/.+/.test([ attachmentDisplay, attachmentDescription, attachmentLanguage, attachmentContentType, attachmentLength, attachmentSha2 != "" ||attachmentFileURL ].join(""))) {
       stmt['attachments'] = [];
       var attachment = {};
       attachment['usageType'] = attachmentUsageType;
