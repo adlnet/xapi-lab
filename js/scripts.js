@@ -691,7 +691,7 @@ function buildStatement() {
         if (contextExtensions != "") { stmt['context']['extensions'] = $.parseJSON(contextExtensions); }
     }
 
-    if (/.+/.test([ attachmentDisplay, attachmentDescription, attachmentLanguage, attachmentContentType, attachmentLength, attachmentSha2 != "" ||attachmentFileURL ].join(""))) {
+    if (/.+/.test([ attachmentDisplay, attachmentDescription, attachmentLanguage, attachmentContentType, attachmentLength, attachmentSha2, attachmentFileURL ].join(""))) {
       stmt['attachments'] = [];
       var attachment = {};
       attachment['usageType'] = attachmentUsageType;
