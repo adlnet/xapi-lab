@@ -456,7 +456,7 @@
 
                                             <div class="form-group col-md-6">
                                               <label class="control-label" for="object-statementref-id">Statement ID</label>
-                                              <input type="text" class="form-control" value="" placeholder="137ca18f-97f6-4477-981a-696fb41c6b63" aria-describedby="Object Statement Reference ID" id="object-statementref-id" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" required />
+                                              <input type="text" class="form-control" value="" placeholder="137ca18f-97f6-4477-981a-696fb41c6b63" aria-describedby="Object Statement Reference ID" id="object-statementref-id" pattern="^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$" required />
                                             </div>
 
                                           </div><!-- .row -->
@@ -491,7 +491,7 @@
                                           <div class="form-group col-md-2">
                                             <label class="control-label" for="result-scaled-score">Scaled Score</label>
                                             <!-- arbitrary number of decimal places due to html5 number input limitions -->
-                                            <input type="number" min="-1" max="1" step="0.00001" pattern="[0-9]*(.)?[0-9]+" class="form-control" placeholder="0" aria-describedby="Scaled Score" id="result-scaled-score" />
+                                            <input type="number" min="-1" max="1" step="0.00001" pattern="^[0-9]*(.)?[0-9]+$" class="form-control" placeholder="0" aria-describedby="Scaled Score" id="result-scaled-score" />
                                           </div>
 
                                           <div class="form-group col-md-2">
@@ -574,7 +574,7 @@
 
                                           <div class="form-group col-md-6">
                                             <label class="control-label" for="context-registration-id">Registration ID</label>
-                                            <input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" id="context-registration-id" />
+                                            <input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" pattern="^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$" id="context-registration-id" />
                                           </div>
 
                                         </div>
@@ -641,7 +641,7 @@
 
                                           <div class="form-group col-md-6">
                                             <label class="control-label" for="context-statement">Statement</label>
-                                            <input type="text" class="form-control" placeholder="137ca18f-97f6-4477-981a-696fb41c6b63" aria-describedby="Context Statement" id="context-statement" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
+                                            <input type="text" class="form-control" placeholder="137ca18f-97f6-4477-981a-696fb41c6b63" aria-describedby="Context Statement" id="context-statement" pattern="^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$" />
                                           </div>
 
                                         </div><!-- .row -->
@@ -891,7 +891,7 @@
 
                               <div class="form-group col-md-12">
                                 <label class="control-label" for="search-registration-id">Registration ID</label>
-                                <input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" id="search-registration-id" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
+                                <input type="text" class="form-control" value="" aria-describedby="Registration ID" placeholder="51a6f860-1997-11e3-8ffd-0800200c9a66" id="search-registration-id" pattern="^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$" />
                               </div>
 
                             </div><!-- .row -->
@@ -900,7 +900,7 @@
 
                               <div class="form-group col-md-12">
                                 <label class="control-label" for="search-statement-id">Statement ID</label>
-                                <input type="text" class="form-control" value="" aria-describedby="Activity ID" placeholder="ef8a3c05-7c88-4d46-a821-c6f2f061ef23" id="search-statement-id" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
+                                <input type="text" class="form-control" value="" aria-describedby="Activity ID" placeholder="ef8a3c05-7c88-4d46-a821-c6f2f061ef23" id="search-statement-id" pattern="^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$" />
                               </div>
 
                             </div><!-- .row -->
@@ -909,7 +909,7 @@
 
                               <div class="form-group col-md-12">
                                 <label class="control-label" for="search-voided-statement-id">Voided Statement ID</label>
-                                <input type="text" class="form-control" value="" aria-describedby="Voided Activity ID" placeholder="00d9f122-e9cd-4ea3-b180-9daa49c8a7e5" id="search-voided-statement-id" pattern="[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}" />
+                                <input type="text" class="form-control" value="" aria-describedby="Voided Activity ID" placeholder="00d9f122-e9cd-4ea3-b180-9daa49c8a7e5" id="search-voided-statement-id" pattern="^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$" />
                               </div>
 
                             </div><!-- .row -->
