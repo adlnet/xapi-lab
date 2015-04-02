@@ -3,6 +3,10 @@
 // Initialize the editor
 var editor = ace.edit('editor');
 editor.getSession().setMode('ace/mode/javascript');
+editor.on('change', function() {
+    var r = validateJSON(editor.getValue());
+    btnValidateJSON(r);
+});
 
 var notificationSettings = {
     animate: {
@@ -328,6 +332,7 @@ $("#validate-json").click(function(e) {
     var whichNotificationSettings = (r == true) ? notificationSettings : notificationErrorSettings;
     var notificationStatus = (r == true) ? "JSON is valid" : "JSON is <em>NOT</em> valid";
     notify({ message: notificationStatus }, whichNotificationSettings);
+    btnValidateJSON(r);
     e.preventDefault();
 });
 
@@ -715,6 +720,13 @@ function validateJSON(json) {
     }
 }
 
+// Change the class of the JSON Button
+function btnValidateJSON(bool) {
+    if (bool != true)
+        $("#validate-json").removeClass("btn-success").addClass("btn-danger");
+    else
+        $("#validate-json").removeClass("btn-danger").addClass("btn-success");
+}
 
 /*  Statement Manipulation and Response -- Sending */
 
