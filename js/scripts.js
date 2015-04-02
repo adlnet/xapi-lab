@@ -525,6 +525,8 @@ function buildStatement() {
     var objectActivityName = $("#object-activity-name").val();
     var objectActivityDescription = $("#object-activity-description").val();
     var objectActivityLanguage = $("#object-activity-language").val();
+    var objectActivityType = $("#object-activity-type").val();
+    var objectActivityMoreInfo = $("#object-activity-more-info").val();
     var objectActivityExtensions = $("#object-activity-extensions").val();
     var objectAgentEmail = $("#object-agent-email").val();
     var objectAgentEmailSha1 = $("#object-agent-email-sha1").val();
@@ -603,7 +605,7 @@ function buildStatement() {
     switch(objectType) {
       case "Activity":
         stmt['object']['id'] = objectActivityID;
-        if (objectActivityName != "" || objectActivityDescription != "") {
+        if (objectActivityName != "" || objectActivityDescription != "" || objectActivityType != "" || objectActivityMoreInfo != "" || objectActivityExtensions != "") {
             stmt['object']['definition'] = {};
         }
         if (objectActivityName != "" && objectActivityLanguage != "") {
@@ -614,7 +616,9 @@ function buildStatement() {
             stmt['object']['definition']['description'] = {};
             stmt['object']['definition']['description'][objectActivityLanguage] = objectActivityDescription;
         }
-        if (objectActivityExtensions != "") { stmt['object']['extensions'] = $.parseJSON(objectActivityExtensions); }
+        if (objectActivityType != "") { stmt['object']['definition']['type'] = objectActivityType; }
+        if (objectActivityMoreInfo != "") { stmt['object']['definition']['moreInfo'] = objectActivityMoreInfo; }
+        if (objectActivityExtensions != "") { stmt['object']['definition']['extensions'] = $.parseJSON(objectActivityExtensions); }
         break;
       case "Agent":
         // LRS will reject if more than one IFI is in the statement
