@@ -185,6 +185,9 @@ $(function(){
 
     $("#object-types > div").hide();
     $("#object-Activity").show();
+    
+    $("#component-lists > div").hide();
+    $("#correct-responses-pattern").hide();
 
     $("#search-statements-since-date").datetimepicker(dateTimeSettings);
     $("#search-statements-until-date").datetimepicker(dateTimeSettings);
@@ -292,6 +295,42 @@ $("#object-type").change(function() {
     var objectType = $(this).val();
     $("#object-types > div").hide();
     $("#object-types > #object-" + objectType).show();
+});
+
+$("#object-activity-interaction-type").change(function() {
+    var objectActivityInteractionType = $(this).val();
+    if (objectActivityInteractionType != "") {
+      $("#object-activity-type").val("http://adlnet.gov/expapi/activities/cmi.interaction");
+      $("#correct-responses-pattern").show();
+    } else {
+      $("#object-activity-type").val("");
+      $("#correct-responses-pattern").hide();
+    }
+    $("#component-lists > div").hide();
+    var componentLists = [];
+    switch(objectActivityInteractionType) {
+      case "choice":
+        componentLists = ['choices'];
+      break;
+      case "sequencing":
+        componentLists = ['choices'];
+      break;
+      case "likert":
+        componentLists = ['scale'];
+      break;
+      case "matching":
+        componentLists = ['source','target'];
+      break;
+      case "performance":
+        componentLists = ['steps'];
+      break;
+      default:
+      break;
+    }
+    $("#component-lists textarea").val("");
+    componentLists.forEach(function(e, i, a) {
+      $("#component-lists > #component-list-" + e).show();
+    });
 });
 
 $("#object-agent-account-example").click(function(e) {
@@ -527,6 +566,13 @@ function buildStatement() {
     var objectActivityLanguage = $("#object-activity-language").val();
     var objectActivityType = $("#object-activity-type").val();
     var objectActivityMoreInfo = $("#object-activity-more-info").val();
+    var objectActivityInteractionType = $("#object-activity-interaction-type").val();
+    var objectActivityComponentListChoices = $("#object-activity-component-list-choices").val();
+    var objectActivityComponentListScale = $("#object-activity-component-list-scale").val();
+    var objectActivityComponentListSource = $("#object-activity-component-list-source").val();
+    var objectActivityComponentListTarget = $("#object-activity-component-list-target").val();
+    var objectActivityComponentListSteps = $("#object-activity-component-list-steps").val();
+    var objectActivityCorrectResponsesPattern = $("#object-activity-correct-responses-pattern").val();
     var objectActivityExtensions = $("#object-activity-extensions").val();
     var objectAgentEmail = $("#object-agent-email").val();
     var objectAgentEmailSha1 = $("#object-agent-email-sha1").val();
@@ -618,6 +664,16 @@ function buildStatement() {
         }
         if (objectActivityType != "") { stmt['object']['definition']['type'] = objectActivityType; }
         if (objectActivityMoreInfo != "") { stmt['object']['definition']['moreInfo'] = objectActivityMoreInfo; }
+        if (objectActivityInteractionType != "") { stmt['object']['definition']['interactionType'] = objectActivityInteractionType; }
+        if (objectActivityComponentListChoices != "") { stmt['object']['definition']['choices'] = $.parseJSON(objectActivityComponentListChoices); }
+        if (objectActivityComponentListScale != "") { stmt['object']['definition']['scale'] = $.parseJSON(objectActivityComponentListScale); }
+        if (objectActivityComponentListSource != "") { stmt['object']['definition']['source'] = $.parseJSON(objectActivityComponentListSource); }
+        if (objectActivityComponentListTarget != "") { stmt['object']['definition']['target'] = $.parseJSON(objectActivityComponentListTarget); }
+        if (objectActivityComponentListSteps != "") { stmt['object']['definition']['steps'] = $.parseJSON(objectActivityComponentListSteps); }
+        if (objectActivityCorrectResponsesPattern != "") {
+          stmt['object']['definition']['correctResponsesPattern'] = [];
+          stmt['object']['definition']['correctResponsesPattern'].push(objectActivityCorrectResponsesPattern);
+        }
         if (objectActivityExtensions != "") { stmt['object']['definition']['extensions'] = $.parseJSON(objectActivityExtensions); }
         break;
       case "Agent":

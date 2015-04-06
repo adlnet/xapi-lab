@@ -335,19 +335,104 @@
 
                                           <div class="row">
 
-                                              <div class="form-group col-md-6">
-                                                <label class="control-label" for="object-activity-type">Activity Type</label>
-                                                <input type="text" class="form-control" placeholder="http://www.example.co.uk/types/exampleactivitytype" aria-describedby="Object Activity Type" id="object-activity-type" />
-                                              </div>
+                                            <div class="form-group col-md-6">
+                                              <label class="control-label" for="object-activity-type">Activity Type</label>
+                                              <input type="text" class="form-control" placeholder="http://www.example.co.uk/types/exampleactivitytype" aria-describedby="Object Activity Type" id="object-activity-type" />
+                                            </div>
 
-                                              <div class="form-group col-md-6">
-                                                <label class="control-label" for="object-activity-more-info">More Info</label>
-                                                <input type="text" class="form-control" placeholder="http://virtualmeeting.example.com/345256" aria-describedby="Object More Info" id="object-activity-more-info" />
-                                              </div>
+                                            <div class="form-group col-md-6">
+                                              <label class="control-label" for="object-activity-more-info">More Info</label>
+                                              <input type="text" class="form-control" placeholder="http://virtualmeeting.example.com/345256" aria-describedby="Object More Info" id="object-activity-more-info" />
+                                            </div>
                                               
                                           </div><!-- .row -->
 
-                                          <div class="row">                              
+                                          <div class="row">
+
+                                              <div class="form-group col-md-5">
+                                                <label class="control-label" for="object-activity-interaction-type">Interaction Type</label>
+                                                <select class="form-control" name="object-activity-interaction-type" id="object-activity-interaction-type">
+                                                  <option selected></option>
+                                                  <option>choice</option>
+                                                  <option>sequencing</option>
+                                                  <option>likert</option>
+                                                  <option>matching</option>
+                                                  <option>performance</option>
+                                                  <option>true-false</option>
+                                                  <option>fill-in</option>
+                                                  <option>numeric</option>
+                                                  <option>other</option>
+                                                </select>
+                                                <div class="help-block"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#interactionacts" target="_blank">Interaction Activities</a></div>
+                                              </div>
+
+                                          </div><!-- .row -->
+
+                                          <div id="component-lists">
+
+                                            <div class="row" id="component-list-choices">
+
+                                                <div class="form-group col-md-12">
+                                                  <label class="control-label" for="object-activity-component-list-choices">Choices</label>
+                                                  <textarea class="form-control" rows="10" aria-describedby="Object Component List Choices" id="object-activity-component-list-choices"></textarea>
+                                                  <div class="help-block">An Array of interaction components</div>
+                                                </div>
+
+                                            </div><!-- .row -->
+
+                                            <div class="row" id="component-list-scale">
+
+                                                <div class="form-group col-md-12">
+                                                  <label class="control-label" for="object-activity-component-list-scale">Scale</label>
+                                                  <textarea class="form-control" rows="10" aria-describedby="Object Scale List Choices" id="object-activity-component-list-scale"></textarea>
+                                                  <div class="help-block">An Array of interaction components</div>
+                                                </div>
+
+                                            </div><!-- .row -->
+
+                                            <div class="row" id="component-list-source">
+
+                                                <div class="form-group col-md-12">
+                                                  <label class="control-label" for="object-activity-component-list-source">Source</label>
+                                                  <textarea class="form-control" rows="10" aria-describedby="Object Source List Choices" id="object-activity-component-list-source"></textarea>
+                                                  <div class="help-block">An Array of interaction components</div>
+                                                </div>
+
+                                            </div><!-- .row -->
+
+                                            <div class="row" id="component-list-target">
+
+                                                <div class="form-group col-md-12">
+                                                  <label class="control-label" for="object-activity-component-list-target">Target</label>
+                                                  <textarea class="form-control" rows="10" aria-describedby="Object Target List Choices" id="object-activity-component-list-target"></textarea>
+                                                  <div class="help-block">An Array of interaction components</div>
+                                                </div>
+
+                                            </div><!-- .row -->
+
+                                            <div class="row" id="component-list-steps">
+
+                                                <div class="form-group col-md-12">
+                                                  <label class="control-label" for="object-activity-component-list-steps">Steps</label>
+                                                  <textarea class="form-control" rows="10" aria-describedby="Object Steps List Choices" id="object-activity-component-list-steps"></textarea>
+                                                  <div class="help-block">An Array of interaction components</div>
+                                                </div>
+
+                                            </div><!-- .row -->
+
+                                          </div><!-- #component-lists -->
+
+                                          <div class="row" id="correct-responses-pattern">
+
+                                            <div class="form-group col-md-12">
+                                              <label class="control-label" for="object-activity-correct-responses-pattern">Correct Responses Pattern</label>
+                                              <textarea class="form-control" rows="10" aria-describedby="Correct Responses Pattern" id="object-activity-correct-responses-pattern"></textarea>
+                                              <div class="help-block">An Array of Strings</div>
+                                            </div>
+                                              
+                                          </div><!-- .row -->
+
+                                          <div class="row">
 
                                             <div class="form-group col-md-12">
                                               <label class="control-label" for="object-activity-extensions">Extensions</label>
