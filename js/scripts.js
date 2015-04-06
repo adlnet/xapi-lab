@@ -98,6 +98,175 @@ var groupExample2 = [
     }
 ];
 
+var componentListChoicesExample = [
+    {
+        "id": "golf", 
+        "description": {
+            "en-US": "Golf Example"
+        }
+    },
+    {
+        "id": "facebook", 
+        "description": {
+            "en-US": "Facebook App"
+        }
+    },
+    {
+        "id": "tetris", 
+        "description": {
+            "en-US": "Tetris Example"
+        }
+    },
+    {
+        "id": "scrabble", 
+        "description": {
+            "en-US": "Scrabble Example"
+        }
+    }
+];
+
+var componentListScaleExample = [
+    {
+        "id": "likert_0", 
+        "description": {
+            "en-US": "It's OK"
+        }
+    },
+    {
+        "id": "likert_1", 
+        "description": {
+            "en-US": "It's Pretty Cool"
+        }
+    },
+    {
+        "id": "likert_2", 
+        "description": {
+            "en-US": "It's Damn Cool"
+        }
+    },
+    {
+        "id": "likert_3", 
+        "description": {
+            "en-US": "It's Gonna Change the World"
+        }
+    }
+];
+
+var componentListSourceExample = [
+    {
+        "id": "ben",
+        "description": {
+            "en-US": "Ben"
+        }
+    },
+    {
+        "id": "chris",
+        "description": {
+            "en-US": "Chris"
+        }
+    },
+    {
+        "id": "troy",
+        "description": {
+            "en-US": "Troy"
+        }
+    },
+    {
+        "id": "freddie",
+        "description": {
+            "en-US": "Freddie"
+        }
+    }
+];
+
+var componentListTargetExample = [
+    {
+        "id": "1",
+        "description": {
+            "en-US": "Swift Kick in the Grass"
+        }
+    },
+    {
+        "id": "2",
+        "description": {
+            "en-US": "We got Runs"
+        }
+    },
+    {
+        "id": "3",
+        "description": {
+            "en-US": "Duck"
+        }
+    },
+    {
+        "id": "4",
+        "description": {
+            "en-US": "Van Delay Industries"
+        }
+    }
+];
+
+var componentListStepsExample = [
+    {
+        "id": "pong", 
+        "description": {
+            "en-US": "Net pong matches won"
+        }
+    },
+    {
+        "id": "dg", 
+        "description": {
+            "en-US": "Strokes over par in disc golf at Liberty"
+            }
+        },
+    {
+        "id": "lunch", 
+        "description": {
+            "en-US": "Lunch having been eaten"
+        }
+    }
+];
+
+var correctResponsesPatternChoice = [
+    "golf[,]tetris"
+];
+
+var correctResponsesPatternSequencing = [
+    "tim[,]mike[,]ells[,]ben"
+];
+
+var correctResponsesPatternLikert = [
+    "likert_3"
+];
+
+var correctResponsesPatternMatching = [
+    "ben[.]3[,]chris[.]2[,]troy[.]4[,]freddie[.]1"
+];
+
+var correctResponsesPatternPerformance = [
+    "pong[.]1:[,]dg[.]:10[,]lunch[.]"
+];
+
+var correctResponsesPatternTrueFalse = [
+    "true"
+];
+
+var correctResponsesPatternFillIn = [
+    "Bob's your uncle"
+];
+
+var correctResponsesPatternLongFillIn = [
+    "{case_matters=false}{lang=en}To store and provide access to learning experiences."
+];
+
+var correctResponsesPatternNumeric = [
+    "4[:]"
+];
+
+var correctResponsesPatternOther = [
+    "(35.937432,-86.868896)"
+];
+
 var substatementExample = {
     "actor" : {
         "objectType": "Agent",
@@ -328,9 +497,82 @@ $("#object-activity-interaction-type").change(function() {
       break;
     }
     $("#component-lists textarea").val("");
+    $("#object-activity-correct-responses-pattern").val("");
     componentLists.forEach(function(e, i, a) {
       $("#component-lists > #component-list-" + e).show();
     });
+});
+
+$("#object-activity-component-list-choices-example").click(function(e) {
+    $("#object-activity-component-list-choices").val(JSON.stringify(componentListChoicesExample, undefined, 4));
+    considerPreviewStatement();
+    e.preventDefault();
+});
+
+$("#object-activity-component-list-scale-example").click(function(e) {
+    $("#object-activity-component-list-scale").val(JSON.stringify(componentListScaleExample, undefined, 4));
+    considerPreviewStatement();
+    e.preventDefault();
+});
+
+$("#object-activity-component-list-source-example").click(function(e) {
+    $("#object-activity-component-list-source").val(JSON.stringify(componentListSourceExample, undefined, 4));
+    considerPreviewStatement();
+    e.preventDefault();
+});
+
+$("#object-activity-component-list-target-example").click(function(e) {
+    $("#object-activity-component-list-target").val(JSON.stringify(componentListTargetExample, undefined, 4));
+    considerPreviewStatement();
+    e.preventDefault();
+});
+
+$("#object-activity-component-list-steps-example").click(function(e) {
+    $("#object-activity-component-list-steps").val(JSON.stringify(componentListStepsExample, undefined, 4));
+    considerPreviewStatement();
+    e.preventDefault();
+});
+
+$("#object-activity-correct-responses-pattern-example").click(function(e) {
+    var interactionType = $("#object-activity-interaction-type").val();
+    var exampleJSON = "";
+    switch(interactionType) {
+      case "choice":
+        exampleJSON = correctResponsesPatternChoice;
+      break;
+      case "sequencing":
+        exampleJSON = correctResponsesPatternSequencing;
+      break;
+      case "likert":
+        exampleJSON = correctResponsesPatternLikert;
+      break;
+      case "matching":
+        exampleJSON = correctResponsesPatternMatching;
+      break;
+      case "performance":
+        exampleJSON = correctResponsesPatternPerformance;
+      break;
+      case "true-false":
+        exampleJSON = correctResponsesPatternTrueFalse;
+      break;
+      case "fill-in":
+        exampleJSON = correctResponsesPatternFillIn;
+      break;
+      case "long-fill-in":
+        exampleJSON = correctResponsesPatternLongFillIn;
+      break;
+      case "numeric":
+        exampleJSON = correctResponsesPatternNumeric;
+      break;
+      case "other":
+        exampleJSON = correctResponsesPatternOther;
+      break;
+      default:
+      break;
+    }
+    $("#object-activity-correct-responses-pattern").val(JSON.stringify(exampleJSON, undefined, 4));
+    considerPreviewStatement();
+    e.preventDefault();
 });
 
 $("#object-agent-account-example").click(function(e) {
@@ -670,10 +912,7 @@ function buildStatement() {
         if (objectActivityComponentListSource != "") { stmt['object']['definition']['source'] = $.parseJSON(objectActivityComponentListSource); }
         if (objectActivityComponentListTarget != "") { stmt['object']['definition']['target'] = $.parseJSON(objectActivityComponentListTarget); }
         if (objectActivityComponentListSteps != "") { stmt['object']['definition']['steps'] = $.parseJSON(objectActivityComponentListSteps); }
-        if (objectActivityCorrectResponsesPattern != "") {
-          stmt['object']['definition']['correctResponsesPattern'] = [];
-          stmt['object']['definition']['correctResponsesPattern'].push(objectActivityCorrectResponsesPattern);
-        }
+        if (objectActivityCorrectResponsesPattern != "") { stmt['object']['definition']['correctResponsesPattern'] = $.parseJSON(objectActivityCorrectResponsesPattern); }
         if (objectActivityExtensions != "") { stmt['object']['definition']['extensions'] = $.parseJSON(objectActivityExtensions); }
         break;
       case "Agent":
