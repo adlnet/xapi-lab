@@ -358,6 +358,7 @@ $(function(){
     $("#component-lists > div").hide();
     $("#correct-responses-pattern").hide();
 
+    $("#statement-timestamp").datetimepicker(dateTimeSettings);
     $("#search-statements-since-date").datetimepicker(dateTimeSettings);
     $("#search-statements-until-date").datetimepicker(dateTimeSettings);
     $("#get-document-since-date").datetimepicker(dateTimeSettings);
@@ -603,7 +604,7 @@ $("#context-context-activities-example").click(function(e) {
 /*  Statement Manipulation and Response -- Sending */
 
 $("#generate-statement").click(function(e) {
-    considerPreviewStatement();
+    previewStatement();
     e.preventDefault();
 });
 
@@ -857,8 +858,15 @@ function buildStatement() {
     var attachmentLength = $("#attachment-length").val();
     var attachmentSha2 = $("#attachment-sha2").val();
     var attachmentFileURL = $("#attachment-file-url").val();
+    var statementTimestamp = $("#statement-timestamp input").val();
+    var statementID = $("#statement-id").val();
+    var statementVersion = $("#statement-version").val();
 
     var stmt = {};
+
+    if (statementTimestamp != "") { stmt['timestamp'] = moment(new Date(statementTimestamp)).format(); }
+    if (statementID != "") { stmt['id'] = statementID; }
+    if (statementVersion != "") { stmt['version'] = statementVersion; }
 
     stmt['actor'] = {};
     switch(actorType) {

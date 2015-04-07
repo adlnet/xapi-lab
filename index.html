@@ -832,6 +832,45 @@
                                     </div><!-- #attachments -->
                                   </div><!-- .panel -->
 
+                                  <div class="panel panel-default">
+                                    <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#statement" href="#statement" class="collapsed">Statement</a></h3></div>
+                                    <div id="statement" class="panel-collapse collapse">
+                                      <div class="panel-body">
+
+                                        <div class="row">
+
+                                          <div class="form-group col-md-5">
+                                            <label class="control-label" for="statement-timestamp">Timestamp</label>
+                                            <div class="input-group date" id="statement-timestamp">
+                                              <input type="text" class="form-control">
+                                              <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-calendar"></span>
+                                              </span>
+                                            </div>
+                                          </div>
+
+                                          <div class="form-group col-md-5">
+                                            <label class="control-label" for="statement-id">Statement ID</label>
+                                            <input type="text" class="form-control" value="" aria-describedby="Statement ID" placeholder="ef8a3c05-7c88-4d46-a821-c6f2f061ef23" id="statement-id" pattern="^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$">
+                                          </div>
+
+                                          <div class="form-group col-md-2">
+                                            <label class="control-label" for="statement-version">Version</label>
+                                            <select class="form-control" name="statement-version" id="statement-version">
+                                              <option></option>
+                                              <option>1.0.0</option>
+                                              <option>1.0.1</option>
+                                              <option>1.0.2</option>
+                                              <option>1.0.3</option>
+                                            </select>
+                                          </div>
+
+                                        </div><!-- .row -->
+
+                                      </div><!-- .panel-body -->
+                                    </div><!-- #statement -->
+                                  </div><!-- .panel -->
+
                                 </div><!-- .col-md-12 -->
 
                               </div><!-- .row -->
@@ -1003,7 +1042,7 @@
 
                               <div class="form-group col-md-12">
                                 <label class="control-label" for="search-statement-id">Statement ID</label>
-                                <input type="text" class="form-control" value="" aria-describedby="Activity ID" placeholder="ef8a3c05-7c88-4d46-a821-c6f2f061ef23" id="search-statement-id" pattern="^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$" />
+                                <input type="text" class="form-control" value="" aria-describedby="Statement ID" placeholder="ef8a3c05-7c88-4d46-a821-c6f2f061ef23" id="search-statement-id" pattern="^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$" />
                               </div>
 
                             </div><!-- .row -->
@@ -1012,7 +1051,7 @@
 
                               <div class="form-group col-md-12">
                                 <label class="control-label" for="search-voided-statement-id">Voided Statement ID</label>
-                                <input type="text" class="form-control" value="" aria-describedby="Voided Activity ID" placeholder="00d9f122-e9cd-4ea3-b180-9daa49c8a7e5" id="search-voided-statement-id" pattern="^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$" />
+                                <input type="text" class="form-control" value="" aria-describedby="Voided Statement ID" placeholder="00d9f122-e9cd-4ea3-b180-9daa49c8a7e5" id="search-voided-statement-id" pattern="^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$" />
                               </div>
 
                             </div><!-- .row -->
