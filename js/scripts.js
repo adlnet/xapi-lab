@@ -588,6 +588,36 @@ $("#object-group-account-example").click(function(e) {
     e.preventDefault();
 });
 
+$(".duration-segment").change(function(e) {
+    var resultDurationYears = $("#result-duration-years").val();
+    var resultDurationMonths = $("#result-duration-months").val();
+    var resultDurationWeeks = $("#result-duration-weeks").val();
+    var resultDurationDays = $("#result-duration-days").val();
+    var resultDurationHours = $("#result-duration-hours").val();
+    var resultDurationMinutes = $("#result-duration-minutes").val();
+    var resultDurationSeconds = $("#result-duration-seconds").val();
+    var resultDurationMilliseconds = $("#result-duration-milliseconds").val();
+
+    var duration = "P";
+    if (resultDurationYears != "") { duration += resultDurationYears + "Y"; }
+    if (resultDurationMonths != "") { duration += resultDurationMonths + "M"; }
+    if (resultDurationWeeks != "") { duration += resultDurationWeeks + "W"; }
+    if (resultDurationDays != "") { duration += resultDurationDays + "D"; }
+
+    if (resultDurationHours != "" || resultDurationMinutes != "" || resultDurationSeconds != "" || resultDurationMilliseconds != "") { duration += "T"; }
+
+    if (resultDurationHours != "") { duration += resultDurationHours + "H"; }
+    if (resultDurationMinutes != "") { duration += resultDurationMinutes + "M"; }
+    if (resultDurationSeconds != "" || resultDurationMilliseconds != "") {
+      if (resultDurationSeconds == "" && resultDurationMilliseconds != "") { resultDurationSeconds = 0; }
+      if (resultDurationMilliseconds.length == 1) { resultDurationMilliseconds = "0" + resultDurationMilliseconds; }
+      if (resultDurationSeconds == "" || (resultDurationSeconds != "" && resultDurationMilliseconds != "")) { resultDurationMilliseconds = "." + resultDurationMilliseconds; }
+      duration += resultDurationSeconds + resultDurationMilliseconds + "S";
+    }
+
+    $("#result-duration").val(duration);
+});
+
 $("#context-team-members-example").click(function(e) {
     $("#context-team-members").val(JSON.stringify(groupExample, undefined, 4));
     considerPreviewStatement();
