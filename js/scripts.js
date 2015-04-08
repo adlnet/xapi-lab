@@ -394,6 +394,11 @@ $('#opener').on('click', function() {
   return false;	
 });
 
+// Allow links inside collapsing headers to be clicked
+$(".panel-heading.collapser a:not([data-toggle='collapse'])").on("click", function(event) {
+    event.stopPropagation();
+});
+
 /* Statement Builder */
 
 // Update statement viewer links to pass auth via query string
