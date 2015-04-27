@@ -401,22 +401,10 @@ $(".panel-heading.collapser a:not([data-toggle='collapse'])").on("click", functi
 
 /* Statement Builder */
 
-// Update statement viewer links to pass auth via query string
-$("#endpoint-values").keyup(function() {
-    var root = $(".statement-viewer").attr("rel");
-    console.log(root);
-    var endpoint = $("#endpoint").val();
-    var username = $("#username").val();
-    var password = $("#password").val();
-    var auth = "Basic%20" + toBase64(username + ":" + password);
-    $(".statement-viewer").attr("href", root + "?endpoint=" + endpoint + "&auth=" + auth);
-});
-
 $("#statement-builder-values").change(function() {
     considerPreviewStatement();
 });
 
-$("#endpoint-values").validator();
 $("#statement-builder-values").validator({
     custom: {
         actor_agent_ifi: function ($el) {
@@ -765,6 +753,20 @@ $("#clear-deleted-documents").click(function(e) {
     e.preventDefault();
 });
 
+/* Endpoint */
+
+$("#endpoint-values").validator();
+
+// Update statement viewer links to pass auth via query string
+$("#endpoint-values").keyup(function() {
+    var root = $(".statement-viewer").attr("rel");
+    console.log(root);
+    var endpoint = $("#endpoint").val();
+    var username = $("#username").val();
+    var password = $("#password").val();
+    var auth = "Basic%20" + toBase64(username + ":" + password);
+    $(".statement-viewer").attr("href", root + "?endpoint=" + endpoint + "&auth=" + auth);
+});
 
 /*
  * Functions
