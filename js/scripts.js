@@ -405,6 +405,32 @@ $("#statement-builder-values").change(function() {
     considerPreviewStatement();
 });
 
+$("#actor-Agent :input").on('keyup cut', function(e){
+    // Only worry about backspace (keyCode 8), make sure to include cut as well
+    if (e.type == "cut" || e.type == "keyup" && e.keyCode == 8){
+        // Only worry about IFIs, not name
+        if (this.id != "actor-agent-name"){
+            // Only capture backspace or cut to make IFI input empty
+            if (!this.value){
+                var inputs = $('input, textarea', '#actor-Agent' + ' .ifi').filter(function() {
+                    if (this.name != "actor-agent-name") return $.trim( this.value ).length > 0;
+                });
+                // If there is only one IFI input with text in it then remove all errors/warnings
+                if (inputs.length == 1){
+                    $('input, textarea', '#actor-Agent' + ' .ifi').filter(function() {
+                        $(this).parent("div").removeClass("has-error");
+                        $(this).next("div").empty();
+                    });
+                }
+                else if(inputs.length > 1){
+                    $(this).parent("div").removeClass("has-error");
+                    $(this).next("div").empty();                    
+                }
+            }        
+        }
+    } 
+});
+
 $("#statement-builder-values").validator({
     custom: {
         actor_agent_ifi: function ($el) {
@@ -438,6 +464,7 @@ $("#actor-type").change(function() {
 
 $("#actor-agent-account-example").click(function(e) {
     $("#actor-agent-account").val(JSON.stringify(accountAgentExample, undefined, 4));
+    $("#actor-agent-account").focus();
     considerPreviewStatement();
     e.preventDefault();
 });
@@ -780,7 +807,8 @@ function validateAgentIFI(div) {
         return $.trim( this.value ).length > 0;
     });
 
-    //console.log(inputs.length);
+    // console.log(inputs)
+    // console.log(inputs.length);
     if (inputs.length > 1) { return false; }
     return true;
 }

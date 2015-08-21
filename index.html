@@ -77,7 +77,7 @@
                                 <div class="col-md-12">
 
                                   <div class="panel panel-info">
-                                    <div class="panel-heading"><h3 class="panel-title">Actor <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#actor" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
+                                    <div class="panel-heading"><h3 class="panel-title">Actor <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#actor" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
                                     <div class="panel-body">
 
                                       <div class="row">
@@ -100,11 +100,11 @@
 
                                             <div class="col-md-6 ifi">
                                               
-                                              <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#inversefunctional" target="_blank" title="Inverse Functional Identifier">IFI</a> Below:</h4>
+                                              <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#inversefunctional" target="_blank" title="Inverse Functional Identifier">IFI</a> Below:</h4>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-agent-email">Email</label>
-                                                <input type="email" class="form-control" value="tyler.mulligan.ctr@adlnet.gov" data-actor_agent_ifi="ifi" aria-describedby="Actor Agent Email" id="actor-agent-email" />
+                                                <input type="email" class="form-control" placeholder="tyler.mulligan.ctr@adlnet.gov" data-actor_agent_ifi="ifi" aria-describedby="Actor Agent Email" id="actor-agent-email" />
                                                 <div class="help-block with-errors"></div>
                                               </div>
 
@@ -117,12 +117,14 @@
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-agent-openid">OpenID</label>
                                                 <input type="text" class="form-control" placeholder="http://tyler.openid.example.com"  data-actor_agent_ifi="ifi" aria-describedby="Actor Agent OpenID" id="actor-agent-openid" />
+                                                <div class="help-block with-errors"></div>
                                               </div>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-agent-account">Account</label>
-                                                <textarea class="form-control" rows="4" data-actor_agent_ifi="ifi" aria-describedby="Actor Agent Account" id="actor-agent-account"></textarea>
-                                                <div class="help-block with-errors">An Account Object <span class="pull-right"><a href="#" id="actor-agent-account-example">Insert Example JSON</a></span></div>
+                                                <textarea class="form-control" rows="4" data-actor_agent_ifi="ifi" data-empty="true" aria-describedby="Actor Agent Account" id="actor-agent-account"></textarea>
+                                                <div class="help-block with-errors"></div>
+                                                <div>An Account Object <span class="pull-right"><a href="#" id="actor-agent-account-example">Insert Example JSON</a></span></div>
                                               </div>
 
                                             </div><!-- .col-md-6 -->
@@ -133,7 +135,7 @@
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-agent-name">Name</label>
-                                                <input type="text" class="form-control" value="Tyler" aria-describedby="Actor Agent Name" id="actor-agent-name" />
+                                                <input type="text" class="form-control" placeholder="Tyler" aria-describedby="Actor Agent Name" id="actor-agent-name" />
                                               </div>
 
                                             </div><!-- .col-md-6 -->
@@ -148,7 +150,7 @@
 
                                             <div class="col-md-6 ifi">
                                               
-                                              <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#inversefunctional" target="_blank" title="Inverse Functional Identifier">IFI</a> Below, Unless <a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#requirements-for-anonymous-groups" target="_blank">Anonymous Group</a>:</h4>
+                                              <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#inversefunctional" target="_blank" title="Inverse Functional Identifier">IFI</a> Below, Unless <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#requirements-for-anonymous-groups" target="_blank">Anonymous Group</a>:</h4>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-group-email">Email</label>
@@ -185,7 +187,7 @@
                                                 <input type="text" class="form-control" value="" placeholder="Student Group" aria-describedby="Actor Group Name" id="actor-group-name" />
                                               </div>
 
-                                              <h4 class="text-info">Required if <a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#requirements-for-anonymous-groups" target="_blank">Anonymous Group</a>, Otherwise Optional:</h4>
+                                              <h4 class="text-info">Required if <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#requirements-for-anonymous-groups" target="_blank">Anonymous Group</a>, Otherwise Optional:</h4>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="actor-group-members">Group Members</label>
@@ -205,7 +207,7 @@
                                   </div><!-- .panel -->
 
                                   <div class="panel panel-info">
-                                    <div class="panel-heading"><h3 class="panel-title">Verb <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#verb" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
+                                    <div class="panel-heading"><h3 class="panel-title">Verb <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#verb" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
                                     <div class="panel-body">
 
                                       <div class="row">
@@ -240,7 +242,7 @@
                                   </div><!-- .panel -->
 
                                   <div class="panel panel-info">
-                                    <div class="panel-heading"><h3 class="panel-title">Object <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#object" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
+                                    <div class="panel-heading"><h3 class="panel-title">Object <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#object" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
                                     <div class="panel-body">
 
                                       <div class="row">
@@ -321,7 +323,7 @@
                                                   <option>numeric</option>
                                                   <option>other</option>
                                                 </select>
-                                                <div class="help-block"><a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#interactionacts" target="_blank">Interaction Activities</a></div>
+                                                <div class="help-block"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#interactionacts" target="_blank">Interaction Activities</a></div>
                                               </div>
 
                                           </div><!-- .row -->
@@ -395,7 +397,7 @@
                                             <div class="form-group col-md-12">
                                               <label class="control-label" for="object-activity-extensions">Extensions</label>
                                               <textarea class="form-control" rows="5" aria-describedby="Activity Extensions" id="object-activity-extensions"></textarea>
-                                              <div class="help-block"><a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#miscext" target="_blank">Extensions</a></div>
+                                              <div class="help-block"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#miscext" target="_blank">Extensions</a></div>
                                             </div>
 
                                           </div><!-- .row -->
@@ -408,7 +410,7 @@
 
                                             <div class="col-md-6 ifi">
                                               
-                                              <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#inversefunctional" target="_blank" title="Inverse Functional Identifier">IFI</a> Below:</h4>
+                                              <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#inversefunctional" target="_blank" title="Inverse Functional Identifier">IFI</a> Below:</h4>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="object-agent-email">Email</label>
@@ -456,7 +458,7 @@
 
                                             <div class="col-md-6 ifi">
                                               
-                                              <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#inversefunctional" target="_blank" title="Inverse Functional Identifier">IFI</a> Below, Unless <a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#requirements-for-anonymous-groups" target="_blank">Anonymous Group</a>:</h4>
+                                              <h4 class="text-info">Use Only One <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#inversefunctional" target="_blank" title="Inverse Functional Identifier">IFI</a> Below, Unless <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#requirements-for-anonymous-groups" target="_blank">Anonymous Group</a>:</h4>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="object-group-email">Email</label>
@@ -493,7 +495,7 @@
                                                 <input type="text" class="form-control" value="" placeholder="Student Group" aria-describedby="Object Group Name" id="object-group-name" />
                                               </div>
 
-                                              <h4 class="text-info">Required if <a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#requirements-for-anonymous-groups" target="_blank">Anonymous Group</a>, Otherwise Optional:</h4>
+                                              <h4 class="text-info">Required if <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#requirements-for-anonymous-groups" target="_blank">Anonymous Group</a>, Otherwise Optional:</h4>
 
                                               <div class="form-group">
                                                 <label class="control-label" for="object-group-members">Group Members</label>
@@ -539,7 +541,7 @@
                                   </div><!-- .panel -->
 
                                   <div class="panel panel-default">
-                                    <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#result" href="#result" class="collapsed">Result</a> <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#result" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
+                                    <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#result" href="#result" class="collapsed">Result</a> <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#result" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
                                     <div id="result" class="panel-collapse collapse">
                                       <div class="panel-body">
 
@@ -659,7 +661,7 @@
                                           <div class="form-group col-md-12">
                                             <label class="control-label" for="result-extensions">Extensions</label>
                                             <textarea class="form-control" rows="5" aria-describedby="Result Extensions" id="result-extensions"></textarea>
-                                            <div class="help-block"><a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#miscext" target="_blank">Extensions</a></div>
+                                            <div class="help-block"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#miscext" target="_blank">Extensions</a></div>
                                           </div>
 
                                         </div><!-- .row -->
@@ -669,7 +671,7 @@
                                   </div><!-- .panel -->
 
                                   <div class="panel panel-default">
-                                    <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#context" href="#context" class="collapsed">Context</a> <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#context" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
+                                    <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#context" href="#context" class="collapsed">Context</a> <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#context" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
                                     <div id="context" class="panel-collapse collapse">
                                       <div class="panel-body">
 
@@ -754,7 +756,7 @@
                                           <div class="form-group col-md-12">
                                             <label class="control-label" for="context-extensions">Extensions</label>
                                             <textarea class="form-control" rows="5" aria-describedby="Context Extensions" id="context-extensions"></textarea>
-                                            <div class="help-block"><a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#miscext" target="_blank">Extensions</a></div>
+                                            <div class="help-block"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#miscext" target="_blank">Extensions</a></div>
                                           </div>
 
                                         </div><!-- .row -->
@@ -764,7 +766,7 @@
                                   </div><!-- .panel -->
 
                                   <div class="panel panel-default">
-                                    <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#attachments" href="#attachments" class="collapsed">Attachments</a> <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#attachments" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
+                                    <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#attachments" href="#attachments" class="collapsed">Attachments</a> <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#attachments" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
                                     <div id="attachments" class="panel-collapse collapse">
                                       <div class="panel-body">
 
@@ -834,7 +836,7 @@
                                   </div><!-- .panel -->
 
                                   <div class="panel panel-default">
-                                    <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#statement" href="#statement" class="collapsed">Statement</a> <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#40-statement" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
+                                    <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#statement" href="#statement" class="collapsed">Statement</a> <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#40-statement" target="_blank"><i class="fa fa-question-circle"></i></a></span></h3></div>
                                     <div id="statement" class="panel-collapse collapse">
                                       <div class="panel-body">
 
@@ -1133,7 +1135,7 @@
 
 
       <div class="panel panel-primary">
-        <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#damar" href="#damar" class="collapsed">Document Manipulation and Response</a> <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md#docapis" target="_blank"><i class="fa fa-question-circle bg-primary"></i></a></span></h3></div>
+        <div class="panel-heading collapser"><h3 class="panel-title"><a data-toggle="collapse" data-target="#damar" href="#damar" class="collapsed">Document Manipulation and Response</a> <span class="pull-right"><a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md#docapis" target="_blank"><i class="fa fa-question-circle bg-primary"></i></a></span></h3></div>
         <div id="damar" class="panel-collapse collapse">
           <div class="panel-body">
 
@@ -1586,7 +1588,7 @@
       <h3 class="text-info">About</h3>
       <div class="alert alert-info">
         <p>This tool helps generate valid statements and demonstrates various interactions with an LRS. xAPI Lab is free and open-source, check it out <a href="https://github.com/adlnet/xapi-lab" target="_blank">on github</a>.</p>
-        <p>It is recommended that you use the <a href="https://github.com/adlnet/xAPI-Spec/blob/1.0.3/xAPI.md" target="_blank">xAPI Specification</a> as a reference when using this tool.</p>
+        <p>It is recommended that you use the <a href="https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md" target="_blank">xAPI Specification</a> as a reference when using this tool.</p>
         <p>View statements sent to the ADL LRS with <a href="http://adlnet.github.io/xapi-statement-viewer" target="_blank" class="statement-viewer">xAPI Statement Viewer</a></p>
         <p><small><b>xapi-lab git @ master</b></small></p>
       </div>
