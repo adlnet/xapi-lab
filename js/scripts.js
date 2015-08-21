@@ -422,10 +422,6 @@ $("#actor-Agent :input").on('keyup cut', function(e){
                         $(this).next("div").empty();
                     });
                 }
-                else if(inputs.length > 1){
-                    $(this).parent("div").removeClass("has-error");
-                    $(this).next("div").empty();                    
-                }
             }        
         }
     } 
