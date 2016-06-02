@@ -1,7 +1,7 @@
 # xapi-lab
 Assisting in developing xAPI statements and communicating with a Learning Record Store (LRS) utilizing the [XAPIWrapper](https://github.com/adlnet/xAPIWrapper).
 
-#Installaion
+#Installation
 
 Run `git clone https://github.com/adlnet/xapi-lab`
 
