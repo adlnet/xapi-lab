@@ -1,10 +1,6 @@
 # xapi-lab
 Assisting in developing xAPI statements and communicating with a Learning Record Store (LRS) utilizing the [XAPIWrapper](https://github.com/adlnet/xAPIWrapper).
 
-#Installation
-
-Run `git clone https://github.com/adlnet/xapi-lab`
-
 ### Features
 - Auth configuration
 - Complex Statement Builder
@@ -15,6 +11,10 @@ Run `git clone https://github.com/adlnet/xapi-lab`
 Refer to the [xAPI Spec](https://github.com/adlnet/xAPI-Spec/blob/master/xAPI.md) when using this tool to better understand how all the components work together.
 
 [Live Demo](http://adlnet.github.io/xapi-lab)
+
+#Installation
+
+Run `git clone https://github.com/adlnet/xapi-lab`
 
 ##Use
 Host the github project files on your server. Launch index.html.
