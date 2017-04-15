@@ -100,25 +100,25 @@ var groupExample2 = [
 
 var componentListChoicesExample = [
     {
-        "id": "golf", 
+        "id": "golf",
         "description": {
             "en-US": "Golf Example"
         }
     },
     {
-        "id": "facebook", 
+        "id": "facebook",
         "description": {
             "en-US": "Facebook App"
         }
     },
     {
-        "id": "tetris", 
+        "id": "tetris",
         "description": {
             "en-US": "Tetris Example"
         }
     },
     {
-        "id": "scrabble", 
+        "id": "scrabble",
         "description": {
             "en-US": "Scrabble Example"
         }
@@ -127,25 +127,25 @@ var componentListChoicesExample = [
 
 var componentListScaleExample = [
     {
-        "id": "likert_0", 
+        "id": "likert_0",
         "description": {
             "en-US": "It's OK"
         }
     },
     {
-        "id": "likert_1", 
+        "id": "likert_1",
         "description": {
             "en-US": "It's Pretty Cool"
         }
     },
     {
-        "id": "likert_2", 
+        "id": "likert_2",
         "description": {
             "en-US": "It's Damn Cool"
         }
     },
     {
-        "id": "likert_3", 
+        "id": "likert_3",
         "description": {
             "en-US": "It's Gonna Change the World"
         }
@@ -208,19 +208,19 @@ var componentListTargetExample = [
 
 var componentListStepsExample = [
     {
-        "id": "pong", 
+        "id": "pong",
         "description": {
             "en-US": "Net pong matches won"
         }
     },
     {
-        "id": "dg", 
+        "id": "dg",
         "description": {
             "en-US": "Strokes over par in disc golf at Liberty"
             }
         },
     {
-        "id": "lunch", 
+        "id": "lunch",
         "description": {
             "en-US": "Lunch having been eaten"
         }
@@ -270,18 +270,18 @@ var correctResponsesPatternOther = [
 var substatementExample = {
     "actor" : {
         "objectType": "Agent",
-        "mbox":"mailto:test@example.com" 
+        "mbox":"mailto:test@example.com"
     },
-    "verb" : { 
-        "id":"http://example.com/visited", 
+    "verb" : {
+        "id":"http://example.com/visited",
         "display":{
             "en-US":"will visit"
-        } 
+        }
     },
     "object": {
         "objectType": "Activity",
         "id":"http://example.com/website",
-        "definition": { 
+        "definition": {
             "name" : {
                 "en-US":"Some Awesome Website"
             }
@@ -343,7 +343,7 @@ $(function(){
             $options2.append($("<option />").val(ADL.verbs[key]['id']).text(ADL.verbs[key]['display']['en-US']));
         }
     }
-    
+
     // Populate textareas
     $("#actor-group-members").val(JSON.stringify(groupExample, undefined, 4));
     $("#object-group-members").val(JSON.stringify(groupExample2, undefined, 4));
@@ -354,7 +354,7 @@ $(function(){
 
     $("#object-types > div").hide();
     $("#object-Activity").show();
-    
+
     $("#component-lists > div").hide();
     $("#correct-responses-pattern").hide();
 
@@ -381,17 +381,17 @@ $(function(){
  */
 
 /* General */
- 
+
 $("body").on("click", ".collapser a", function (e) { e.preventDefault(); });
 
-$('#opener').on('click', function() {		
+$('#opener').on('click', function() {
   var $console = $('#console-panel');
   if ($console.hasClass("visible")) {
     $console.removeClass('visible').animate({'margin-right':'-400px'});
   } else {
     $console.addClass('visible').animate({'margin-right':'0px'});
-  }	
-  return false;	
+  }
+  return false;
 });
 
 // Allow links inside collapsing headers to be clicked
@@ -422,9 +422,9 @@ $("#actor-Agent :input").on('keyup cut', function(e){
                         $(this).next("div").empty();
                     });
                 }
-            }        
+            }
         }
-    } 
+    }
 });
 
 $("#statement-builder-values").validator({
@@ -794,7 +794,7 @@ $("#endpoint-values").keyup(function() {
 /*
  * Functions
  */
- 
+
 // Helper Functions
 
 // Form Validation
@@ -950,7 +950,7 @@ function buildStatement() {
         break;
       default:
     }
-    
+
     stmt['actor']['objectType'] = actorType;
 
     stmt['verb'] = {};
@@ -1009,7 +1009,7 @@ function buildStatement() {
         break;
       default:
     }
-    
+
     stmt['object']['objectType'] = objectType;
 
     if (/.+/.test([ resultScaledScore, resultRawScore, resultMinScore, resultMaxScore, resultSuccess, resultCompletion, resultResponse, resultDuration, resultExtensions ].join(""))) {
@@ -1066,7 +1066,7 @@ function buildStatement() {
       if (attachmentDescription != "" && attachmentLanguage != "") {
           attachment['description'] = {};
           attachment['description'][attachmentLanguage] = attachmentDescription;
-      }      
+      }
       attachment['contentType'] = attachmentContentType;
       attachment['length'] = parseInt(attachmentLength);
       attachment['sha2'] = attachmentSha2;
@@ -1126,7 +1126,7 @@ function sendStatement() {
 
     var xstmt = $.parseJSON(stmt);
 
-    ADL.XAPIWrapper.sendStatement(xstmt, function(r, obj) {
+    ADL.XAPIWrapper.postStatement(xstmt, function(r, obj) {
         console.log(r);
         //console.log(obj);
         // notification
@@ -1147,10 +1147,10 @@ function queueStatement(stmt) {
         notify({ message: "invalid JSON, cannot add to queue" }, notificationErrorSettings);
         return false;
     }
-    
+
     var xstmt = $.parseJSON(stmt);
 
-    var _stmt = new ADL.XAPIStatement(stmt);
+    var _stmt = new ADL.Statement(stmt);
     _stmt.generateId();
     stmts.push(xstmt);
 
@@ -1165,7 +1165,7 @@ function sendStatementQueue() {
 
     //var xstmts = $.parseJSON(stmts);
 
-    ADL.XAPIWrapper.sendStatements(stmts, function(r, obj) {
+    ADL.XAPIWrapper.postStatements(stmts, function(r, obj) {
         //console.log(r);
         //console.log(obj);
         // notification
@@ -1289,13 +1289,13 @@ function sendState() {
     var activityId = $("#document-activity-id").val();
     var actorEmail = $("#document-actor-email").val(); // TODO: Agent
     var stateId = $("#set-document-state-id").val();
-    // registration    
+    // registration
     var stateValue = $("#set-document-state-string").val();
     // matchHash
     // noneMatchHash
     // callback
 
-    ADL.XAPIWrapper.sendState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, stateValue, null, null, function(r) {
+    ADL.XAPIWrapper.postState(activityId, {"mbox":"mailto:" + actorEmail}, stateId, null, stateValue, null, null, function(r) {
         notify({ message: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#sent-documents").append("<p>Sent State <b>" + stateId + "</b>: " + stateValue + "</p>");
         if (validateJSON(stateValue) == true) {
@@ -1320,7 +1320,7 @@ function sendActivityProfile() {
     // noneMatchHash
     // callback
 
-    ADL.XAPIWrapper.sendActivityProfile(activityId, profileId, profileValue, null, "*", function(r) {
+    ADL.XAPIWrapper.postActivityProfile(activityId, profileId, profileValue, null, "*", function(r) {
         notify({ message: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#sent-documents").append("<p>Sent Activity Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
         if (validateJSON(profileValue) == true) {
@@ -1345,7 +1345,7 @@ function sendAgentProfile() {
     // noneMatchHash
     // callback
 
-    ADL.XAPIWrapper.sendAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, profileValue, null, "*", function(r) {
+    ADL.XAPIWrapper.postAgentProfile({"mbox":"mailto:" + actorEmail}, profileId, profileValue, null, "*", function(r) {
         notify({ message: "Status " + r.status + " " + r.statusText }, notificationSettings);
         //$("#sent-documents").append("<p>Sent Agent Profile <b>" + profileId + "</b>: " + profileValue + "</p>");
         if (validateJSON(profileValue) == true) {
